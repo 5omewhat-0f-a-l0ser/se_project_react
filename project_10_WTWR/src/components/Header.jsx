@@ -4,7 +4,7 @@ function Header() {
         <header className="header">
             <img className="header__logo"/>
             <p className="header__date-and-location">Date,Location</p>
-            <button className="header__clother-btn">Add Clothing</button>
+            <button className="header__clothes-btn">Add Clothing</button>
         </header>
     )
 }
