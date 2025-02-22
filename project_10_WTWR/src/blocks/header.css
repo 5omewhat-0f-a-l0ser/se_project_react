@@ -1,5 +1,5 @@
 .header {
-
+    display: flex;
 }
 
 .header__logo {
@@ -11,5 +11,5 @@
 }
 
 .heaader__clothes-btn {
-    
+
 }
