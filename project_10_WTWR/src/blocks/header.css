@@ -1,15 +1,22 @@
 .header {
     display: flex;
+    align-items: center;
+    padding: 32px 40px 28px;
 }
 
-.header__logo {
-
+.header__date-and-location {
+    margin: 0;
 }
 
-.header__date-and-location{
-
+.header__clothes-btn {
+    margin-left: auto;
 }
 
-.heaader__clothes-btn {
+.header__user-container {
+    display: flex;
+    align-items: center;
+}
 
+.header__username {
+    margin: 0;
 }
