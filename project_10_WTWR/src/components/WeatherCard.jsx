@@ -1,14 +1,13 @@
 import "../blocks/weathercard.css";
 
-import shirt from "../images/shirt.png";
-import shorts from "../images/shorts.png";
+import sunny from "../images/Sun.png";
 
 function WeatherCard() {
     return (
-      <div className="container">
-        <p className="card__text">Today's weather is...</p>
-        <img src={shirt} alt="clothing" className="card" />
-      </div>
+      <section className="weather-card">
+        <p className="weather-card__info">75 &deg; F</p>
+        <img src={sunny} alt="Sun" className="weather-card__image" />
+      </section>
     )
 }
 
