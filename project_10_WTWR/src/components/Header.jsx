@@ -1,7 +1,7 @@
 import "../blocks/header.css";
 
 import logo from "../images/Logo.svg";
-import avatar from "../images/Ellipse 18.png";
+import avatar from "../images/avatar.png";
 
 function Header() {
     return (
