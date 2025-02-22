@@ -1,7 +1,6 @@
 .weather-card {
     max-width: 1360px;
     position: relative;
-    overflow: hidden;
 }
 
 .weather-card__info {
@@ -14,5 +13,8 @@
 }
 
 .weather-card__image {
-    max-width: 1360px;
+    object-fit: cover;
+    object-position: right top;
+    width: 100%;
+    border-radius: 12px;
 }
