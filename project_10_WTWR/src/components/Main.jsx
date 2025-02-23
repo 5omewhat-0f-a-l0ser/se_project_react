@@ -1,5 +1,7 @@
 import "../blocks/main.css";
 
+import { defaultClothingItems } from "../utils/constants";
+
 import WeatherCard from "../components/WeatherCard";
 
 function Main() {
@@ -9,7 +11,15 @@ function Main() {
         <section className="cards">
             <p className="cards__text">Today is 75 &deg; F / You may want to wear:</p>
         </section>
-        {/*Todo -- finish the cards*/}
+        <ul className="cards__list">
+          {defaultClothingItems.map((item) => {
+            return (
+              <div>
+                card placeement
+              </div>
+            )
+          })}
+        </ul>
       </main>
     )
 }
