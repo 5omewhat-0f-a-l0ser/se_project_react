@@ -14,8 +14,9 @@ function Main() {
         <ul className="cards__list">
           {defaultClothingItems.map((item) => {
             return (
-              <div>
-                card placeement
+              <div key={item._id}>
+                <h2>{item.name}</h2>
+                <img src={item.link} alt={item.name} />
               </div>
             )
           })}
