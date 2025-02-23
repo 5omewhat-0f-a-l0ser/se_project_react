@@ -22,9 +22,10 @@
 .header__user-container {
     display: flex;
     align-items: center;
+    gap: 12px;
 }
 
 .header__username {
     margin: 0;
-    gap: 12px;
+    
 }
