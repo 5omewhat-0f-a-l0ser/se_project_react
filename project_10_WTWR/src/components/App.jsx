@@ -7,7 +7,7 @@ import Main from "../components/Main";
 
 
 function App() {
- const [weatherData, setWeatherData] = useState({ type: "cold"});
+ const [weatherData, setWeatherData] = useState({ type: "hot"});
 
   return (
     <div className="page">
