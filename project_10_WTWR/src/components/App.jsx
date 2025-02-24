@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "../blocks/app.css";
 import Header from "../components/Header";
 import Main from "../components/Main";
@@ -5,13 +7,13 @@ import Main from "../components/Main";
 
 
 function App() {
-  //const [count, setCount] = useState(0)
+ const [weatherData, setWeatherData] = useState({ type: "hot"});
 
   return (
     <div className="page">
       <div className="page__content">
        <Header />
-       <Main />
+       <Main weatherData={weatherData} />
       </div>
     </div>
   )
