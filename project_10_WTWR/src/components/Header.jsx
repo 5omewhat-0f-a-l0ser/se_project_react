@@ -13,8 +13,8 @@ function Header() {
                 <DateDisplay location={location} />
             <button className="header__clothes-btn">+ Add Clothing</button>
             <div className="header__user-container">
-                <p className="header__username">Name</p>
-                <img src={avatar} alt="UserName" className="header__avatar" />
+                <p className="header__username">Terrence Tegegne</p>
+                <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
             </div>
         </header>
     )

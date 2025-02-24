@@ -1,0 +1,13 @@
+.footer {
+    font-weight: 500;
+    display: flex;
+    font-family: Cabinet Grotesk;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+
+}
+
+.footer__year {
+    margin-left: auto;
+}

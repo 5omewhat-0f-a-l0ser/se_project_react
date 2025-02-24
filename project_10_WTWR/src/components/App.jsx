@@ -3,7 +3,7 @@ import { useState } from "react";
 import "../blocks/app.css";
 import Header from "../components/Header";
 import Main from "../components/Main";
-
+import Footer from "../components/Footer";
 
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
       <div className="page__content">
        <Header />
        <Main weatherData={weatherData} />
+       <Footer />
       </div>
     </div>
   )

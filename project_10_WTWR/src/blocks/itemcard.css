@@ -13,6 +13,9 @@
 .card__name {
     position: absolute;
     top: 15px;
+    background-color: #ffffff;
+    padding: 2px 12px;
+    color: rgba(0, 0, 0, 0.6);
 }  
 
 .card__img {
