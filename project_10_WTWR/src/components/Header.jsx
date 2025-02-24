@@ -5,6 +5,8 @@ import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.png";
 
 function Header() {
+     const location = "New York"
+
     return (
         <header className="header">
                 <img className="header__logo" src={logo}/>
