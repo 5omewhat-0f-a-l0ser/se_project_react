@@ -7,6 +7,7 @@ const DateDisplay = ({ location }) => {
   return (
     <div>
       <p>{today}</p>
+      <p>,</p>
       <p>{location}</p>
     </div>
   );
