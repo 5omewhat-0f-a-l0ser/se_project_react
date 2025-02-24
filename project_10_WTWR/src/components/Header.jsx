@@ -10,7 +10,7 @@ function Header() {
     return (
         <header className="header">
                 <img className="header__logo" src={logo}/>
-                <DateDisplay location={location} className="header__date header__location" />
+                <DateDisplay location={location} />
             <button className="header__clothes-btn">+ Add Clothing</button>
             <div className="header__user-container">
                 <p className="header__username">Name</p>
