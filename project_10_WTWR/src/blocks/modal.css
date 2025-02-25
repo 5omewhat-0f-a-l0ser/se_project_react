@@ -1,0 +1,19 @@
+.modal {
+
+}
+
+.modal__form {
+
+}
+
+.modal__title {
+
+}
+
+.modal__close {
+    background-image: url(../images/close.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    border: none;
+}
