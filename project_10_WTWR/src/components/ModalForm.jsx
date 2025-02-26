@@ -12,7 +12,7 @@ function ModalWithForm() {
                          <input 
                          type="text" 
                          className="modal__input" 
-                         id="name" placeholder="name" />
+                         id="name" placeholder="Name" />
                     </label>
                     <label htmlFor="imageUrl" className="modal__label">
                         Image {" "}
