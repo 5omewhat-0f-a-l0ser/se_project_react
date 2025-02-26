@@ -23,10 +23,14 @@
 .modal__form {
     display: flex;
     flex-direction: column;
+    gap: 24px;    
+
 }
 
 .modal__title {
-    gap:24px;
+    line-height: 20px;
+    font-size: 16px;
+    margin: 0;
 }
 
 .modal__close {
@@ -53,7 +57,7 @@
     padding: 8px;
     width: 100%;
     box-sizing: border-box;
-  }
+}
 
 
 
@@ -86,17 +90,28 @@
 .modal__radio-btns {
     border: none;
     padding: 0;
+    margin: 0;
+    gap: 32px;
+}
+
+.modal__label_type_radio {
+    flex-direction: row;
+    gap: 8px;
+    width: 173px;
+    height: 20px;
 }
 
 .modal__submit {
-    width: 124px;
-    height: 36px;
     background-color: #0000004D;
-    color: #fff;  
-    border-radius: 4px;
+    color: #fff;
     border: none;
+    border-radius: 4px;
     padding: 8px 16px;
+    width: 100%; /* Adjust as needed */
+    box-sizing: border-box; /* Ensures padding is included in total width */
+    text-align: center; /* Centers the text */
+    font-weight: 700;
     font-size: 16px;
     line-height: 20px;
-    font-weight: 700;
-}
+  }
+  

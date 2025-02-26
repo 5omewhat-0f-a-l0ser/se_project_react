@@ -12,7 +12,7 @@ function Header() {
     return (
         <header className="header">
                 <img className="header__logo" src={logo}/>
-                <DateDisplay location={location} />
+                <DateDisplay className="header__date-and-location"/>
             <button className="header__clothes-btn">+ Add Clothing</button>
             <div className="header__user-container">
                 <p className="header__username">Terrence Tegegne</p>
