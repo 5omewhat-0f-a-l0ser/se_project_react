@@ -14,7 +14,7 @@ function Header({ onAddBtnClick }) {
                 <img className="header__logo" src={logo}/>
                 <DateDisplay className="header__date-and-location"/>
             <button 
-                onCLick={onAddBtnClick} 
+                onClick={onAddBtnClick} 
                 type="button" 
                 className="header__clothes-btn"
             >

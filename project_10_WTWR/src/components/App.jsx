@@ -6,26 +6,38 @@ import Main from "../components/Main";
 import Footer from "../components/Footer";
 
 import ModalWithForm from "../components/ModalForm";
+import ItemModal from "../components/ItemModal";
 
 function App() {
  const [weatherData, setWeatherData] = useState({ type: "hot"});
  const [activeModal, setActiveModal] = useState("");
+ const [selectedCard, setSelectedCard] = useState(());
+
+ const onCardClick = () => {
+  setActiveModal("preveiw");
+  setSelectedCard(card);
+ }
 
  const onAddBtnClick = () => {
   setActiveModal("add-garment");
+ }
+
+ const closeActiveModal = () => {
+  setActiveModal("");
  }
 
   return (
     <div className="page">
       <div className="page__content">
        <Header onAddBtnClick={onAddBtnClick}/>
-       <Main weatherData={weatherData} />
+       <Main weatherData={weatherData}  onCardClick={}/>
        <Footer />
       </div>
       <ModalWithForm 
         buttonText={"Add Garment"} 
         title={"New Garmnet"} 
         activeModal={activeModal}
+        closeModal={closeActiveModal}
         >
         <label htmlFor="name" className="modal__label">
             Name {" "}
@@ -53,7 +65,12 @@ function App() {
                 <input id="cold" type="radio" className="modal__radio-input" /> Cold
             </label>
         </fieldset>
-      </ModalWithForm> />
+      </ModalWithForm>
+      <ItemModal 
+        activeModal={activeModal}
+        closeModal={closeActiveModal}>
+
+        </ItemModal>
     </div>
   )
 }
