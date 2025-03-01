@@ -78,6 +78,11 @@
     gap: 8px;
     width: 173px;
     height: 20px;
+    color: #00000080;
+}
+
+.modal__label_type_radio:checked {
+    color: #000;
 }
 
 .modal__submit {
@@ -96,7 +101,7 @@
 
 .modal__submit:hover {
     cursor: pointer;
-    color: #00000099;
+    background-color: #00000099;
     opacity: 1;
 }
 
