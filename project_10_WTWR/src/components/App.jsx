@@ -13,7 +13,7 @@ function App() {
  const [activeModal, setActiveModal] = useState("");
  const [selectedCard, setSelectedCard] = useState();
 
- const onItemCardClick = () => {
+ const onItemCardClick = (card) => {
   setActiveModal("preview");
   setSelectedCard(card);
  }
@@ -22,9 +22,21 @@ function App() {
   setActiveModal("add-garment");
  }
 
+ //close const's/functions//
+
  const closeActiveModal = () => {
   setActiveModal("");
  }
+
+ const closeModalEsc = (evt) => {
+  if (evt.key === "Escape") {
+    closeActiveModal(activeModal);
+  }
+};
+
+  const submitFormBtn = () => {
+    closeActiveModal("add-garment")
+  }
 
   return (
     <div className="page">
@@ -38,6 +50,8 @@ function App() {
         title={"New Garmnet"} 
         activeModal={activeModal}
         closeModal={closeActiveModal}
+        escClose={closeModalEsc}
+        submit={submitFormBtn}
         >
         <label htmlFor="name" className="modal__label">
             Name {" "}
@@ -70,6 +84,7 @@ function App() {
         activeModal={activeModal}
         closeModal={closeActiveModal}
         card={selectedCard}
+        escClose={closeModalEsc}
         />
     </div>
   )
