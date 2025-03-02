@@ -6,13 +6,13 @@ import DateDisplay from "../components/DateDisplay";
 import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.png";
 
-function Header({ onAddBtnClick }) {
+function Header({ onAddBtnClick, weatherData }) {
      const location = "New York"
 
     return (
         <header className="header">
                 <img className="header__logo" src={logo}/>
-                <DateDisplay className="header__date-and-location"/>
+                <DateDisplay className="header__date-and-location" location={weatherData}/>,
             <button 
                 onClick={onAddBtnClick} 
                 type="button" 

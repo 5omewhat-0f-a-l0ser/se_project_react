@@ -1,10 +1,12 @@
 import React from 'react';
 import "../blocks/header.css"
-const DateDisplay = ({ location }) => {
+const DateDisplay = ({ weatherData }) => {
   const today =  new Date().toLocaleString('default', {
      month: 'long', 
      day: 'numeric'
   });
+
+  const location = weatherData.city;
 
   return (
     <div className="header__date header__location">

@@ -12,7 +12,10 @@ import { getWeather, sortWeatherData } from "../utils/weatherApi";
 import { coords, APIkey } from "../utils/constants";
 
 function App() {
- const [weatherData, setWeatherData] = useState({ type: "", temp: { F: 999, C: 999 },
+ const [weatherData, setWeatherData] = useState({ 
+  type: "", 
+  temp: { F: 999, C: 999 },
+  city: "",
  });
  const [activeModal, setActiveModal] = useState("");
  const [selectedCard, setSelectedCard] = useState();
@@ -57,7 +60,7 @@ useEffect(() => {
   return (
     <div className="page">
       <div className="page__content">
-       <Header onAddBtnClick={onAddBtnClick}/>
+       <Header onAddBtnClick={onAddBtnClick} weatherData={weatherData}/>
        <Main weatherData={weatherData}  onItemCardClick={onItemCardClick}/>
        <Footer />
       </div>
