@@ -8,9 +8,9 @@ import ItemCard from "../components/ItemCard";
 function Main({ weatherData, onItemCardClick }) {
     return (
       <main>
-        <WeatherCard />
+        <WeatherCard weatherData={weatherData}/>
         <section className="cards">
-            <p className="cards__text">Today is 75 &deg; F / You may want to wear:</p>
+            <p className="cards__text">Today is {weatherData.temp.F} &deg; F / You may want to wear:</p>
         </section>
         <ul className="cards__list">
           {defaultClothingItems.filter((item) => {
