@@ -1,7 +1,9 @@
 import React from 'react';
 import "../blocks/header.css"
 const DateDisplay = ({ location }) => {
-  const today =  new Date().toLocaleString('default', { month: 'long', day: 'numeric'
+  const today =  new Date().toLocaleString('default', {
+     month: 'long', 
+     day: 'numeric'
   });
 
   return (

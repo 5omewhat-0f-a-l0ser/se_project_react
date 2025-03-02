@@ -7,11 +7,11 @@
 }
 
 .header__logo {
-    gap: 24px;
+    padding-right: 24px;
 }
 
 .header__date-and-location {
-    margin: 0;
+    padding: 24px;
 }
 
 .header__clothes-btn {
