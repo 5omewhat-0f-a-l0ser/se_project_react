@@ -9,11 +9,11 @@ import ModalWithForm from "../components/ModalForm";
 import ItemModal from "../components/ItemModal";
 
 import { getWeather, sortWeatherData } from "../utils/weatherApi";
-import { coords, APIkey } from "../utils/constants";
+import { coords, APIKey } from "../utils/constants";
 
 function App() {
  const [weatherData, setWeatherData] = useState({ 
-  type: "", 
+  type: "hot",
   temp: { F: 999, C: 999 },
   city: "",
  });
