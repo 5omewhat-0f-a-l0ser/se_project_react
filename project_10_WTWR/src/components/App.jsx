@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "../blocks/app.css";
 import Header from "../components/Header";
@@ -7,6 +7,9 @@ import Footer from "../components/Footer";
 
 import ModalWithForm from "../components/ModalForm";
 import ItemModal from "../components/ItemModal";
+
+import { getWeather } from "../utils/weatherApi";
+import { coords, APIkey } from "../utils/constants";
 
 function App() {
  const [weatherData, setWeatherData] = useState({ type: "hot"});
@@ -28,15 +31,19 @@ function App() {
   setActiveModal("");
  }
 
- const closeModalEsc = (evt) => {
-  if (evt.key === "Escape") {
-    closeActiveModal(activeModal);
-  }
-};
+ const submitFormBtn = () => {
+   closeActiveModal("add-garment")
+ }
 
-  const submitFormBtn = () => {
-    closeActiveModal("add-garment")
-  }
+ //api//
+ 
+ useEffect(() => {
+  getWeather(coords, APIkey)
+  .then((data) => {
+    console.log(data);
+  }) 
+  .catch(console.error);
+ }, []);
 
   return (
     <div className="page">
