@@ -1,5 +1,5 @@
 export const getWeather = ({ latitude, longitude }, APIkey) => {
-    fetch( 
+    return fetch( 
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`,
       ).then((res) => {
         if (res.ok) {
@@ -8,4 +8,11 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
           return Promise.reject(`Error: ${res.status}`);
         }
       });
+};
+
+export const sortWeatherData = (data) => {
+  const result = {};
+  result.city = data.name;
+
+  return result;
 };

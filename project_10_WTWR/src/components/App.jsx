@@ -8,11 +8,12 @@ import Footer from "../components/Footer";
 import ModalWithForm from "../components/ModalForm";
 import ItemModal from "../components/ItemModal";
 
-import { getWeather } from "../utils/weatherApi";
+import { getWeather, sortWeatherData } from "../utils/weatherApi";
 import { coords, APIkey } from "../utils/constants";
 
 function App() {
- const [weatherData, setWeatherData] = useState({ type: "hot"});
+ const [weatherData, setWeatherData] = useState({ type: "", temp: { F: 999, C: 999 },
+ });
  const [activeModal, setActiveModal] = useState("");
  const [selectedCard, setSelectedCard] = useState();
 
@@ -31,19 +32,27 @@ function App() {
   setActiveModal("");
  }
 
- const submitFormBtn = () => {
-   closeActiveModal("add-garment")
- }
+ const closeModalEsc = (evt) => {
+  if (evt.key === "Escape") {
+    closeActiveModal(activeModal);
+  }
+};
 
- //api//
- 
- useEffect(() => {
-  getWeather(coords, APIkey)
-  .then((data) => {
-    console.log(data);
-  }) 
-  .catch(console.error);
- }, []);
+  const submitFormBtn = () => {
+    closeActiveModal("add-garment")
+  }
+//api//
+
+useEffect(() => {
+  getWeather(coords, APIKey)
+    .then((data) => {
+      const filterWeather = sortWeatherData(data);
+      setWeatherData(filterWeather);
+    })
+    .catch(console.error);
+}, []);
+
+
 
   return (
     <div className="page">
