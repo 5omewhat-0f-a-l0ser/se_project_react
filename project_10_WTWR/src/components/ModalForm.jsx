@@ -5,8 +5,10 @@ import "../blocks/modal.css"
 function ModalWithForm({ children, buttonText, title, activeModal, closeModal, escCLose, submit}) {
     const [imageSrc, setImageSrc] = useState("");
 
+    
+
     const handleSubmit = (evt) => {
-        event.preventDefault();
+        preventDefault();
         console.log("image added:", imageSrc);
     }
 
