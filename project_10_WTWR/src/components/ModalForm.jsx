@@ -8,7 +8,7 @@ function ModalWithForm({ children, buttonText, title, activeModal, closeModal, e
     
 
     const handleSubmit = (evt) => {
-        preventDefault();
+        preventDefault(evt);
         console.log("image added:", imageSrc);
     }
 
@@ -17,9 +17,9 @@ function ModalWithForm({ children, buttonText, title, activeModal, closeModal, e
             <div className="modal__container">
                 <h2 className="modal__title">{title}</h2>
                 <button onClick={ closeModal } type="button" className="modal__close"></button>
-                <form className="modal__form">
+                <form className="modal__form" onSubmit={handleSubmit}>
                     {children}
-                    <button onClick={ submit, handleSubmit } className="modal__submit">{buttonText}</button>
+                    <button type="submit" className="modal__submit">{buttonText}</button>
                 </form>
             </div>
         </div>
