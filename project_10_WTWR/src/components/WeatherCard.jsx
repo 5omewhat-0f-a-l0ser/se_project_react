@@ -1,5 +1,5 @@
 import "../blocks/weathercard.css";
-import { weatherOpts } from "../utils/constants";
+import { weatherOpts, weatherDefaults } from "../utils/constants";
 
 function WeatherCard({ weatherData}) {
   const filterOptions = weatherOpts.filter((option) => {
@@ -8,13 +8,19 @@ function WeatherCard({ weatherData}) {
   )
   })
 
-  const weatherOptUrl = filterOptions[0]?.url;
-  const weatherOptCaption = filterOptions[0]?.condtion;
+  
+  let weatherOption;
+  if (filterOptions.length === 0) {
+    weatherOption = weatherDefaults[weatherData.isDay ? "day" : "night"];
+  } else {
+    weatherOption = filterOptions[0];
+  }
+
   
   return (
     <section className="weather-card">
       <p className="weather-card__info">{weatherData.temp.F} &deg; F</p>
-      <img src={weatherOptUrl} alt={`Card Showing ${weatherOptCaption}`} className="weather-card__image" />
+      <img src={weatherOption?.url} alt={`Card Showing ${weatherOption?.day ? "day" : "night"}time ${weatherOption?.caption} weather`} className="weather-card__image" />
     </section>
   )
 }
