@@ -61,18 +61,14 @@ export const weatherOpts = [
   }
 ]
 
-export const weatherDefaults = [
-  {
-    day: true,
-    condtion: "",
+export const weatherDefaults = {
+  day: {
     url: new URL("../images/day/undefined-day.png", import.meta.url).href,
   },
-  {
-    day: false,
-    condtion: "",
+  night: {
     url: new URL("../images/night/night-undefined.png", import.meta.url).href,
   },
-]
+}
 
 
 
