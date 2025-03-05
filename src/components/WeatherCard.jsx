@@ -1,5 +1,5 @@
 import "../blocks/weathercard.css";
-import { weatherOpts, weatherDefaults } from "../utils/constants";
+import { weatherOpts, weatherDefaults } from "../utils/constants.js";
 
 function WeatherCard({ weatherData}) {
 
@@ -19,7 +19,7 @@ function WeatherCard({ weatherData}) {
   //   weatherOption = filterOptions[0];
   // }
 
-
+//can this work//
 
   console.log(filterOptions)
   
