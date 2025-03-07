@@ -1,8 +1,12 @@
-# React + Vite
+Descripton
+What To Wear (WTWR) is a simple weather app to help you decide what to wear to combat the unyeildingweather outside of your comfy home.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tech Stack
+HTML
+CSS
+Vite + React
 
-Currently, two official plugins are available:
+Deployment
+This web page is deployed to Github Pages:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Deployment Link: https://5omewhat-0f-a-l0ser.github.io/se_project_react/

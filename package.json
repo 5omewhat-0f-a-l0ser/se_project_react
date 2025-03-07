@@ -26,12 +26,5 @@
     "gh-pages": "^6.3.0",
     "vite": "^6.1.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/5omewhat-0f-a-l0ser/se_project_react.git"
-  },
-  "bugs": {
-    "url": "https://github.com/5omewhat-0f-a-l0ser/se_project_react/"
-  },
-  "homepage": "https://github.com/5omewhat-0f-a-l0ser/se_project_react#readme"
+  "homepage": "https://5omewhat-0f-a-l0ser.github.io/se_project_react/"
 }
