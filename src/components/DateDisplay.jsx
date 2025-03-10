@@ -2,7 +2,7 @@
 //import "../blocks/header.css"
 //const DateDisplay = ({ weatherData }) => {
 //  const today =  new Date().toLocaleString('default', {
-//     month: 'long', 
+//     month: 'long',
 //     day: 'numeric'
 //  });
 //
