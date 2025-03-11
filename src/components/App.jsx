@@ -35,14 +35,25 @@ function App() {
     setActiveModal("");
   };
 
-  const closeModalEsc = (evt) => {
-    if (evt.key === "Escape") {
-      closeActiveModal(activeModal);
-    }
-  };
+ //useEffect(() => {
+
+ //  if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
+
+ //  const closeModalEsc = (e) => {  // define the function inside useEffect not to lose the reference on rerendering
+ //    if (e.key === "Escape") {
+ //      closeActiveModal();
+ //    }
+ //  };
+
+ //  document.addEventListener("keydown", closeModalEsc);
+
+ //  return () => {  // don't forget to add a clean up function for removing the listener
+ //    document.removeEventListener("keydown", closeModalEsc);
+ //  };
+ //}, [activeModal]);
 
   const submitFormBtn = () => {
-    closeActiveModal("add-garment");
+    closeActiveModal();
   };
   //api//
 
@@ -67,7 +78,6 @@ function App() {
         title={"New Garmnet"}
         activeModal={activeModal}
         closeModal={closeActiveModal}
-        escClose={closeModalEsc}
         submit={submitFormBtn}
         isOpen = {activeModal === "add-garment"}
       >
