@@ -25,6 +25,10 @@
   max-width: 496px;
 }
 
+.modal__footer {
+  padding: 20px 32px 32px;
+}
+
 .modal__form {
   display: flex;
   flex-direction: column;

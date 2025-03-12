@@ -140,7 +140,6 @@ function App() {
         activeModal={activeModal}
         closeModal={closeActiveModal}
         card={selectedCard}
-        escClose={closeModalEsc}
       />
     </div>
   );
