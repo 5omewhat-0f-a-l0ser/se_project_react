@@ -84,12 +84,8 @@
   color: #00000080;
 }
 
-input[type="radio"]:checked {
-  color: #fa5a00;
-}
-
-.modal__radio-input:checked {
-  color: #fa5a00;
+:checked+span {
+  color: #000;
 }
 
 .modal__submit {

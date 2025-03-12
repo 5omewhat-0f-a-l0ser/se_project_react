@@ -108,7 +108,9 @@ function App() {
               name="weather"
               className="modal__radio-input"
             />{" "}
+            <span>
             Hot
+            </span>
           </label>
           <label
             htmlFor="warm"
@@ -120,7 +122,9 @@ function App() {
               name="weather"
               className="modal__radio-input"
             />{" "}
+           <span>
             Warm
+            </span>
           </label>
           <label
             htmlFor="cold"
@@ -132,7 +136,9 @@ function App() {
               name="weather"
               className="modal__radio-input"
             />{" "}
+           <span>
             Cold
+            </span>
           </label>
         </div>
       </ModalWithForm>
@@ -140,6 +146,7 @@ function App() {
         activeModal={activeModal}
         closeModal={closeActiveModal}
         card={selectedCard}
+        isOpen = {activeModal === "preview"}
       />
     </div>
   );
