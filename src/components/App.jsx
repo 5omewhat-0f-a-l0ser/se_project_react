@@ -99,7 +99,7 @@ function App() {
             placeholder="Image Url"
           />
         </label>
-        <fieldset className="modal__radio-btns">
+        <div className="modal__radio-btns">
           <legend className="modal__legend">Select the weather type:</legend>
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
             <input
@@ -134,7 +134,7 @@ function App() {
             />{" "}
             Cold
           </label>
-        </fieldset>
+        </div>
       </ModalWithForm>
       <ItemModal
         activeModal={activeModal}

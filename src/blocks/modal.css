@@ -39,6 +39,7 @@
   line-height: 20px;
   font-size: 16px;
   margin: 0;
+  padding-bottom: 24px;
 }
 
 .modal__close {
@@ -83,8 +84,12 @@
   color: #00000080;
 }
 
-.modal__label_type_radio:checked {
-  color: #000;
+input[type="radio"]:checked {
+  color: #fa5a00;
+}
+
+.modal__radio-input:checked {
+  color: #fa5a00;
 }
 
 .modal__submit {
