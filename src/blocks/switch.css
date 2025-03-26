@@ -1,0 +1,12 @@
+.switch__label{
+    border: 2px solid #fa5a00;
+    width: 56px;
+    height: 28px;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.switch__checkbox{
+    opacity: 0;
+}

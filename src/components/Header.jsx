@@ -1,5 +1,7 @@
 import "../blocks/header.css";
+
 //import DateDisplay from "../components/DateDisplay";
+import Switch from "../components/Switch";
 
 import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.png";
@@ -16,6 +18,7 @@ function Header({ onAddBtnClick, weatherData }) {
       <p className="header__date-and-location">
         {today}, {weatherData.city}
       </p>
+      <Switch/>
       <button
         onClick={onAddBtnClick}
         type="button"
