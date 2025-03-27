@@ -6,8 +6,7 @@
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    left: 572px;
-    
+
 }
 
 .switch__checkbox{
@@ -35,4 +34,9 @@
     position: absolute;
     top: 4px;
     right: 8px;
+}
+
+.switch__checkbox:checked  .switch__circle{
+    left: auto;
+    right: 0;
 }
