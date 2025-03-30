@@ -11,6 +11,8 @@ import ItemModal from "../components/ItemModal";
 import { getWeather, sortWeatherData } from "../utils/weatherApi";
 import { coords, APIKey } from "../utils/constants";
 
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
+
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "hot",
@@ -19,6 +21,12 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState();
+
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
+
+  const handleToggleSwitchChange = () => {
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F"? "C":"F");
+  }
 
   const onItemCardClick = (card) => {
     setActiveModal("preview");
@@ -67,7 +75,8 @@ function App() {
   }, []);
 
   return (
-    <div className="page">
+    <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
+      <div className="page">
       <div className="page__content">
         <Header onAddBtnClick={onAddBtnClick} weatherData={weatherData} />
         <Main weatherData={weatherData} onItemCardClick={onItemCardClick} />
@@ -148,7 +157,8 @@ function App() {
         card={selectedCard}
         isOpen = {activeModal === "preview"}
       />
-    </div>
+      </div>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 

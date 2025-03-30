@@ -1,12 +1,12 @@
 .switch__label{
-    border: 2px solid #000;
+    border: 2px solid #7E7E7E;
     width: 56px;
     height: 28px;
     border-radius: 20px;
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    left: 580px;
+    left: 460px;
 }
 
 .switch__checkbox{
@@ -20,7 +20,7 @@
     position: absolute;
     border-radius: 50%;
     left: 0;
-    transition: all 0.3s ease;
+    transition: all 1s;
 }
 
 .switch__text_F{
