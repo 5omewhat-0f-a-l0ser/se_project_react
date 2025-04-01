@@ -15,7 +15,11 @@ function WeatherCard({ weatherData }) {
 
   return (
     <section className="weather-card">
-      <p className="weather-card__info">{weatherData.temp.F} &deg; F</p>
+      <p className="weather-card__info">
+        {currentTemperatureUnit === "F"
+         ? weatherData.temp.F
+         : weatherData.temp.C} &deg; {c}
+         </p>
       <img
         src={weatherOptionUrl}
         alt={`Card Showing ${timeOfDay} time ${weatherCaption} weather`}
