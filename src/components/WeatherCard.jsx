@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import "../blocks/weathercard.css";
 import { weatherOpts, weatherDefaults } from "../utils/constants.js";
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
 
 function WeatherCard({ weatherData }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const timeOfDay = weatherData.isDay ? "day" : "night";
   const condition = weatherData.condition;
 
