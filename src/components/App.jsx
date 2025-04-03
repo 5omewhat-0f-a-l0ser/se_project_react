@@ -10,6 +10,8 @@ import Footer from "../components/Footer";
 import ModalWithForm from "../components/ModalForm";
 import ItemModal from "../components/ItemModal";
 
+import Profile from "../components/Profile";
+
 import { getWeather, sortWeatherData } from "../utils/weatherApi";
 import { coords, APIKey } from "../utils/constants";
 
@@ -83,8 +85,8 @@ function App() {
         <Header onAddBtnClick={onAddBtnClick} weatherData={weatherData} />
 
         <Routes>
-          <Route path="/?" element={<Main weatherData={weatherData} onItemCardClick={onItemCardClick} />}/>
-          <Route path="/profile" element={<p>profile</p>}/>
+          <Route path="/" element={<Main weatherData={weatherData} onItemCardClick={onItemCardClick} />}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
         
         
