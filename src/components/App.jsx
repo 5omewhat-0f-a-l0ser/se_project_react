@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { Routes, Route } from "react-router-dom";
+
 import "../blocks/app.css";
 import Header from "../components/Header";
 import Main from "../components/Main";
@@ -79,7 +81,13 @@ function App() {
       <div className="page">
       <div className="page__content">
         <Header onAddBtnClick={onAddBtnClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} onItemCardClick={onItemCardClick} />
+
+        <Routes>
+          <Route path="/?" element={<Main weatherData={weatherData} onItemCardClick={onItemCardClick} />}/>
+          <Route path="/profile" element={<p>profile</p>}/>
+        </Routes>
+        
+        
         <Footer />
       </div>
       <ModalWithForm
