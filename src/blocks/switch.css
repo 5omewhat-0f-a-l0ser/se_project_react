@@ -6,7 +6,7 @@
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    left: 460px;
+    margin-left: 508px;
 }
 
 .switch__checkbox{
@@ -54,6 +54,6 @@
 
 @media screen and (max-width: 627px) {
     .switch__label {
-        left: 8px;
+        margin-left: auto;
     }
 }
