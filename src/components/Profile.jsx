@@ -1,3 +1,4 @@
+import ClothesSection from "./ClothesSection";
 import Sidebar from "./Sidebar";
 
 function Profile() {
@@ -5,6 +6,7 @@ function Profile() {
         <div className="profile">
             <section className="profile__sidebar">
                 <Sidebar/>
+                <ClothesSection/>
             </section>
             <section className="profile__closet"></section>
         </div>
