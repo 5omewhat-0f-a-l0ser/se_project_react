@@ -1,3 +1,10 @@
+.switch{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 20px;
+}
+
 .switch__label{
     border: 2px solid #7E7E7E;
     width: 56px;
@@ -6,9 +13,6 @@
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    margin-left: 508px;
-    display: flex;
-    justify-content: flex-end;
 }
 
 .switch__checkbox{

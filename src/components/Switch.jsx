@@ -9,11 +9,13 @@ export default function Switch(){
 
     //console.log(currentTemperatureUnit);
     return (
-        <label htmlFor="tempSwitch" className="switch__label">
-            <input onChange={handleToggleSwitchChange} type="checkbox" id="tempSwitch" className="switch__checkbox" />
-            <span className="switch__circle"></span>
-            <span className="switch__text_F">F</span>
-            <span className="switch__text_C">C</span>
-        </label>
+        <div className="switch">
+            <label htmlFor="tempSwitch" className="switch__label">
+                <input onChange={handleToggleSwitchChange} type="checkbox" id="tempSwitch" className="switch__checkbox" />
+                <span className="switch__circle"></span>
+                <span className="switch__text_F">F</span>
+                <span className="switch__text_C">C</span>
+            </label>
+        </div>
     )
 };
