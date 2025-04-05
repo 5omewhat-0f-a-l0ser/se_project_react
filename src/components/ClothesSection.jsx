@@ -7,9 +7,9 @@ import "../blocks/clothesselection.css";
 function ClothesSection() {
     return (
        <div className="clothes-selection">
-            <div>
-                <p className="clothes__label">YOUR ITEMS</p>
-                <button className="clothes__btn">+ ADD NEW</button>
+            <div className="clothes-selection__description">
+                <p className="clothes-selection__label">YOUR ITEMS</p>
+                <button className="clothes-selection__btn">+ ADD NEW</button>
             </div>
             <ul className="cards__list">
                 {defaultClothingItems
