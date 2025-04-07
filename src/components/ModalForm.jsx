@@ -8,10 +8,14 @@ function ModalWithForm({
   title,
   activeModal,
   closeModal,
-  escCLose,
+  escClose,
   submit,
   isOpen
 }) {
+
+  const onAddItem = (evt) => {
+    
+  };
   
   const handleSubmit = (evt) => {
     preventDefault(evt);
