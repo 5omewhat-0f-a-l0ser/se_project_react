@@ -6,24 +6,16 @@ import "../blocks/additemmodal.css";
 import ModalWithForm from "../components/ModalForm"
 
 function AddItemModal({
-    children,
-    buttonText,
-    title,
+    activeModal,
     closeModal,
-    escClose,
     submit,
-    isOpen
     }) {
-     const [activeModal, setActiveModal] = useState(null);
 
     return(
         <ModalWithForm
-           buttonText={"Add Garment"}
-           title={"New Garmnet"}
            activeModal={activeModal}
-           closeModal={closeActiveModal}
-           submit={submitFormBtn}
-           isOpen = {activeModal === "add-garment"}
+           closeModal={closeModal}
+           submit={submit}
         >
            <label htmlFor="name" className="modal__label">
              Name{" "}
