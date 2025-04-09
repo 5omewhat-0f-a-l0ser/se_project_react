@@ -9,13 +9,16 @@ function AddItemModal({
     activeModal,
     closeModal,
     submit,
+    isOpen
     }) {
 
+    const [name, setName] = useState("");
     return(
         <ModalWithForm
            activeModal={activeModal}
            closeModal={closeModal}
            submit={submit}
+           openSesame={isOpen}
         >
            <label htmlFor="name" className="modal__label">
              Name{" "}
@@ -24,6 +27,10 @@ function AddItemModal({
                className="modal__input"
                id="name"
                placeholder="Name"
+               required
+               minLength="1"
+               maxLength="30"
+               onChange={(e)=>{setName(e.target)}}
              />
            </label>
            <label htmlFor="imageUrl" className="modal__label">
