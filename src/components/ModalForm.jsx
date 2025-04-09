@@ -13,9 +13,6 @@ function ModalWithForm({
   isOpen
 }) {
 
-  const onAddItem = (evt) => {
-    
-  };
   
   const handleSubmit = (evt) => {
     preventDefault(evt);
