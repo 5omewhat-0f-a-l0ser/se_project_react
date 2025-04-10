@@ -15,6 +15,18 @@ function AddItemModal({
     }) {
 
     const [name, setName] = useState("");
+
+    const onAddItem = () => {
+        
+    }
+
+    const handleNameChange = (e)=>{
+        setName(e.target.value);
+        //console.log(name);
+    };
+
+
+    //AddItemModal//
     return(
         <ModalWithForm
            activeModal={activeModal}
@@ -34,7 +46,7 @@ function AddItemModal({
                required
                minLength="1"
                maxLength="30"
-               onChange={(e)=>{setName(e.target)}}
+               onChange={handleNameChange}
              />
            </label>
            <label htmlFor="imageUrl" className="modal__label">
