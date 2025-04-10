@@ -4,6 +4,7 @@ import { useState } from "react";
 import "../blocks/additemmodal.css";
 
 import ModalWithForm from "../components/ModalForm"
+import { use } from "react";
 
 function AddItemModal({
     buttonText,
@@ -15,16 +16,26 @@ function AddItemModal({
     }) {
 
     const [name, setName] = useState("");
+    const [url, setUrl] = useState("");
+    const [weather, setWeather] = useState("");
 
     const onAddItem = () => {
         
     }
 
-    const handleNameChange = (e)=>{
+    const handleNameChange = (e) => {
         setName(e.target.value);
         //console.log(name);
     };
 
+    const handleUrlChange = (e) => {
+        setUrl(e.target.value);
+        console.log(url);
+    }
+
+    const handleWeatherCHange = (e) => {
+        setWeather(e.target.value);
+    }
 
     //AddItemModal//
     return(
@@ -47,6 +58,7 @@ function AddItemModal({
                minLength="1"
                maxLength="30"
                onChange={handleNameChange}
+               value={name}
              />
            </label>
            <label htmlFor="imageUrl" className="modal__label">
@@ -56,6 +68,8 @@ function AddItemModal({
                className="modal__input"
                id="imageUrl"
                placeholder="Image Url"
+               onChange={handleUrlChange}
+               value={url}
              />
            </label>
            <div className="modal__radio-btns">
