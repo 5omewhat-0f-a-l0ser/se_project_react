@@ -18,7 +18,7 @@ function AddItemModal({
            activeModal={activeModal}
            closeModal={closeModal}
            submit={submit}
-           openSesame={isOpen}
+           isOpen={isOpen}
         >
            <label htmlFor="name" className="modal__label">
              Name{" "}
