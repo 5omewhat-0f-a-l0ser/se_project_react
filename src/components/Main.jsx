@@ -9,7 +9,7 @@ import ItemCard from "../components/ItemCard";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
 
 
-function Main({ weatherData, onItemCardClick }) {
+function Main({ weatherData, onItemCardClick, clot }) {
 
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 

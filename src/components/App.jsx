@@ -28,6 +28,8 @@ function App() {
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
 
+  const [clothingItem, setCLothingItem] = useState([]);
+
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F"? "C":"F");
   }
@@ -85,7 +87,9 @@ function App() {
         <Header onAddBtnClick={onAddBtnClick} weatherData={weatherData} />
 
         <Routes>
-          <Route path="/" element={<Main weatherData={weatherData} onItemCardClick={onItemCardClick} />}/>
+          <Route path="/" element={
+            <Main weatherData={weatherData} onItemCardClick={onItemCardClick} clothingItems={clothingItem}/>
+            }/>
           <Route path="/profile" element={<Profile/>}/>
         </Routes>
         

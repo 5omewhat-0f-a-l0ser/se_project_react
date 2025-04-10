@@ -11,7 +11,6 @@ function AddItemModal({
     title,
     activeModal,
     closeModal,
-    submit,
     isOpen
     }) {
 
@@ -19,7 +18,7 @@ function AddItemModal({
     const [url, setUrl] = useState("");
     const [weather, setWeather] = useState("");
 
-    const onAddItem = () => {
+    const handleSubmit = () => {
         
     }
 
@@ -33,7 +32,7 @@ function AddItemModal({
         console.log(url);
     }
 
-    const handleWeatherCHange = (e) => {
+    const handleWeatherChange = (e) => {
         setWeather(e.target.value);
     }
 
@@ -44,7 +43,7 @@ function AddItemModal({
            buttonText={buttonText}
            title={title}
            closeModal={closeModal}
-           submit={submit}
+           onSubmit={handleSubmit}
            isOpen={isOpen}
         >
            <label htmlFor="name" className="modal__label">
@@ -80,6 +79,9 @@ function AddItemModal({
                  type="radio"
                  name="weather"
                  className="modal__radio-input"
+                 onChange={handleWeatherChange}
+                 value="hot"
+                 checked={weather==="hot"}
                />{" "}
                <span>
                Hot
@@ -94,6 +96,9 @@ function AddItemModal({
                  type="radio"
                  name="weather"
                  className="modal__radio-input"
+                 onChange={handleWeatherChange}
+                 value="warm"
+                 checked={weather==="warm"}
                />{" "}
               <span>
                Warm
@@ -108,6 +113,9 @@ function AddItemModal({
                  type="radio"
                  name="weather"
                  className="modal__radio-input"
+                 onChange={handleWeatherChange}
+                 value="cold"
+                 checked={weather==="cold"}
                />{" "}
               <span>
                Cold
