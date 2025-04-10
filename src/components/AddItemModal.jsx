@@ -6,6 +6,8 @@ import "../blocks/additemmodal.css";
 import ModalWithForm from "../components/ModalForm"
 
 function AddItemModal({
+    buttonText,
+    title,
     activeModal,
     closeModal,
     submit,
@@ -16,6 +18,8 @@ function AddItemModal({
     return(
         <ModalWithForm
            activeModal={activeModal}
+           buttonText={buttonText}
+           title={title}
            closeModal={closeModal}
            submit={submit}
            isOpen={isOpen}
