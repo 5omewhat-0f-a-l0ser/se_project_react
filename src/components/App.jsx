@@ -13,6 +13,7 @@ import Profile from "../components/Profile";
 
 import { getWeather, sortWeatherData } from "../utils/weatherApi";
 import { coords, APIKey } from "../utils/constants";
+import { defaultClothingItems } from "../utils/constants";
 
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "./AddItemModal";
@@ -28,7 +29,7 @@ function App() {
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
 
-  const [clothingItem, setCLothingItem] = useState([]);
+  const [clothingItems, setClothingItem] = useState([defaultClothingItems]);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F"? "C":"F");
@@ -88,7 +89,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={
-            <Main weatherData={weatherData} onItemCardClick={onItemCardClick} clothingItems={clothingItem}/>
+            <Main weatherData={weatherData} onItemCardClick={onItemCardClick} clothingItems={clothingItems}/>
             }/>
           <Route path="/profile" element={<Profile/>}/>
         </Routes>

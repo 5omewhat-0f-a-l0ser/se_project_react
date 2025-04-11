@@ -18,9 +18,7 @@ function AddItemModal({
     const [url, setUrl] = useState("");
     const [weather, setWeather] = useState("");
 
-    const handleSubmit = () => {
-        
-    }
+    
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -34,6 +32,12 @@ function AddItemModal({
 
     const handleWeatherChange = (e) => {
         setWeather(e.target.value);
+    }
+    
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("saved");
     }
 
     //AddItemModal//
