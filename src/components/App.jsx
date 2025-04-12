@@ -29,10 +29,14 @@ function App() {
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
 
-  const [clothingItems, setClothingItem] = useState([defaultClothingItems]);
+  const [clothingItems, setClothingItem] = useState(defaultClothingItems);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F"? "C":"F");
+  }
+
+  const handleAddSubmit =() => {
+    setClothingItem();
   }
 
   const onItemCardClick = (card) => {
@@ -104,6 +108,7 @@ function App() {
          closeModal={closeActiveModal}
          submit={submitFormBtn}
          isOpen = {activeModal === "add-garment"}
+         onAddSubmit={handleAddSubmit}
       />
       <ItemModal
         activeModal={activeModal}

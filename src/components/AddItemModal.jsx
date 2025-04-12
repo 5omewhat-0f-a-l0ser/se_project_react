@@ -11,7 +11,8 @@ function AddItemModal({
     title,
     activeModal,
     closeModal,
-    isOpen
+    isOpen,
+    onAddSubmit
     }) {
 
     const [name, setName] = useState("");
@@ -37,7 +38,8 @@ function AddItemModal({
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("saved");
+        onAddSubmit();
+        closeModal();
     }
 
     //AddItemModal//
