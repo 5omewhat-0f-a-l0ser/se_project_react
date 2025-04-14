@@ -36,7 +36,7 @@ function App() {
   }
 
   const handleAddSubmit =(name, url, weather) => {
-    setClothingItem([name, url, weather, ...clothingItems]);
+    setClothingItem([{name, link: url, weather}, ...clothingItems]);
     closeActiveModal();
   }
 
