@@ -30,3 +30,13 @@
 .header__username {
   margin: 0;
 }
+
+.header__link {
+  color:#000;
+  text-decoration: none;
+}
+
+.header__link:hover {
+  color:#00000099;
+  text-decoration: none;
+}
