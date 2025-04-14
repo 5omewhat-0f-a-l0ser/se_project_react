@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../blocks/header.css";
 
 //import DateDisplay from "../components/DateDisplay";
@@ -14,7 +15,9 @@ function Header({ onAddBtnClick, weatherData }) {
 
   return (
     <header className="header">
-      <img className="header__logo" src={logo} alt="Logo to WTWR: What To Wear"/>
+      <Link to="/">
+        <img className="header__logo" src={logo} alt="Logo to WTWR: What To Wear"/>
+      </Link>
       <p className="header__date-and-location">
         {today}, {weatherData.city}
       </p>
@@ -26,10 +29,12 @@ function Header({ onAddBtnClick, weatherData }) {
       >
         + Add Clothing
       </button>
-      <div className="header__user-container">
-        <p className="header__username">Terrence Tegegne</p>
-        <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
-      </div>
+      <Link to="/profile">
+        <div className="header__user-container">
+          <p className="header__username">Terrence Tegegne</p>
+          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
+        </div>
+      </Link>
     </header>
   );
 }

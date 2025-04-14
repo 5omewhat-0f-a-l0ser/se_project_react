@@ -96,7 +96,7 @@ function App() {
           <Route path="/" element={
             <Main weatherData={weatherData} onItemCardClick={onItemCardClick} clothingItems={clothingItems}/>
             }/>
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/profile" element={<Profile onItemCardClick={onItemCardClick}/>}/>
         </Routes>
         
         

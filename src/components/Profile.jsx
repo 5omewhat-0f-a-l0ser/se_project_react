@@ -3,14 +3,14 @@ import Sidebar from "./Sidebar";
 
 import "../blocks/profile.css";
 
-function Profile() {
+function Profile({ onItemCardClick }) {
     return (
         <div className="profile">
             <section className="profile__sidebar">
                 <Sidebar/>
             </section>
             <section className="profile__closet">
-                <ClothesSection/>
+                <ClothesSection onItemCardClick={onItemCardClick}/>
             </section>
         </div>
     );

@@ -4,7 +4,7 @@ import ItemCard from "../components/ItemCard";
 
 import "../blocks/clothesselection.css";
 
-function ClothesSection() {
+function ClothesSection({ onItemCardClick }) {
     return (
        <div className="clothes-selection">
             <div className="clothes-selection__description">
@@ -18,7 +18,7 @@ function ClothesSection() {
                       <ItemCard
                         key={item._id}
                         item={item}
-                        //onCardClick={onItemCardClick}
+                        onCardClick={onItemCardClick}
                       />
                     );
                 })}
