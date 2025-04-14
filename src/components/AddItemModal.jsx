@@ -40,6 +40,9 @@ function AddItemModal({
         e.preventDefault();
         onAddSubmit();
         closeModal();
+        setName('');
+        setUrl("");
+        setWeather("");
     }
 
     //AddItemModal//

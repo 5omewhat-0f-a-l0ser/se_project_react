@@ -37,6 +37,7 @@ function App() {
 
   const handleAddSubmit =() => {
     setClothingItem();
+    closeActiveModal();
   }
 
   const onItemCardClick = (card) => {
