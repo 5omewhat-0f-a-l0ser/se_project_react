@@ -38,7 +38,7 @@ function AddItemModal({
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        onAddSubmit();
+        onAddSubmit(name, url, weather);
         closeModal();
         setName('');
         setUrl("");

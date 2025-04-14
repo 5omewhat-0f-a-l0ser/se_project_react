@@ -35,8 +35,8 @@ function App() {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F"? "C":"F");
   }
 
-  const handleAddSubmit =() => {
-    setClothingItem();
+  const handleAddSubmit =(name, url, weather) => {
+    setClothingItem([name, url, weather, ...clothingItems]);
     closeActiveModal();
   }
 
