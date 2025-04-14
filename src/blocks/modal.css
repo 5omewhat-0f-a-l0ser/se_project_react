@@ -124,3 +124,15 @@
 .modal__img {
   max-width: 498px;
 }
+
+.modal__delete {
+  position: absolute;
+  color: #FF4D00;
+  width: 101px;
+  height: 24px;
+  top: 541px;
+  left: 353px;
+  background-color: transparent;
+  border: none;
+  line-height: 24px;
+}

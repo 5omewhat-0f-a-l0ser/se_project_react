@@ -8,6 +8,8 @@ import Main from "../components/Main";
 import Footer from "../components/Footer";
 
 import ItemModal from "../components/ItemModal";
+import AddItemModal from "../components/AddItemModal";
+import DeleteModal from "../components/DeleteModal";
 
 import Profile from "../components/Profile";
 
@@ -16,7 +18,7 @@ import { coords, APIKey } from "../utils/constants";
 import { defaultClothingItems } from "../utils/constants";
 
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
-import AddItemModal from "./AddItemModal";
+
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -117,6 +119,7 @@ function App() {
         card={selectedCard}
         isOpen = {activeModal === "preview"}
       />
+      <DeleteModal/>
       </div>
     </CurrentTemperatureUnitContext.Provider>
   );
