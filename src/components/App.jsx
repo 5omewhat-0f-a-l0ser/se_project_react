@@ -18,7 +18,7 @@ import { coords, APIKey } from "../utils/constants";
 import { defaultClothingItems } from "../utils/constants";
 
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
-import { addItems, deleteItems, getItems } from "../utils/api";
+import Api from "../utils/api";
 
 
 function App() {
@@ -33,6 +33,14 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
 
   const [clothingItems, setClothingItem] = useState(defaultClothingItems);
+
+
+  const api = new Api({
+    baseUrl: 'http://localhost:3001',
+    headers: {
+      "Content-Type": "application/json"
+    }
+});
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F"? "C":"F");
@@ -101,17 +109,13 @@ function App() {
       .catch(console.error);
   }, []);
 
-  useEffect((data) => {
-    getItems() .then((data) => {
-      console.log(data)
-    }),
-    console.log('Data before addItems:', getItems()); // Ensure data is defined
-    addItems(data);
-    
-    addItems() .then((data) => {
-      handleAddSubmit();
-    })
-    .catch(console.error);
+  useEffect(() => {
+    api
+      .getItemList()
+      .then((items) => {
+        setClothingItem(items.reverse());
+      })
+      .catch(console.error);
   }, []);
 
   return (
