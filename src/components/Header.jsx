@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../blocks/header.css";
 
 //import DateDisplay from "../components/DateDisplay";
-import Switch from "../components/Switch";
+import Switch from "./ToggleSwitch";
 
 import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.png";
