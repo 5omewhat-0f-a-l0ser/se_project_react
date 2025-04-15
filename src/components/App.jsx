@@ -18,7 +18,7 @@ import { coords, APIKey } from "../utils/constants";
 import { defaultClothingItems } from "../utils/constants";
 
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
-import { addItems, getItems } from "../utils/api";
+import { addItems, deleteItems, getItems } from "../utils/api";
 
 
 function App() {
@@ -58,11 +58,13 @@ function App() {
   };
 
   const deleteCard = () => {
-    setClothingItem(
-      clothingItems.filter((item) => {
-        return item._id !== selectedCard._id;
-      })
-    );
+    deleteItems(selectedCard._id).then(() => {
+      setClothingItems(
+        clothingItems.filter((item) => {
+          return item._id !== selectedCard._id;
+        })
+      );
+    });
     closeActiveModal();
   };
   
@@ -99,11 +101,11 @@ function App() {
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
+  useEffect((data) => {
     getItems() .then((data) => {
       console.log(data)
     }),
-    console.log('Data before addItems:', data); // Ensure data is defined
+    console.log('Data before addItems:', getItems()); // Ensure data is defined
     addItems(data);
     
     addItems() .then((data) => {

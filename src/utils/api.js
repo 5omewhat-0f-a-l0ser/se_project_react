@@ -22,5 +22,15 @@ function addItems({ name='', url='', weather='' }) {
     }).then(handleResponse);
 }
 
+function deleteItems({ name='', url='', weather='' }) {
+    return fetch(`${baseUrl}/items`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, url, weather }),
+    }).then(handleResponse);
+}
 
-export { getItems, addItems };
+
+export { getItems, addItems, deleteItems };
