@@ -36,7 +36,12 @@ function App() {
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F"? "C":"F");
-  }
+  } 
+  
+  const closeActiveModal = () => {
+    setActiveModal("");
+  };
+
 
   const handleAddSubmit =(name, url, weather) => {
     setClothingItem([{name, link: url, weather}, ...clothingItems]);
@@ -58,16 +63,11 @@ function App() {
         return item._id !== selectedCard._id;
       })
     );
+    closeActiveModal();
   };
-  closeActiveModal();
-  }
+  
 
-  //close const's/functions//
-
-  const closeActiveModal = () => {
-    setActiveModal("");
-  };
-
+ 
  //useEffect(() => {
 
  //  if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
@@ -141,12 +141,12 @@ function App() {
         activeModal={activeModal}
         closeModal={closeActiveModal}
         card={selectedCard}
-        isOpen = {activeModal === "preview"}
-        delete={deleteCard}
+        isOpen={activeModal === "preview"}
+        deleteCard={deleteCard}
       />
       </div>
     </CurrentTemperatureUnitContext.Provider>
   )
-
+}
 
 export default App;
