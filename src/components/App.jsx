@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 
 import ItemModal from "../components/ItemModal";
 import AddItemModal from "../components/AddItemModal";
-import DeleteModal from "../components/DeleteModal";
+//import DeleteModal from "../components/DeleteModal";
 
 import Profile from "../components/Profile";
 
@@ -18,6 +18,7 @@ import { coords, APIKey } from "../utils/constants";
 import { defaultClothingItems } from "../utils/constants";
 
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
+import { addItems, getItems } from "../utils/api";
 
 
 function App() {
@@ -50,6 +51,16 @@ function App() {
   const onAddBtnClick = () => {
     setActiveModal("add-garment");
   };
+
+  const deleteCard = () => {
+    setClothingItem(
+      clothingItems.filter((item) => {
+        return item._id !== selectedCard._id;
+      })
+    );
+  };
+  closeActiveModal();
+  }
 
   //close const's/functions//
 
@@ -88,6 +99,19 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    getItems() .then((data) => {
+      console.log(data)
+    }),
+    console.log('Data before addItems:', data); // Ensure data is defined
+    addItems(data);
+    
+    addItems() .then((data) => {
+      handleAddSubmit();
+    })
+    .catch(console.error);
+  }, []);
+
   return (
     <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
       <div className="page">
@@ -118,11 +142,11 @@ function App() {
         closeModal={closeActiveModal}
         card={selectedCard}
         isOpen = {activeModal === "preview"}
+        delete={deleteCard}
       />
-      <DeleteModal/>
       </div>
     </CurrentTemperatureUnitContext.Provider>
-  );
-}
+  )
+
 
 export default App;

@@ -1,6 +1,6 @@
 import "../blocks/modal.css";
 
-function ItemModal({ activeModal, card, closeModal, isOpen }) {
+function ItemModal({ activeModal, card, closeModal, isOpen, delete }) {
   return (
     <div className={`modal  ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__container modal__container_type_img">
@@ -14,7 +14,9 @@ function ItemModal({ activeModal, card, closeModal, isOpen }) {
           <h2 className="modal__caption">{card?.name}</h2>
           <p className="modal__weather">Weather: {card?.weather}</p>
         </div>
-        <button className="modal__delete">
+        <button onDelete={delete} 
+          className="modal__delete"
+        > 
           Delete Item
         </button>
       </div>
