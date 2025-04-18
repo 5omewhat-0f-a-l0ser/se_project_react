@@ -14,7 +14,7 @@ function AddItemModal({
     }) {
 
     const [name, setName] = useState("");
-    const [url, setUrl] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
     const [weather, setWeather] = useState("");
 
     
@@ -25,7 +25,7 @@ function AddItemModal({
     };
 
     const handleUrlChange = (e) => {
-        setUrl(e.target.value);
+        setImageUrl(e.target.value);
         console.log(url);
     }
 
@@ -36,10 +36,10 @@ function AddItemModal({
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        onAddSubmit({name, url, weather});
+        onAddSubmit({name, imageUrl, weather});
         closeModal();
         setName('');
-        setUrl("");
+        setImageUrl("");
         setWeather("");
     }
 
@@ -75,7 +75,7 @@ function AddItemModal({
                id="imageUrl"
                placeholder="Image Url"
                onChange={handleUrlChange}
-               value={url}
+               value={imageUrl}
              />
            </label>
            <div className="modal__radio-btns">

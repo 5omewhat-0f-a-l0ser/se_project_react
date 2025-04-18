@@ -13,19 +13,19 @@ class Api {
         .then(this.handleResponse);
     }
 
-    addItems({ name='', url='', weather='' }) {
+    addItems({ name='', imageUrl='', weather='' }) {
         return fetch(`${this._baseUrl}/items`, {
             method: 'POST',
             headers: this._headers,
-            body: JSON.stringify({ name, url, weather }),
+            body: JSON.stringify({ name, imageUrl, weather }),
         }).then(this.handleResponse);
     }
 
-    deleteCard({ name='', url='', weather='' }) {
+    deleteCard({ name='', imageUrl='', weather='' }) {
         return fetch(`${this._baseUrl}/items`, {
             method: 'POST',
             headers:this._headers,
-            body: JSON.stringify({ name, url, weather }),
+            body: JSON.stringify({ name, imageUrl, weather }),
         }).then(this.handleResponse);
     }
 
