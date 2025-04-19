@@ -66,8 +66,9 @@ function App() {
   };
 
   const deleteCard = () => {
-    deleteItems(selectedCard._id).then(() => {
-      setClothingItems(
+  api
+    .deleteCard(selectedCard._id).then(() => {
+      setClothingItem(
         clothingItems.filter((item) => {
           return item._id !== selectedCard._id;
         })

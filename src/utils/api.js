@@ -23,7 +23,7 @@ class Api {
 
     deleteCard({ name='', imageUrl='', weather='' }) {
         return fetch(`${this._baseUrl}/items`, {
-            method: 'POST',
+            method: 'DELETE',
             headers:this._headers,
             body: JSON.stringify({ name, imageUrl, weather }),
         }).then(this.handleResponse);
