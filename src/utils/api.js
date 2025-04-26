@@ -21,7 +21,7 @@ class Api {
         }).then(this.handleResponse);
     }
 
-    deleteCard({ name='', imageUrl='', weather='' }) {
+    deleteCard() {
         return fetch(`${this._baseUrl}/items`, {
             method: 'DELETE',
             headers:this._headers,
