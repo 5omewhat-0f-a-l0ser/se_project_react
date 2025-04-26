@@ -25,8 +25,7 @@ class Api {
         return fetch(`${this._baseUrl}/items`, {
             method: 'DELETE',
             headers:this._headers,
-            body: JSON.stringify({ name, imageUrl, weather }),
-        }).then(this.handleResponse);
+            }).then(this.handleResponse);
     }
 
     handleResponse = (res) => {
