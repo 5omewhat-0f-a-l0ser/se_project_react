@@ -4,7 +4,9 @@ import ItemCard from "../components/ItemCard";
 
 import "../blocks/clothesselection.css";
 
-function ClothesSection({ onItemCardClick }) {
+function ClothesSection({ onItemCardClick, clothingItems }) {
+
+ 
     return (
        <div className="clothes-selection">
             <div className="clothes-selection__description">
@@ -12,7 +14,7 @@ function ClothesSection({ onItemCardClick }) {
                 <button className="clothes-selection__btn">+ Add New</button>
             </div>
             <ul className="cards__list">
-                {defaultClothingItems
+                {clothingItems
                   .map((item) => {
                     return (
                       <ItemCard

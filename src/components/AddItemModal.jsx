@@ -26,7 +26,6 @@ function AddItemModal({
 
     const handleUrlChange = (e) => {
         setImageUrl(e.target.value);
-        console.log(url);
     }
 
     const handleWeatherChange = (e) => {

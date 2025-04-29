@@ -51,9 +51,12 @@ function App() {
   };
 
 
-  const handleAddSubmit =(name, url, weather) => {
-    setClothingItem([{name, imageUrl: url, weather}, ...clothingItems]);
-    closeActiveModal();
+  const handleAddSubmit =(name, imageUrl, weather) => {
+    api
+    .addItems({name, imageUrl, weather}).then(() =>{
+      setClothingItem([{name, imageUrl, weather}, ...clothingItems]);
+      closeActiveModal();
+    })
   }
 
   const onItemCardClick = (card) => {
@@ -68,6 +71,7 @@ function App() {
   const deleteCard = () => {
   api
     .deleteCard(selectedCard._id).then(() => {
+      console.log(selectedCard._id);
       setClothingItem(
         clothingItems.filter((item) => {
           return item._id !== selectedCard._id;
@@ -75,6 +79,7 @@ function App() {
       );
     });
     closeActiveModal();
+    
   };
   
 
@@ -129,7 +134,7 @@ function App() {
           <Route path="/" element={
             <Main weatherData={weatherData} onItemCardClick={onItemCardClick} clothingItems={clothingItems}/>
             }/>
-          <Route path="/profile" element={<Profile onItemCardClick={onItemCardClick}/>}/>
+          <Route path="/profile" element={<Profile clothingItems={clothingItems} onItemCardClick={onItemCardClick}/>}/>
         </Routes>
         
         
