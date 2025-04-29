@@ -22,7 +22,7 @@ class Api {
     }
 
     deleteCard() {
-        return fetch(`${this._baseUrl}/items`, {
+        return fetch(`${this._baseUrl}/items/ :id`, {
             method: 'DELETE',
             headers:this._headers,
             }).then(this.handleResponse);
