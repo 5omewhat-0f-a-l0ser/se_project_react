@@ -95,6 +95,12 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "Coveralls",
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/2689/2689714.png",
+      "weather": "warm",
+      "_id": 17
     }
   ]
 }

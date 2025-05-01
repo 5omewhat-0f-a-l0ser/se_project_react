@@ -6,7 +6,7 @@ import "../blocks/clothesselection.css";
 
 function ClothesSection({ onItemCardClick, clothingItems }) {
 
- 
+  console.log(clothingItems)
     return (
        <div className="clothes-selection">
             <div className="clothes-selection__description">
