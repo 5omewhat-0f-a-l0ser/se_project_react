@@ -35,7 +35,7 @@ function AddItemModal({
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        onAddSubmit({name, imageUrl, weather});
+        onAddSubmit(name, imageUrl, weather);
         closeModal();
         setName('');
         setImageUrl("");
