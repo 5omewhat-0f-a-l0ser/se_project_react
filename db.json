@@ -101,6 +101,12 @@
       "imageUrl": "https://cdn-icons-png.flaticon.com/512/2689/2689714.png",
       "weather": "warm",
       "_id": 17
+    },
+    {
+      "name": "Bag",
+      "imageUrl": "https://content.mycutegraphics.com/graphics/earth/eco-friendly-shopping-bag.png",
+      "weather": "hot",
+      "_id": 18
     }
   ]
 }

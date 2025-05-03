@@ -53,8 +53,8 @@ function App() {
 
   const handleAddSubmit =(name, imageUrl, weather) => {
     api
-    .addItems({name, imageUrl, weather}).then(() =>{
-      setClothingItem([{name, imageUrl, weather}, ...clothingItems]);
+    .addItems({name, imageUrl, weather}).then((newItem) =>{
+      setClothingItem([newItem, ...clothingItems]);
       closeActiveModal();
     })
   }
