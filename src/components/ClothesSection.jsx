@@ -1,17 +1,19 @@
-import { defaultClothingItems } from "../utils/constants";
+import AddItemModal from "./AddItemModal";
 
 import ItemCard from "../components/ItemCard";
 
 import "../blocks/clothesselection.css";
 
-function ClothesSection({ onItemCardClick, clothingItems }) {
+function ClothesSection({ onItemCardClick, clothingItems, onAddBtnClick }) {
+
+
 
   console.log(clothingItems)
     return (
        <div className="clothes-selection">
             <div className="clothes-selection__description">
                 <p className="clothes-selection__label">Your Items</p>
-                <button className="clothes-selection__btn">+ Add New</button>
+                <button onClick={onAddBtnClick} className="clothes-selection__btn">+ Add New</button>
             </div>
             <ul className="cards__list">
                 {clothingItems
