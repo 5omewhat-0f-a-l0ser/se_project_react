@@ -18,7 +18,7 @@ import { coords, APIKey } from "../utils/constants";
 import { defaultClothingItems } from "../utils/constants";
 
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
-import Api from "../utils/api";
+import { addItems, deleteItems, getItems } from "../utils/api";
 
 
 function App() {
@@ -35,12 +35,6 @@ function App() {
   const [clothingItems, setClothingItem] = useState(defaultClothingItems);
 
 
-  const api = new Api({
-    baseUrl: 'http://localhost:3001',
-    headers: {
-      "Content-Type": "application/json"
-    }
-});
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F"? "C":"F");
@@ -52,8 +46,7 @@ function App() {
 
 
   const handleAddSubmit =(name, imageUrl, weather) => {
-    api
-    .addItems({name, imageUrl, weather}).then((newItem) =>{
+    addItems({name, imageUrl, weather}).then((newItem) =>{
       setClothingItem([newItem, ...clothingItems]);
       closeActiveModal();
     })
@@ -69,8 +62,7 @@ function App() {
   };
 
   const deleteCard = () => {
-  api
-    .deleteCard(selectedCard._id).then(() => {
+  deleteItems(selectedCard._id).then(() => {
       console.log(selectedCard._id);
       setClothingItem(
         clothingItems.filter((item) => {
@@ -116,8 +108,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    api
-      .getItemList()
+    getItems()
       .then((items) => {
         setClothingItem(items.reverse());
       })

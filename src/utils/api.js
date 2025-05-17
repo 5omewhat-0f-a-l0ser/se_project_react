@@ -1,36 +1,36 @@
-class Api {
-    
-    constructor( {baseUrl, headers} ) {
-        this._baseUrl = baseUrl;
-        this._headers = headers;
-    }
+const baseUrl = "http://localhost:3001";
 
-    getItemList() {
-        return fetch(`${this._baseUrl}/items`, {
-            method: 'GET',
-            headers: this._headers
-          })
-        .then(this.handleResponse);
-    }
-
-    addItems({ name='', imageUrl='', weather='' }) {
-        return fetch(`${this._baseUrl}/items`, {
-            method: 'POST',
-            headers: this._headers,
-            body: JSON.stringify({ name, imageUrl, weather }),
-        }).then(this.handleResponse);
-    }
-
-    deleteCard(id) {
-        return fetch(`${this._baseUrl}/items/${id}`, {
-            method: 'DELETE',
-            headers:this._headers,
-            }).then(this.handleResponse);
-    }
-
-    handleResponse = (res) => {
-        return res.ok ? res.json() : Promise.reject('Error: ${res.status}');
-    }
+const handleResponse = (res) => {
+    return res.ok ? res.json() : Promise.reject('Error: ${res.status}');
 }
 
-export default Api;
+function getItems() {
+    return fetch(`${baseUrl}/items`, {
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).then(handleResponse);
+}
+
+function addItems({ name='', url='', weather='' }) {
+    return fetch(`${baseUrl}/items`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, url, weather }),
+    }).then(handleResponse);
+}
+
+function deleteItems({ name='', url='', weather='' }) {
+    return fetch(`${baseUrl}/items`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, url, weather }),
+    }).then(handleResponse);
+}
+
+
+export { getItems, addItems, deleteItems };

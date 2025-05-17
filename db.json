@@ -107,6 +107,12 @@
       "imageUrl": "https://content.mycutegraphics.com/graphics/earth/eco-friendly-shopping-bag.png",
       "weather": "hot",
       "_id": 18
+    },
+    {
+      "name": "Makeup",
+      "url": "",
+      "weather": "warm",
+      "_id": 19
     }
   ]
 }
