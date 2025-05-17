@@ -16,12 +16,16 @@ function Header({ onAddBtnClick, weatherData }) {
   return (
     <header className="header">
       <Link to="/">
-        <img className="header__logo" src={logo} alt="Logo to WTWR: What To Wear"/>
+        <img
+          className="header__logo"
+          src={logo}
+          alt="Logo to WTWR: What To Wear"
+        />
       </Link>
       <p className="header__date-and-location">
         {today}, {weatherData.city}
       </p>
-      <ToggleSwitch/>
+      <ToggleSwitch />
       <button
         onClick={onAddBtnClick}
         type="button"
