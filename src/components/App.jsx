@@ -46,7 +46,8 @@ function App() {
 
 
   const handleAddSubmit =(name, imageUrl, weather) => {
-    addItems({name, imageUrl, weather}).then((newItem) =>{
+    addItems({name, imageUrl, weather})
+    .then((newItem) =>{
       setClothingItem([newItem, ...clothingItems]);
       closeActiveModal();
     })
@@ -69,11 +70,12 @@ function App() {
       setClothingItem(
         clothingItems.filter((item) => {
           return item._id !== selectedCard._id;
-        })
-      );
+        }),
+        closeActiveModal()
+      )
     })
     .catch(console.error);
-    closeActiveModal();
+    
     
   };
   
