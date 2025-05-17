@@ -4,13 +4,19 @@ const handleResponse = (res) => {
     return res.ok ? res.json() : Promise.reject('Error: ${res.status}');
 }
 
-function getItems() {
-    return fetch(`${baseUrl}/items`, {
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then(handleResponse);
-}
+   function getItems() {
+     return fetch(`${baseUrl}/items`, {
+       headers: {
+         "Content-Type": "application/json",
+       },
+     })
+     .then(handleResponse)
+     .then((data) => {
+       console.log('Data Received:', data);
+       return data;
+     });
+   }
+   
 
 function addItems({ name='', url='', weather='' }) {
     return fetch(`${baseUrl}/items`, {

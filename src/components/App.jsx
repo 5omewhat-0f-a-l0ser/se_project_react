@@ -50,6 +50,7 @@ function App() {
       setClothingItem([newItem, ...clothingItems]);
       closeActiveModal();
     })
+    .catch(console.error);
   }
 
   const onItemCardClick = (card) => {
@@ -62,14 +63,16 @@ function App() {
   };
 
   const deleteCard = () => {
-  deleteItems(selectedCard._id).then(() => {
+  deleteItems(selectedCard._id)
+    .then(() => {
       console.log(selectedCard._id);
       setClothingItem(
         clothingItems.filter((item) => {
           return item._id !== selectedCard._id;
         })
       );
-    });
+    })
+    .catch(console.error);
     closeActiveModal();
     
   };
