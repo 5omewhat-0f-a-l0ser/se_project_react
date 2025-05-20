@@ -17,23 +17,23 @@ function getItems() {
     });
 }
 
-function addItems({ name = "", url = "", weather = "" }) {
+function addItems({ name = "", imageUrl = "", weather = "" }) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, url, weather }),
+    body: JSON.stringify({ name, imageUrl, weather }),
   }).then(handleResponse);
 }
 
-function deleteItems({ name = "", url = "", weather = "" }) {
+function deleteItems({ name = "", imageUrl = "", weather = "" }) {
   return fetch(`${baseUrl}/items`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, url, weather }),
+    body: JSON.stringify({ name, imageUrl, weather }),
   }).then(handleResponse);
 }
 
