@@ -97,20 +97,14 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
     },
     {
-      "name": "Coveralls",
-      "imageUrl": "https://cdn-icons-png.flaticon.com/512/2689/2689714.png",
-      "weather": "warm",
-      "_id": 17
-    },
-    {
       "name": "Bag",
       "imageUrl": "https://content.mycutegraphics.com/graphics/earth/eco-friendly-shopping-bag.png",
       "weather": "hot",
       "_id": 18
     },
     {
-      "name": "Makeup",
-      "url": "",
+      "name": "Mask",
+      "imageUrl": "https://pics.clipartpng.com/Blue_Face_Mask_Clipart_PNG_Image-3346.png",
       "weather": "warm",
       "_id": 19
     }
