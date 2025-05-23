@@ -1,6 +1,6 @@
 const baseUrl = "http://localhost:3001";
 
-const handleResponse = (res) => {
+function handleResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
@@ -37,4 +37,4 @@ function addItems({ name = "", imageUrl = "", weather = "" }) {
    }
    
 
-export { getItems, addItems, deleteItems };
+export { getItems, addItems, deleteItems, handleResponse };

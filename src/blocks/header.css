@@ -10,6 +10,11 @@
   padding: 0;
 }
 
+.header__logo:hover {
+  cursor: pointer;
+  color:#00000099;
+}
+
 .header__date-and-location {
   padding: 24px;
 }
@@ -19,6 +24,11 @@
   background-color: transparent;
   border: none;
   gap: 20px;
+}
+
+.header__clothes-btn:hover {
+  cursor: pointer;
+  color:#00000099;
 }
 
 .header__user-container {
