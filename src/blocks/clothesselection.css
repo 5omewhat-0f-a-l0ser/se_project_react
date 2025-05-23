@@ -11,3 +11,7 @@
     border: none;
     color: #00000099;
 }
+
+.clothes-selection__btn:hover {
+  cursor: pointer;
+}
