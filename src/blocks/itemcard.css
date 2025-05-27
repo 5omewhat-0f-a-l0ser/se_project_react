@@ -10,6 +10,11 @@
   flex-direction: column; /* Stacks children (image + title) */
   align-items: center; /* Centers the title horizontally */
 }
+
+.card:hover {
+  cursor: pointer;
+}
+
 .card__name {
   position: absolute;
   top: 15px;

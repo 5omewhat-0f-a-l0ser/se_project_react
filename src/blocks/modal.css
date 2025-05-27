@@ -54,6 +54,10 @@
   right: 30px;
 }
 
+.modal__close:hover {
+  cursor: pointer;
+}
+
 .modal__label {
   display: flex;
   flex-direction: column;
@@ -82,6 +86,10 @@
   width: 173px;
   height: 20px;
   color: #00000080;
+}
+
+.modal__label_type_radio:hover {
+  cursor:pointer;
 }
 
 :checked+span {
@@ -135,4 +143,8 @@
   background-color: transparent;
   border: none;
   line-height: 24px;
+}
+
+.modal__delete:hover {
+  cursor: pointer;
 }
