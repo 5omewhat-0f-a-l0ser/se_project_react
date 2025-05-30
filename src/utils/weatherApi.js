@@ -1,8 +1,4 @@
-//import { handleResponse } from "./api";
-
-function handleResponse(res) { 
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`); 
-}
+import { handleResponse } from "./api";
 
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(

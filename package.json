@@ -10,8 +10,10 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
+    
   },
   "dependencies": {
+    "express": "^4.21.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.0"
@@ -25,7 +27,20 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "gh-pages": "^6.3.0",
+    "nodemon": "^3.1.10",
     "vite": "^6.1.1"
   },
-  "homepage": "https://5omewhat-0f-a-l0ser.github.io/se_project_react/"
+  "homepage": "https://5omewhat-0f-a-l0ser.github.io/se_project_react/",
+  "description": "Descripton\r What To Wear (WTWR) is a simple weather app to help you decide what to wear to combat the unyeildingweather outside of your comfy home.",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5omewhat-0f-a-l0ser/se_project_react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/5omewhat-0f-a-l0ser/se_project_react/issues"
+  }
 }
