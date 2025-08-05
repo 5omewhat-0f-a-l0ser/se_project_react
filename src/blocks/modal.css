@@ -50,6 +50,7 @@
   width: 16px;
   border: none;
   position: absolute;
+  cursor: pointer;
   top: 20px;
   right: 30px;
 }
@@ -143,6 +144,7 @@
   background-color: transparent;
   border: none;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .modal__delete:hover {
