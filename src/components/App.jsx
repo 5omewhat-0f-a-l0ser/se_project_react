@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 
 import ItemModal from "../components/ItemModal";
 import AddItemModal from "../components/AddItemModal";
-//import DeleteModal from "../components/DeleteModal";
+import RegisterModal from "../components/RegisterModal";
 
 import Profile from "../components/Profile";
 
@@ -49,6 +49,10 @@ function App() {
       })
       .catch(console.error);
   };
+
+  const onSingUpClick = () => {
+    setActiveModal("signup");
+  }
 
   const onItemCardClick = (card) => {
     setActiveModal("preview");
@@ -143,6 +147,11 @@ function App() {
           card={selectedCard}
           isOpen={activeModal === "preview"}
           deleteCard={deleteCard}
+        />
+        <RegisterModal
+          activeModal={activeModal}
+          closeModal={closeActiveModal}
+          isOpen={activeModal === "signup"}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

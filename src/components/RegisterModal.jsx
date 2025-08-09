@@ -11,32 +11,31 @@ function RegisterModal({
   isOpen,
   onAddSubmit,
 }) {
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [weather, setWeather] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const [weather, setWeather] = useState("");
 
   useEffect(() => {
-    setName("");
-    setImageUrl("");
-    setWeather("");
+    setEmail("");
+    setPassword("");
   }, [isOpen]);
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-    //console.log(name);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    // console.log(name);
   };
 
-  const handleUrlChange = (e) => {
+  const handlePasswordChange = (e) => {
     setImageUrl(e.target.value);
   };
 
-  const handleWeatherChange = (e) => {
-    setWeather(e.target.value);
-  };
+  // const handleWeatherChange = (e) => {
+  //   setWeather(e.target.value);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddSubmit(name, imageUrl, weather);
+    onAddSubmit(email, password);
   };
   return (
     <ModalWithForm
