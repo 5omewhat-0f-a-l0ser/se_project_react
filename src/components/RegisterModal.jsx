@@ -13,30 +13,42 @@ function RegisterModal({
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [weather, setWeather] = useState("");
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     setEmail("");
     setPassword("");
+    setName("");
+    setImageUrl("");
   }, [isOpen]);
+
+    const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleUrlChange = (e) => {
+    setImageUrl(e.target.value);
+  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    // console.log(name);
   };
 
   const handlePasswordChange = (e) => {
     setImageUrl(e.target.value);
   };
 
-  // const handleWeatherChange = (e) => {
-  //   setWeather(e.target.value);
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddSubmit(email, password);
   };
+
+  // Validation bits
+  const validateUser = () => {
+    const isEmailVaild = email.length >= 2 && email.imcludes("@");
+  };
+
   return (
     <ModalWithForm
       activeModal={activeModal}
@@ -46,12 +58,12 @@ function RegisterModal({
       onSubmit={handleSubmit}
       isOpen={isOpen}
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="signup-email" className="modal__label">
         Email{" "}
         <input
           type="email"
           className="modal__input"
-          id="email"
+          id="signup-email"
           placeholder="Email"
           required
           minLength="1"
@@ -60,15 +72,39 @@ function RegisterModal({
           value={email}
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="signup-password" className="modal__label">
         Password
         <input
           type="password"
           className="modal__input"
-          id="password"
+          id="signup-password"
           placeholder="Password"
           onChange={handlePasswordChange}
           value={password}
+        />
+      </label><label htmlFor="signup-name" className="modal__label">
+        Name{" "}
+        <input
+          type="text"
+          className="modal__input"
+          id="signup-name"
+          placeholder="Name"
+          required
+          minLength="1"
+          maxLength="30"
+          onChange={handleNameChange}
+          value={name}
+        />
+      </label>
+      <label htmlFor="signup-imageUrl" className="modal__label">
+        Image{" "}
+        <input
+          type="url"
+          className="modal__input"
+          id="signup-imageUrl"
+          placeholder="Image Url"
+          onChange={handleUrlChange}
+          value={imageUrl}
         />
       </label>
     </ModalWithForm>
