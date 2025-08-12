@@ -42,8 +42,10 @@ function App() {
     setActiveModal("");
   };
 
+  const token = localStorage.setItem("jwt");
+
   const handleAddSubmit = (name, imageUrl, weather) => {
-    addItems({ name, imageUrl, weather })
+    addItems({ name, imageUrl, weather }, token)
       .then((newItem) => {
         setClothingItem([newItem, ...clothingItems]);
         closeActiveModal();
