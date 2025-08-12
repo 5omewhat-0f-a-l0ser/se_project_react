@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import ItemModal from "../components/ItemModal";
 import AddItemModal from "../components/AddItemModal";
 import RegisterModal from "../components/RegisterModal";
+import LoginModal from "../components/LoginModal";
 
 import Profile from "../components/Profile";
 
@@ -50,8 +51,12 @@ function App() {
       .catch(console.error);
   };
 
-  const onSingUpClick = () => {
+  const onSignUpClick = () => {
     setActiveModal("signup");
+  }
+
+  const onSignInCLick = () => {
+    setActiveModal("signin");
   }
 
   const onItemCardClick = (card) => {
@@ -105,7 +110,7 @@ function App() {
     >
       <div className="page">
         <div className="page__content">
-          <Header onAddBtnClick={onAddBtnClick} weatherData={weatherData} />
+          <Header onAddBtnClick={onAddBtnClick} weatherData={weatherData} onSignUpClick={onSignUpClick} onSignInClick={onSignInCLick}/>
 
           <Routes>
             <Route
@@ -152,6 +157,11 @@ function App() {
           activeModal={activeModal}
           closeModal={closeActiveModal}
           isOpen={activeModal === "signup"}
+        />
+        <LoginModal
+          activeModal={activeModal}
+          closeModal={closeActiveModal}
+          isOpen={activeModal === "signin"}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

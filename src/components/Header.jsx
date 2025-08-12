@@ -7,7 +7,7 @@ import ToggleSwitch from "./ToggleSwitch";
 import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.png";
 
-function Header({ onAddBtnClick, weatherData }) {
+function Header({ onAddBtnClick, weatherData, onSignupClick, onSignInClick }) {
   const today = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",

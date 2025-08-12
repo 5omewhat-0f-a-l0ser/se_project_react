@@ -15,7 +15,7 @@ export const signup = ({ email, password }) => {
   });
 };
 
-export const signin =({email, password}) => {
+export const signin = ({email, password}) => {
     return fetch(`${baseURL}/singup`, {
         method: "POST",
         headers: {
@@ -23,4 +23,18 @@ export const signin =({email, password}) => {
         },
         body: JSON.stringify({email, password})
     })
+};
+
+export const existingToken = (token) => {
+    return fetch(`${baseURL}/users/me`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+        },
+        .then((res) => {
+            return res.ok ? res.json() : Promise.reject(`Error: 
+                ${res.status}`); 
+        });
+    });
 };
