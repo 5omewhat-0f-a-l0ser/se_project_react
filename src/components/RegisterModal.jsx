@@ -82,7 +82,8 @@ function RegisterModal({
           onChange={handlePasswordChange}
           value={password}
         />
-      </label><label htmlFor="signup-name" className="modal__label">
+      </label>
+      <label htmlFor="signup-name" className="modal__label">
         Name{" "}
         <input
           type="text"
