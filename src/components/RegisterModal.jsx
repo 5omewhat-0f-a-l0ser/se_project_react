@@ -9,7 +9,7 @@ function RegisterModal({
   activeModal,
   closeModal,
   isOpen,
-  onAddSubmit,
+  onRegisterSubmit,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,7 +41,7 @@ function RegisterModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddSubmit(email, password);
+    onRegisterSubmit(email, password, name, imageUrl);
   };
 
   // Validation bits

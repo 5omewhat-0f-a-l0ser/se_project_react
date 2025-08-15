@@ -9,7 +9,7 @@ function LoginModal({
   activeModal,
   closeModal,
   isOpen,
-  onAddSubmit,
+  onLoginSubmit,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +30,7 @@ function LoginModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddSubmit(email, password);
+    onLoginSubmit(email, password);
   };
 
   // Validation bits

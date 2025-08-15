@@ -19,9 +19,10 @@ import { coords, APIKey } from "../utils/constants";
 import { defaultClothingItems } from "../utils/constants";
 
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
+import { CurrentUserContext, CurrentUserProvider } from "../contexts/CurrentUserContext";
 import { addItems, deleteItems, getItems } from "../utils/api";
 
-function App() {
+function AppPage() {
   const [weatherData, setWeatherData] = useState({
     type: "hot",
     temp: { F: 999 },
@@ -34,6 +35,8 @@ function App() {
 
   const [clothingItems, setClothingItem] = useState(defaultClothingItems);
 
+ // const userContext = useContext(CurrentUserContext);
+
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
@@ -42,7 +45,7 @@ function App() {
     setActiveModal("");
   };
 
-  const token = localStorage.setItem("jwt");
+  const token = localStorage.getItem("jwt");
 
   const handleAddSubmit = (name, imageUrl, weather) => {
     addItems({ name, imageUrl, weather }, token)
@@ -52,6 +55,14 @@ function App() {
       })
       .catch(console.error);
   };
+
+  const handleLoginSubmit = (email, password) => {
+    closeActiveModal();
+  };
+
+  const handleRegisterSubmit = (email, Password, name, imageUrl) => {
+    closeActiveModal();
+  }
 
   const onSignUpClick = () => {
     setActiveModal("signup");
@@ -164,9 +175,18 @@ function App() {
           activeModal={activeModal}
           closeModal={closeActiveModal}
           isOpen={activeModal === "signin"}
+          onLoginSubmit={handleLoginSubmit}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
+  );
+}
+
+function App () {
+  return (
+  <CurrentUserContext.Provider value={currentUser}>
+    <AppPage/>
+  </CurrentUserContext.Provider>
   );
 }
 
