@@ -19,7 +19,7 @@ import { coords, APIKey } from "../utils/constants";
 import { defaultClothingItems } from "../utils/constants";
 
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
-import { CurrentUserContext, CurrentUserProvider } from "../contexts/CurrentUserContext.js";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 import { addItems, deleteItems, getItems } from "../utils/api";
 
 function AppPage() {
@@ -184,9 +184,9 @@ function AppPage() {
 
 function App() {
   return (
-    <CurrentUserProvider>
+    <CurrentUserContext>
       <AppPage/>
-    </CurrentUserProvider>
+    </CurrentUserContext>
   );
 }
 
