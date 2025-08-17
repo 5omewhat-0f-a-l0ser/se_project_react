@@ -1,34 +1,49 @@
 import React, { useState, useEffect } from "react";
-import { existingToken, signin, signup } from "../utils/auth";
+import { existingToken, signin, signup } from "../utils/auth"; // We'll use this to verify the token
 
-export const CurrentUserContext = React.createContext();
+const CurrentUserContext = React.createContext();
 
-export const CurrentUserProvider = ({ children }) => {
+const CurrentUserProvider = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
+    // Check if there's a token in localStorage when the app loads
     const jwt = localStorage.getItem("jwt");
 
     if (jwt) {
+      // If there's a token, verify it with the server
       existingToken(jwt)
         .then((data) => {
-          setCurrentUser(data);
+          setCurrentUser(data); // Set the user data if token is valid
         })
         .catch((err) => {
           console.log(err);
-          localStorage.removeItem("jwt");
+          localStorage.removeItem("jwt"); // Remove invalid token
         });
     }
   }, []);
+
+  // These methods will be available throughout your app via context
+
+  const handleLoginToSignUp = () => {
+    closeModal();
+    openModal("login");
+  };
+
+  const handleSignUpToLogin = () => {
+    closeModal();
+    openModal("signup");
+  };
 
   const handleLogin = (email, password) => {
     return signin({ email, password })
       .then((data) => {
         localStorage.setItem("jwt", data.token);
-        return existingToken(data.token); // Use existingToken instead of checkToken
+        // After saving token, check it to get user data
+        return checkToken(data.token); // This should return user data
       })
       .then((userData) => {
-        console.log("User data received:", userData);
+        console.log("User data received:", userData); // Let's add this log to debug
         setCurrentUser(userData);
         return userData;
       })
@@ -47,7 +62,7 @@ export const CurrentUserProvider = ({ children }) => {
         })
           .then((signinData) => {
             localStorage.setItem("jwt", signinData.token);
-            return existingToken(signinData.token);
+            return checkToken(signinData.token);
           })
           .then((userData) => {
             setCurrentUser(userData);
@@ -73,9 +88,14 @@ export const CurrentUserProvider = ({ children }) => {
         handleLogin,
         handleLogout,
         handleSignup,
+        handleProfileUpdate,
+        handleLoginToSignUp,
+        handleSignUpToLogin,
       }}
     >
       {children}
     </CurrentUserContext.Provider>
   );
 };
+
+export { CurrentUserContext, CurrentUserProvider };

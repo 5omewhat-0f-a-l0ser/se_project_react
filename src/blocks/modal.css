@@ -150,3 +150,12 @@
 .modal__delete:hover {
   cursor: pointer;
 }
+
+/* Login Modal styles*/
+.modal{
+  cursor: pointer;
+}
+
+
+
+/* Register Modal styles*/
