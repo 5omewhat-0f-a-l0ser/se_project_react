@@ -167,11 +167,16 @@ function AppPage() {
           deleteCard={deleteCard}
         />
         <RegisterModal
+          buttonText={"Register"}
+          title={"Register"}
           activeModal={activeModal}
           closeModal={closeActiveModal}
           isOpen={activeModal === "signup"}
+          onRegisterSubmit={handleRegisterSubmit}
         />
         <LoginModal
+          buttonText={"Login"}
+          title={"Login"}
           activeModal={activeModal}
           closeModal={closeActiveModal}
           isOpen={activeModal === "signin"}

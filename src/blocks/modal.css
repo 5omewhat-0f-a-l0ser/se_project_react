@@ -152,8 +152,10 @@
 }
 
 /* Login Modal styles*/
-.modal{
-  cursor: pointer;
+.modal__container_type_login{
+  width: 440px;
+  padding: 24px;
+  border-style: none;
 }
 
 
