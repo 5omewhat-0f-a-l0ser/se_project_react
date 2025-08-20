@@ -1,11 +1,11 @@
 import "../blocks/modal.css";
 
 function ItemModal({ activeModal, card, closeModal, isOpen, deleteCard }) {
-  const isOwn = selectedCard.owner === currentUser._id;
-
-  const itemDeleteButtonClassName = (
-    `modal__delete-button ${isOwn ? '' : 'modal__delete-button_hidden'}`
-  );
+  // const isOwn = selectedCard.owner === currentUser._id;
+// 
+  // const itemDeleteButtonClassName = (
+  //   `modal__delete-button ${isOwn ? '' : 'modal__delete-button_hidden'}`
+  // );
   
   return (
     <div className={`modal  ${isOpen ? "modal_opened" : ""}`}>

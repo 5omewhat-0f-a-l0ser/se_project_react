@@ -182,11 +182,15 @@ function AppPage() {
   );
 }
 
+
+// Had to ask ChatGPT for guidance here after I had a recent grad help and Dot's help too, Google didn't help one bit XD
 function App() {
   return (
-    <CurrentUserContext>
-      <AppPage/>
-    </CurrentUserContext>
+  <CurrentUserContext.Consumer>
+    {(currentUser) => (
+      <AppPage user={currentUser} />
+    )}
+  </CurrentUserContext.Consumer>
   );
 }
 
