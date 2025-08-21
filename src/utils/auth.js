@@ -1,6 +1,5 @@
 import { handleServerResponse } from "./api";
 
-//missing name and avatar add it to 5 + 11
 export const signup = ({ email, password }) => {
   return fetch(`${baseURL}/signup`, {
     method: "POST",
@@ -40,4 +39,4 @@ export const existingToken = (token) => {
   }).then(handleServerResponse);
 };
 
-// Add your logic for editProfile
+// Add logic for editProfile

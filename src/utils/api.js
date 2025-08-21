@@ -16,10 +16,10 @@ function getItems() {
     },
   })
     .then(handleServerResponse)
-    .then((data) => {
-      console.log("Data Received:", data);
-      return data;
-    });
+    // .then((data) => {
+    //   console.log("Data Received:", data);
+    //   return data;
+    // });
 }
 
 function addItems({ name = "", imageUrl = "", weather = "" }, token) {

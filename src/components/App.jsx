@@ -22,7 +22,7 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 import { addItems, deleteItems, getItems } from "../utils/api";
 
-function AppPage() {
+function App() {
   const [weatherData, setWeatherData] = useState({
     type: "hot",
     temp: { F: 999 },
@@ -30,12 +30,11 @@ function AppPage() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState();
+  const [currentUser, setCurrentUser] = useState({});
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const [clothingItems, setClothingItem] = useState(defaultClothingItems);
-
- // const userContext = useContext(CurrentUserContext);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -58,19 +57,21 @@ function AppPage() {
 
   const handleLoginSubmit = (email, password) => {
     closeActiveModal();
+    // find existing_id in backend
   };
 
   const handleRegisterSubmit = (email, Password, name, imageUrl) => {
     closeActiveModal();
-  }
+    //make a call to api to register, i.e make a function
+  };
 
   const onSignUpClick = () => {
     setActiveModal("signup");
-  }
+  };
 
   const onSignInCLick = () => {
     setActiveModal("signin");
-  }
+  };
 
   const onItemCardClick = (card) => {
     setActiveModal("preview");
@@ -118,85 +119,83 @@ function AppPage() {
   }, []);
 
   return (
-    <CurrentTemperatureUnitContext.Provider
-      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-    >
-      <div className="page">
-        <div className="page__content">
-          <Header onAddBtnClick={onAddBtnClick} weatherData={weatherData} onSignUpClick={onSignUpClick} onSignInClick={onSignInCLick}/>
-
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main
-                  weatherData={weatherData}
-                  onItemCardClick={onItemCardClick}
-                  clothingItems={clothingItems}
-                />
-              }
+    <CurrentUserContext.Provider value={currentUser}>
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <div className="page">
+          <div className="page__content">
+            <Header
+              onAddBtnClick={onAddBtnClick}
+              weatherData={weatherData}
+              onSignInClick={onSignInCLick}
             />
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  clothingItems={clothingItems}
-                  onItemCardClick={onItemCardClick}
-                  onAddBtnClick={onAddBtnClick}
-                />
-              }
-            />
-          </Routes>
 
-          <Footer />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    weatherData={weatherData}
+                    onItemCardClick={onItemCardClick}
+                    clothingItems={clothingItems}
+                  />
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    clothingItems={clothingItems}
+                    onItemCardClick={onItemCardClick}
+                    onAddBtnClick={onAddBtnClick}
+                  />
+                }
+              />
+              <Route path="/signup" />
+            </Routes>
+
+            <Footer />
+          </div>
+          <AddItemModal
+            buttonText={"Add Garment"}
+            title={"New Garmnet"}
+            activeModal={activeModal}
+            closeModal={closeActiveModal}
+            submit={submitFormBtn}
+            isOpen={activeModal === "add-garment"}
+            onAddSubmit={handleAddSubmit}
+          />
+          <ItemModal
+            activeModal={activeModal}
+            closeModal={closeActiveModal}
+            card={selectedCard}
+            isOpen={activeModal === "preview"}
+            deleteCard={deleteCard}
+          />
+          <RegisterModal
+            buttonText={"Register"}
+            title={"Register"}
+            activeModal={activeModal}
+            closeModal={closeActiveModal}
+            isOpen={activeModal === "signup"}
+            onRegisterSubmit={handleRegisterSubmit}
+          />
+          <LoginModal
+            buttonText={"Login"}
+            title={"Login"}
+            activeModal={activeModal}
+            closeModal={closeActiveModal}
+            isOpen={activeModal === "signin"}
+            onLoginSubmit={handleLoginSubmit}
+            onSignUpClick={onSignUpClick}
+          />
         </div>
-        <AddItemModal
-          buttonText={"Add Garment"}
-          title={"New Garmnet"}
-          activeModal={activeModal}
-          closeModal={closeActiveModal}
-          submit={submitFormBtn}
-          isOpen={activeModal === "add-garment"}
-          onAddSubmit={handleAddSubmit}
-        />
-        <ItemModal
-          activeModal={activeModal}
-          closeModal={closeActiveModal}
-          card={selectedCard}
-          isOpen={activeModal === "preview"}
-          deleteCard={deleteCard}
-        />
-        <RegisterModal
-          buttonText={"Register"}
-          title={"Register"}
-          activeModal={activeModal}
-          closeModal={closeActiveModal}
-          isOpen={activeModal === "signup"}
-          onRegisterSubmit={handleRegisterSubmit}
-        />
-        <LoginModal
-          buttonText={"Login"}
-          title={"Login"}
-          activeModal={activeModal}
-          closeModal={closeActiveModal}
-          isOpen={activeModal === "signin"}
-          onLoginSubmit={handleLoginSubmit}
-        />
-      </div>
-    </CurrentTemperatureUnitContext.Provider>
+      </CurrentTemperatureUnitContext.Provider>
+    </CurrentUserContext.Provider>
   );
 }
-
 
 // Had to ask ChatGPT for guidance here after I had a recent grad help and Dot's help too, Google didn't help one bit XD
-function App() {
-  return (
-  <CurrentUserContext.Consumer>
-    {(currentUser) => (
-      <AppPage user={currentUser} />
-    )}
-  </CurrentUserContext.Consumer>
-  );
-}
 
 export default App;

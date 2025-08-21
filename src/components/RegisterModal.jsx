@@ -44,10 +44,6 @@ function RegisterModal({
     onRegisterSubmit(email, password, name, imageUrl);
   };
 
-  // Validation bits
-  const validateUser = () => {
-    const isEmailVaild = email.length >= 2 && email.imcludes("@");
-  };
 
   return (
     <ModalWithForm

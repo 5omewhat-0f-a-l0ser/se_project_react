@@ -10,6 +10,7 @@ function LoginModal({
   closeModal,
   isOpen,
   onLoginSubmit,
+  onSignUpClick 
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +34,10 @@ function LoginModal({
     onLoginSubmit(email, password);
   };
 
+  const handleRegisterBtn = (e) => {
+    onSignUpClick();
+  }
+
   // Validation bits
   
 
@@ -45,33 +50,34 @@ function LoginModal({
       onSubmit={handleSubmit}
       isOpen={isOpen}
     >
-      <div className="modal__container modal__container_type_login">
-        <label htmlFor="signin-email" className="modal__label">
-          Email{" "}
-          <input
-            type="email"
-            className="modal__input"
-            id="signin-email"
-            placeholder="Email"
-            required
-            minLength="1"
-            maxLength="30"
-            onChange={handleEmailChange}
-            value={email}
-          />
-        </label>
-        <label htmlFor="signin-password" className="modal__label">
-          Password
-          <input
-            type="password"
-            className="modal__input"
-            id="signin-password"
-            placeholder="Password"
-            onChange={handlePasswordChange}
-            value={password}
-          />
-        </label>
+      <div className="modal__container modal__container-type-login">
+      <label htmlFor="signin-email" className="modal__label">
+        Email{" "}
+        <input
+          type="email"
+          className="modal__input"
+          id="signin-email"
+          placeholder="Email"
+          required
+          minLength="1"
+          maxLength="30"
+          onChange={handleEmailChange}
+          value={email}
+        />
+      </label>
+      <label htmlFor="signin-password" className="modal__label">
+        Password
+        <input
+          type="password"
+          className="modal__input"
+          id="signin-password"
+          placeholder="Password"
+          onChange={handlePasswordChange}
+          value={password}
+        />
+      </label>
       </div>
+      <button className="modal__register">Register</button>
     </ModalWithForm>
   );
 }
