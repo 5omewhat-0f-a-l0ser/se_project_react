@@ -39,4 +39,18 @@ export const existingToken = (token) => {
   }).then(handleServerResponse);
 };
 
+export const register = (name, password, email) => {
+  return fetch(`${BASE_URL}/users/register`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, password, email }),
+  })
+    .then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    })
+};
+
 // Add logic for editProfile

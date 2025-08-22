@@ -10,6 +10,7 @@ function RegisterModal({
   closeModal,
   isOpen,
   onRegisterSubmit,
+  handleRegistration
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +40,7 @@ function RegisterModal({
     setImageUrl(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleRegisterSubmit = (e) => {
     e.preventDefault();
     onRegisterSubmit(email, password, name, imageUrl);
   };
@@ -51,7 +52,8 @@ function RegisterModal({
       buttonText={buttonText}
       title={title}
       closeModal={closeModal}
-      onSubmit={handleSubmit}
+      onSubmit={handleRegisterSubmit}
+      handleRegistration={handleRegistration}
       isOpen={isOpen}
     >
       <label htmlFor="signup-email" className="modal__label">

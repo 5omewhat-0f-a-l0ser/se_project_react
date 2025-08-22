@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../blocks/header.css";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 //import DateDisplay from "../components/DateDisplay";
 import ToggleSwitch from "./ToggleSwitch";
@@ -7,11 +9,13 @@ import ToggleSwitch from "./ToggleSwitch";
 import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.png";
 
-function Header({ onAddBtnClick, weatherData, onSignupClick, onSignInClick }) {
+function Header({ onAddBtnClick, weatherData, currentUser}) {
   const today = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const userContext = useContext(CurrentUserContext);
 
   return (
     <header className="header">
@@ -35,8 +39,13 @@ function Header({ onAddBtnClick, weatherData, onSignupClick, onSignInClick }) {
       </button>
       <Link to="/profile" className="header__link">
         <div className="header__user-container">
-          <p className="header__username">Terrence Tegegne</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
+          <p className="header__username">{userContext.currentUser ? (
+            <p>{userContext.currentUser.name}</p>
+              ) : (
+              <p>Guest</p>
+              )}
+          </p>
+          <img src={avatar} alt={userContext.currentUser?.name} className="header__avatar" />
         </div>
       </Link>
     </header>

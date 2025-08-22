@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 import "../blocks/app.css";
 import Header from "../components/Header";
@@ -11,6 +11,8 @@ import ItemModal from "../components/ItemModal";
 import AddItemModal from "../components/AddItemModal";
 import RegisterModal from "../components/RegisterModal";
 import LoginModal from "../components/LoginModal";
+
+import ProtectedRoute from "../components/ProtectedRoute";
 
 import Profile from "../components/Profile";
 
@@ -36,9 +38,29 @@ function App() {
 
   const [clothingItems, setClothingItem] = useState(defaultClothingItems);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const navigate = useNavigate();
+
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
+
+  //using the lessons for this part, still struggling to remember the steps
+  const handleRegistration = ({
+    name,
+    email,
+    password
+  }) => {
+    if (password) {
+      auth.register(name, password, email)
+       .then(() => {
+         navigate("/profile");
+        })
+        .catch(console.error);
+    }
+  };
+
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -135,24 +157,62 @@ function App() {
               <Route
                 path="/"
                 element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <Main
                     weatherData={weatherData}
                     onItemCardClick={onItemCardClick}
                     clothingItems={clothingItems}
                   />
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="/profile"
                 element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <Profile
                     clothingItems={clothingItems}
                     onItemCardClick={onItemCardClick}
                     onAddBtnClick={onAddBtnClick}
                   />
+                  </ProtectedRoute>
                 }
               />
-              <Route path="/signup" />
+              <Route 
+                path="/signup"
+                element={
+                  <RegisterModal
+                    onSignUpClick={onSignUpClick} 
+                    buttonText={"Register"}
+                    title={"Register"}
+                    activeModal={activeModal}
+                    closeModal={closeActiveModal}
+                    isOpen={activeModal === "signup"}
+                    onRegisterSubmit={handleRegisterSubmit}
+                    handleRegistration={handleRegistration}
+                  />
+                }
+              />
+              <Route
+                path="/signin"
+                element={
+                  <LoginModal
+                  buttonText={"Login"}
+                  title={"Login"}
+                  activeModal={activeModal}
+                  closeModal={closeActiveModal}
+                  isOpen={activeModal === "signin"}
+                  onLoginSubmit={handleLoginSubmit}
+                  onSignUpClick={onSignUpClick}
+                />
+                }
+              />
+               <Route
+                path="*"
+                element={
+                  isLoggedIn ? <Navigate to="/" /> : <Navigate to="/login" />
+                }
+                />
             </Routes>
 
             <Footer />
@@ -181,16 +241,7 @@ function App() {
             isOpen={activeModal === "signup"}
             onRegisterSubmit={handleRegisterSubmit}
           />
-          <LoginModal
-            buttonText={"Login"}
-            title={"Login"}
-            activeModal={activeModal}
-            closeModal={closeActiveModal}
-            isOpen={activeModal === "signin"}
-            onLoginSubmit={handleLoginSubmit}
-            onSignUpClick={onSignUpClick}
-          />
-        </div>
+          </div>
       </CurrentTemperatureUnitContext.Provider>
     </CurrentUserContext.Provider>
   );

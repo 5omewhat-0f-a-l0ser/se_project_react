@@ -29,7 +29,7 @@ function LoginModal({
     setImageUrl(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
     onLoginSubmit(email, password);
   };
@@ -47,7 +47,7 @@ function LoginModal({
       buttonText={buttonText}
       title={title}
       closeModal={closeModal}
-      onSubmit={handleSubmit}
+      onSubmit={handleLoginSubmit}
       isOpen={isOpen}
     >
       <div className="modal__container modal__container-type-login">
