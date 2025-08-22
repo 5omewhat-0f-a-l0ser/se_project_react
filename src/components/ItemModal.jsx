@@ -1,12 +1,11 @@
 import "../blocks/modal.css";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { useState } from "react";
 
 function ItemModal({ activeModal, card, closeModal, isOpen, deleteCard }) {
-  // const isOwn = selectedCard.owner === currentUser._id;
-// 
-  // const itemDeleteButtonClassName = (
-  //   `modal__delete-button ${isOwn ? '' : 'modal__delete-button_hidden'}`
-  // );
-  
+  const [selectedCard, setSelectedCard] = useState();
+  const isOwn = selectedCard.owner === currentUser._id;
+
   return (
     <div className={`modal  ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__container modal__container_type_img">
@@ -20,9 +19,11 @@ function ItemModal({ activeModal, card, closeModal, isOpen, deleteCard }) {
           <h2 className="modal__caption">{card?.name}</h2>
           <p className="modal__weather">Weather: {card?.weather}</p>
         </div>
+        {isOwn && (
         <button onClick={deleteCard} className="modal__delete">
           Delete Item
         </button>
+        )}
       </div>
     </div>
   );

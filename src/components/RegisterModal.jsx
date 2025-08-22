@@ -16,6 +16,18 @@ function RegisterModal({
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+
+
+  const validateForm = () => {
+    const isEmailValid = email.length >= 2 && email.includes("@");
+    const isPasswordValid = password.length >= 2 && password.length <= 30;
+    const isNameValid = name.length >= 2 && name.length <= 30;
+    const isImageValid = imageUrl.length > 0;
+    setIsFormValid(
+      isEmailValid && isPasswordValid && isNameValid && isImageValid
+    );
+  };
 
   useEffect(() => {
     setEmail("");
@@ -23,6 +35,11 @@ function RegisterModal({
     setName("");
     setImageUrl("");
   }, [isOpen]);
+
+   useEffect(() => {
+    validateForm();
+  }, [email, password, name, imageUrl]);
+
 
     const handleNameChange = (e) => {
     setName(e.target.value);

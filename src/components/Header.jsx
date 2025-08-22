@@ -39,15 +39,14 @@ function Header({ onAddBtnClick, weatherData, currentUser}) {
       </button>
       <Link to="/profile" className="header__link">
         <div className="header__user-container">
-          <p className="header__username">{userContext.currentUser ? (
-            <p>{userContext.currentUser.name}</p>
-              ) : (
-              <p>Guest</p>
-              )}
+          <p className="header__username">
+          <p>{userContext.currentUser?.name || "Guest"}</p>
           </p>
           <img src={avatar} alt={userContext.currentUser?.name} className="header__avatar" />
         </div>
       </Link>
+      <a href="/signin">Sign In</a>
+      <a href="/signup">Sign Up</a>
     </header>
   );
 }

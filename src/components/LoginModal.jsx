@@ -10,7 +10,6 @@ function LoginModal({
   closeModal,
   isOpen,
   onLoginSubmit,
-  onSignUpClick 
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,10 +32,6 @@ function LoginModal({
     e.preventDefault();
     onLoginSubmit(email, password);
   };
-
-  const handleRegisterBtn = (e) => {
-    onSignUpClick();
-  }
 
   // Validation bits
   
