@@ -4,8 +4,9 @@ import { useState } from "react";
 
 function ItemModal({ activeModal, card, closeModal, isOpen, deleteCard }) {
   const [selectedCard, setSelectedCard] = useState();
-  const isOwn = selectedCard.owner === currentUser._id;
+  const [currentUser, setCurrentUser] = useState({});
 
+  const isOwn = selectedCard?.owner === currentUser?._id
   return (
     <div className={`modal  ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__container modal__container_type_img">

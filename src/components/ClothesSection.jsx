@@ -4,7 +4,7 @@ import ItemCard from "../components/ItemCard";
 
 import "../blocks/clothesselection.css";
 
-function ClothesSection({ onItemCardClick, clothingItems, onAddBtnClick }) {
+function ClothesSection({ onItemCardClick, clothingItems, onAddBtnClick, onCardLike }) {
 
 
 
@@ -23,6 +23,7 @@ function ClothesSection({ onItemCardClick, clothingItems, onAddBtnClick }) {
                         key={item._id}
                         item={item}
                         onCardClick={onItemCardClick}
+                        onCardLike={onCardLike}
                       />
                     );
                 })}

@@ -121,6 +121,34 @@ function App() {
   const submitFormBtn = () => {
     closeActiveModal();
   };
+
+  //Likes
+const handleCardLike = ({ id, isLiked }) => {
+  const token = localStorage.getItem("jwt");
+  // Check if this card is not currently liked
+  !isLiked
+    ? // if so, send a request to add the user's id to the card's likes array
+      api
+        // the first argument is the card's id
+        .addCardLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err))
+    : // if not, send a request to remove the user's id from the card's likes array
+      api
+        // the first argument is the card's id
+        .removeCardLike(id, token) 
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err));
+  }
+
   //api//
 
   useEffect(() => {
@@ -162,6 +190,7 @@ function App() {
                     weatherData={weatherData}
                     onItemCardClick={onItemCardClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                   </ProtectedRoute>
                 }
@@ -174,6 +203,7 @@ function App() {
                     clothingItems={clothingItems}
                     onItemCardClick={onItemCardClick}
                     onAddBtnClick={onAddBtnClick}
+                    onCardLike={handleCardLike}
                   />
                   </ProtectedRoute>
                 }
@@ -210,7 +240,7 @@ function App() {
                <Route
                 path="*"
                 element={
-                  isLoggedIn ? <Navigate to="/" /> : <Navigate to="/login" />
+                  isLoggedIn ? <Navigate to="/profile" /> : <Navigate to="/" />
                 }
                 />
             </Routes>
@@ -232,20 +262,14 @@ function App() {
             card={selectedCard}
             isOpen={activeModal === "preview"}
             deleteCard={deleteCard}
-          />
-          <RegisterModal
-            buttonText={"Register"}
-            title={"Register"}
-            activeModal={activeModal}
-            closeModal={closeActiveModal}
-            isOpen={activeModal === "signup"}
-            onRegisterSubmit={handleRegisterSubmit}
+            onCardLike={handleCardLike}
           />
           </div>
       </CurrentTemperatureUnitContext.Provider>
     </CurrentUserContext.Provider>
   );
 }
+
 
 // Had to ask ChatGPT for guidance here after I had a recent grad help and Dot's help too, Google didn't help one bit XD
 

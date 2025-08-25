@@ -88,7 +88,7 @@ function RegisterModal({
         />
       </label>
       <label htmlFor="signup-password" className="modal__label">
-        Password
+        Password{" "}
         <input
           type="password"
           className="modal__input"
@@ -113,7 +113,7 @@ function RegisterModal({
         />
       </label>
       <label htmlFor="signup-imageUrl" className="modal__label">
-        Image{" "}
+        Avatar URL{" "}
         <input
           type="url"
           className="modal__input"

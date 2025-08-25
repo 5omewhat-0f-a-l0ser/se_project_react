@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 
 import "../blocks/profile.css";
 
-function Profile({ onItemCardClick, clothingItems, onAddBtnClick }) {
+function Profile({ onItemCardClick, clothingItems, onAddBtnClick, onCardLike }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
@@ -14,6 +14,7 @@ function Profile({ onItemCardClick, clothingItems, onAddBtnClick }) {
           onItemCardClick={onItemCardClick}
           clothingItems={clothingItems}
           onAddBtnClick={onAddBtnClick}
+          onCardLike={onCardLike}
         />
       </section>
     </div>
