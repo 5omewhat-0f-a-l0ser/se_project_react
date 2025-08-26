@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "../blocks/header.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
@@ -16,6 +16,19 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
   });
 
   const userContext = useContext(CurrentUserContext);
+  
+  const isLoggedIn = !!currentUser;
+
+  const [user, setUser] = useState(null);
+
+  const handleLogin = () => {
+    // Example: set logged-in user
+    setUser({ name: {user}, avatar: "avatar_url.png" });
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
 
   return (
     <header className="header">
@@ -30,37 +43,69 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
         {today}, {weatherData.city}
       </p>
       <ToggleSwitch />
-      <button
-        onClick={onAddBtnClick}
-        type="button"
-        className="header__clothes-btn"
-      >
-        + Add Clothing
-      </button>
-      <Link to="/profile" className="header__link">
-        <div className="header__user-container">
-          <p className="header__username">
-            <span>{userContext.currentUser?.name || "Guest"}</span>
-          </p>
-          <img src={avatar} alt={userContext.currentUser?.name} className="header__avatar" />
-        </div>
-      </Link>
-      <Link to="/signup">
-        <div className="header__link_signup">
+      {isLoggedIn ? (
+        <>
+          {/* Add Clothing Button */}
           <button
-          onClick={onSignUpClick}
-          type="button"
-          className="header__signup-btn">Sign Up</button>
-        </div>
-      </Link>
-      <Link to="/signin">
-        <div className="header__link_signin">
+            onClick={onAddBtnClick}
+            type="button"
+            className="header__clothes-btn"
+          >
+            + Add Clothing
+          </button>
+
+          {/* Profile + Avatar */}
+          <Link to="/profile" className="header__link">
+            <div className="header__user-container">
+              <p className="header__username">
+                <span>{currentUser.name}</span>
+              </p>
+              <img
+                src={currentUser.avatar || avatar}
+                alt={currentUser.name}
+                className="header__avatar"
+              />
+            </div>
+          </Link>
+
+          {/* Log Out */}
           <button
-          onClick={onSignInClick}
-          type="button"
-          className="header__signin-btn">Log In</button>
-        </div>
-      </Link>
+            onClick={onLogoutClick}
+            type="button"
+            className="header__logout-btn"
+          >
+            Log Out
+          </button>
+        </>
+      ) : (
+        <>
+          {/* Sign Up */}
+          <Link to="/signup">
+            <div className="header__link_signup">
+              <button
+                onClick={onSignUpClick}
+                type="button"
+                className="header__signup-btn"
+              >
+                Sign Up
+              </button>
+            </div>
+          </Link>
+
+          {/* Log In */}
+          <Link to="/signin">
+            <div className="header__link_signin">
+              <button
+                onClick={onSignInClick}
+                type="button"
+                className="header__signin-btn"
+              >
+                Log In
+              </button>
+            </div>
+          </Link>
+        </>
+      )}
     </header>
   );
 }

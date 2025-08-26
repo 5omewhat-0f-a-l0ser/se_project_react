@@ -22,7 +22,8 @@ import { defaultClothingItems } from "../utils/constants";
 
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
-import { addItems, deleteItems, getItems } from "../utils/api";
+
+import { addItems, deleteItems, getItems, loginUser, logoutUser  } from "../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -61,6 +62,29 @@ function App() {
     }
   };
 
+  const login = async (email, password) => {
+    try {
+      const data = await loginUser(email, password);
+      localStorage.setItem("token", data.token); // store JWT
+      setUser(data.user);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const logout = () => {
+    logoutUser();
+    setUser(null);
+  };
+
+  useEffect(() => {
+    // optional: auto-login from saved token
+    const token = localStorage.getItem("token");
+    if (token) {
+      // fetch user info if backend supports it
+      setUser({ name: "Restored User" });
+    }
+  }, []);
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -79,7 +103,7 @@ function App() {
 
   const handleLoginSubmit = (email, password) => {
     closeActiveModal();
-    // find existing_id in backend
+    login(currentUser);
   };
 
   const handleRegisterSubmit = (email, Password, name, imageUrl) => {
@@ -91,7 +115,7 @@ function App() {
     setActiveModal("signup");
   };
 
-  const onSignInCLick = () => {
+  const onSignInClick = () => {
     setActiveModal("signin");
   };
 
@@ -169,7 +193,7 @@ const handleCardLike = ({ id, isLiked }) => {
   }, []);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -178,7 +202,7 @@ const handleCardLike = ({ id, isLiked }) => {
             <Header
               onAddBtnClick={onAddBtnClick}
               weatherData={weatherData}
-              onSignInClick={onSignInCLick}
+              onSignInClick={onSignInClick}
               onSignUpClick={onSignUpClick} 
             />
 
@@ -221,6 +245,7 @@ const handleCardLike = ({ id, isLiked }) => {
                     isOpen={activeModal === "signup"}
                     onRegisterSubmit={handleRegisterSubmit}
                     handleRegistration={handleRegistration}
+                    onSignInClick={onSignInClick}
                   />
                 }
               />

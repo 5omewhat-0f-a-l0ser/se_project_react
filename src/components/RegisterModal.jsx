@@ -10,7 +10,8 @@ function RegisterModal({
   closeModal,
   isOpen,
   onRegisterSubmit,
-  handleRegistration
+  handleRegistration,
+  onSignInClick
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,7 +55,7 @@ function RegisterModal({
   };
 
   const handlePasswordChange = (e) => {
-    setImageUrl(e.target.value);
+    setPassword(e.target.value);
   };
 
   const handleRegisterSubmit = (e) => {
@@ -123,6 +124,13 @@ function RegisterModal({
           value={imageUrl}
         />
       </label>
+      <div className="modal__signup_container"> 
+        <p>or</p>
+        <button className="modal__login-btn" 
+        type="button"
+        onClick={onSignInClick}>Log In</button>
+      </div>
+
     </ModalWithForm>
   );
 }
