@@ -153,10 +153,18 @@
 
 /* Login Modal styles*/
 .modal__container_type_login{
-  width: 440px;
+  max-width: 80%;
   border-style: none;
+}
+.modal__signin_container{
+  color: #00000080;
 }
 
 
 
+
 /* Register Modal styles*/
+.modal__register-btn{
+  border-style: none;
+  color: #00000080;
+}

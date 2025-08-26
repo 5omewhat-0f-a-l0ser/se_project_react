@@ -10,6 +10,7 @@ function LoginModal({
   closeModal,
   isOpen,
   onLoginSubmit,
+  onSignUpClick
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,8 +45,9 @@ function LoginModal({
       closeModal={closeModal}
       onSubmit={handleLoginSubmit}
       isOpen={isOpen}
+      
     >
-      <div className="modal__container modal__container-type-login">
+      <div className="modal__container modal__container_type_login">
       <label htmlFor="signin-email" className="modal__label">
         Email{" "}
         <input
@@ -72,7 +74,14 @@ function LoginModal({
         />
       </label>
       </div>
-      <button className="modal__register">Register</button>
+      <div className="modal__signin_container"> 
+        <p>or</p>
+        <button className="modal__register-btn" 
+        type="button"
+        onClick={onSignUpClick}>Register</button>
+      </div>
+
+     
     </ModalWithForm>
   );
 }

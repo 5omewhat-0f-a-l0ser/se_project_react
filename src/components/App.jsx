@@ -179,6 +179,7 @@ const handleCardLike = ({ id, isLiked }) => {
               onAddBtnClick={onAddBtnClick}
               weatherData={weatherData}
               onSignInClick={onSignInCLick}
+              onSignUpClick={onSignUpClick} 
             />
 
             <Routes>
@@ -269,8 +270,5 @@ const handleCardLike = ({ id, isLiked }) => {
     </CurrentUserContext.Provider>
   );
 }
-
-
-// Had to ask ChatGPT for guidance here after I had a recent grad help and Dot's help too, Google didn't help one bit XD
 
 export default App;

@@ -9,7 +9,7 @@ import ToggleSwitch from "./ToggleSwitch";
 import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.png";
 
-function Header({ onAddBtnClick, weatherData, currentUser}) {
+function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSignUpClick}) {
   const today = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -45,8 +45,22 @@ function Header({ onAddBtnClick, weatherData, currentUser}) {
           <img src={avatar} alt={userContext.currentUser?.name} className="header__avatar" />
         </div>
       </Link>
-      <a href="/signin">Sign In</a>
-      <a href="/signup">Sign Up</a>
+      <Link to="/signup">
+        <div className="header__link_signup">
+          <button
+          onClick={onSignUpClick}
+          type="button"
+          className="header__signup-btn">Sign Up</button>
+        </div>
+      </Link>
+      <Link to="/signin">
+        <div className="header__link_signin">
+          <button
+          onClick={onSignInClick}
+          type="button"
+          className="header__signin-btn">Log In</button>
+        </div>
+      </Link>
     </header>
   );
 }
