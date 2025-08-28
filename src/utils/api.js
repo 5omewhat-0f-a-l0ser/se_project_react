@@ -44,27 +44,49 @@ function deleteItems(id, token) {
 }
 
 //Login and Logout calls
-const loginUser = async(email, password) => {
-  const res = await fetch(`${baseUrl}/signin`, {
+const loginUser = async (email, password) => {
+  const res = await fetch("http://localhost:3001/signin", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  })
-  
+    body: JSON.stringify({ email, password }), // MUST match backend
+  });
+
   if (!res.ok) {
-    throw new Error("Login failed");
+    const errorData = await res.json();
+    throw new Error(errorData.message || "Login failed");
   }
 
-  return res.json( {token, user }); 
+  return await res.json(); // contains { token }
 };
 
 
-const logoutUser = async () => {
-  // If backend has logout endpoint:
-  // await fetch(`${BASE_URL}/logout`, { method: "POST" });
+//register calls
+const registerUser = async (name, email, password, avatar) => {
+  const res = await fetch(`${baseUrl}/signup`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, password, avatar: imageUrl}),
+  });
+  if (!res.ok) throw new Error("Registration failed");
+  return res.json();
+};
 
-  // Usually just remove token on frontend
-  localStorage.removeItem("token");
-};// Add cardLike and remove card like here
+//edit profile
+function updateUserProfile(name, avatar){
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then((res) => {
+    if (!res.ok) {
+      return Promise.reject(`Error: ${res.status}`);
+    }
+    return res.json();
+  });
+}
 
-export { getItems, addItems, deleteItems, handleServerResponse, loginUser, logoutUser };
+
+export { getItems, addItems, deleteItems, handleServerResponse, loginUser, registerUser, updateUserProfile };

@@ -12,6 +12,7 @@ import AddItemModal from "../components/AddItemModal";
 import RegisterModal from "../components/RegisterModal";
 import LoginModal from "../components/LoginModal";
 
+
 import ProtectedRoute from "../components/ProtectedRoute";
 
 import Profile from "../components/Profile";
@@ -21,9 +22,9 @@ import { coords, APIKey } from "../utils/constants";
 import { defaultClothingItems } from "../utils/constants";
 
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
-import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
+import { CurrentUserContext, logoutUser } from "../contexts/CurrentUserContext.js";
 
-import { addItems, deleteItems, getItems, loginUser, logoutUser  } from "../utils/api";
+import { addItems, deleteItems, getItems, loginUser, registerUser, updateUserProfile } from "../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -34,6 +35,8 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState();
   const [currentUser, setCurrentUser] = useState({});
+  const [updatedUser, setUpdatedUser] = useState({});
+  const [user, setUser] = useState({});
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
@@ -45,36 +48,6 @@ function App() {
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
-  };
-
-  //using the lessons for this part, still struggling to remember the steps
-  const handleRegistration = ({
-    name,
-    email,
-    password
-  }) => {
-    if (password) {
-      auth.register(name, password, email)
-       .then(() => {
-         navigate("/profile");
-        })
-        .catch(console.error);
-    }
-  };
-
-  const login = async (email, password) => {
-    try {
-      const data = await loginUser(email, password);
-      localStorage.setItem("token", data.token); // store JWT
-      setUser(data.user);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const logout = () => {
-    logoutUser();
-    setUser(null);
   };
 
   useEffect(() => {
@@ -103,13 +76,38 @@ function App() {
 
   const handleLoginSubmit = (email, password) => {
     closeActiveModal();
-    login(currentUser);
+    loginUser(email, password);
+    setUser({ name: {user}, avatar: "avatar_url.png" });
+    navigate("/"); 
+  };
+  
+ const handleRegisterSubmit = async (name, email, password, imageUrl) => {
+    try {
+      await registerUser(name, email, password, imageUrl);
+      const userData = await loginUser(email, password);
+
+      localStorage.setItem("token", userData.token);
+      setCurrentUser(userData.user);
+
+      closeActiveModal();
+      navigate("/");
+    } catch (err) {
+      console.error("Registration failed:", err);
+    }
   };
 
-  const handleRegisterSubmit = (email, Password, name, imageUrl) => {
-    closeActiveModal();
-    //make a call to api to register, i.e make a function
-  };
+  const handleUpdateUser = (userData) => {
+    api.updateUserProfile(userData)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser); // update context/state
+      })
+      .catch((err) => console.error("Failed to update user:", err));
+  }
+
+  const onLogoutClick = () => {
+    localStorage.removeItem("token");  
+    logoutUser();  
+  }
 
   const onSignUpClick = () => {
     setActiveModal("signup");
@@ -204,6 +202,7 @@ const handleCardLike = ({ id, isLiked }) => {
               weatherData={weatherData}
               onSignInClick={onSignInClick}
               onSignUpClick={onSignUpClick} 
+              onLogoutClick={onLogoutClick}
             />
 
             <Routes>
@@ -229,6 +228,9 @@ const handleCardLike = ({ id, isLiked }) => {
                     onItemCardClick={onItemCardClick}
                     onAddBtnClick={onAddBtnClick}
                     onCardLike={handleCardLike}
+                    onUpdateUser={handleUpdateUser}
+                    closeModal={closeActiveModal}
+                    onLogoutClick={onLogoutClick}
                   />
                   </ProtectedRoute>
                 }
@@ -244,7 +246,6 @@ const handleCardLike = ({ id, isLiked }) => {
                     closeModal={closeActiveModal}
                     isOpen={activeModal === "signup"}
                     onRegisterSubmit={handleRegisterSubmit}
-                    handleRegistration={handleRegistration}
                     onSignInClick={onSignInClick}
                   />
                 }
@@ -290,6 +291,7 @@ const handleCardLike = ({ id, isLiked }) => {
             deleteCard={deleteCard}
             onCardLike={handleCardLike}
           />
+          
           </div>
       </CurrentTemperatureUnitContext.Provider>
     </CurrentUserContext.Provider>

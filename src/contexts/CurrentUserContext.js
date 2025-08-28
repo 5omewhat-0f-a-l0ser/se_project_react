@@ -2,4 +2,12 @@ import React, { useState, useEffect } from "react";
 
 const CurrentUserContext = React.createContext();
 
-export { CurrentUserContext };
+const logoutUser = async () => {
+  // If backend has logout endpoint:
+  // await fetch(`${BASE_URL}/logout`, { method: "POST" });
+
+  // Usually just remove token on frontend
+  localStorage.removeItem("token");
+};// Add cardLike and remove card like here
+
+export { CurrentUserContext, logoutUser };

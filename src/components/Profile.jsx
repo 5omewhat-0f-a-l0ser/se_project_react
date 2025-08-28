@@ -3,11 +3,14 @@ import Sidebar from "./Sidebar";
 
 import "../blocks/profile.css";
 
-function Profile({ onItemCardClick, clothingItems, onAddBtnClick, onCardLike }) {
+function Profile({ onItemCardClick, clothingItems, onAddBtnClick, onCardLike, onUpdateUser, closModal }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <Sidebar />
+        <Sidebar
+         onUpdateUser={onUpdateUser}
+         closeModal={closeModal}
+      />
       </section>
       <section className="profile__closet">
         <ClothesSection

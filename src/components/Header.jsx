@@ -9,7 +9,7 @@ import ToggleSwitch from "./ToggleSwitch";
 import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.png";
 
-function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSignUpClick}) {
+function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSignUpClick, onLogoutClick}) {
   const today = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -20,15 +20,6 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
   const isLoggedIn = !!currentUser;
 
   const [user, setUser] = useState(null);
-
-  const handleLogin = () => {
-    // Example: set logged-in user
-    setUser({ name: {user}, avatar: "avatar_url.png" });
-  };
-
-  const handleLogout = () => {
-    setUser(null);
-  };
 
   return (
     <header className="header">

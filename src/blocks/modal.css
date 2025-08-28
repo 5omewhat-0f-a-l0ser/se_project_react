@@ -158,12 +158,12 @@
 }
 .modal__signin_container{
   color: #00000080;
+  display: flex;
 }
 
 .modal__submit_type_login{
   height: 36px;
   width: 73px;
-  display: flex;
 }
 
 .modal__login-btn{
