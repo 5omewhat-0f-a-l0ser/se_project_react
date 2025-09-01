@@ -1,6 +1,6 @@
 import "../blocks/itemcard.css";
 
-function ItemCard({ item, onCardClick, onCardLike }) {
+function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
   const handleItemCLick = () => {
     onCardClick(item);
   };
@@ -15,8 +15,10 @@ function ItemCard({ item, onCardClick, onCardLike }) {
     <li className="card">
         <h2 className="card__name">{item.name}</h2>
         <img
-          onClick={handleItemCLick}
-          onCardLike={onCardLike}
+            onClick={(e) => {
+             handleItemCLick(e); // first action
+              onCardLike(e);       // second action
+            }}
           className="card__img"
           src={item.imageUrl}
           alt={item.name}

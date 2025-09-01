@@ -91,7 +91,8 @@ function App() {
   const handleLoginSubmit = (email, password) => {
     closeActiveModal();
     loginUser(email, password);
-    setUser({ name: { user }, avatar: "avatar_url.png" });
+    setUser({ name: { user }, avatar: { avatar }});
+    setIsLoggedIn(true);
     navigate("/");
   };
 
@@ -106,6 +107,7 @@ function App() {
 
     localStorage.setItem("token", userData.token);
     setCurrentUser(userData);
+    setIsLoggedIn(true);
 
     closeActiveModal();
     navigate("/");
@@ -235,6 +237,7 @@ function App() {
                       onItemCardClick={onItemCardClick}
                       clothingItems={clothingItems}
                       onCardLike={handleCardLike}
+                      currentUser={currentUser} 
                     />
                   </ProtectedRoute>
                 }
