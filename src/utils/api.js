@@ -65,7 +65,7 @@ const registerUser = async (name, email, password, avatar) => {
   const res = await fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, password, avatar: imageUrl}),
+    body: JSON.stringify({ name, email, password, avatar}),
   });
   if (!res.ok) throw new Error("Registration failed");
   return res.json();

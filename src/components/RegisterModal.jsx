@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import ModalWithForm from "./ModalForm";
 import { use } from "react";
 
+import { registerUser } from "../utils/api"
+
 function RegisterModal({
   buttonText,
   title,
@@ -16,7 +18,7 @@ function RegisterModal({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
 
 
@@ -24,7 +26,7 @@ function RegisterModal({
     const isEmailValid = email.length >= 2 && email.includes("@");
     const isPasswordValid = password.length >= 2 && password.length <= 30;
     const isNameValid = name.length >= 2 && name.length <= 30;
-    const isImageValid = imageUrl.length > 0;
+    const isImageValid = avatar.length > 0;
     setIsFormValid(
       isEmailValid && isPasswordValid && isNameValid && isImageValid
     );
@@ -34,12 +36,12 @@ function RegisterModal({
     setEmail("");
     setPassword("");
     setName("");
-    setImageUrl("");
+    setAvatar("");
   }, [isOpen]);
 
    useEffect(() => {
     validateForm();
-  }, [email, password, name, imageUrl]);
+  }, [email, password, name, avatar]);
 
 
     const handleNameChange = (e) => {
@@ -47,7 +49,7 @@ function RegisterModal({
   };
 
   const handleUrlChange = (e) => {
-    setImageUrl(e.target.value);
+    setAvatar(e.target.value);
   };
 
   const handleEmailChange = (e) => {
@@ -58,10 +60,15 @@ function RegisterModal({
     setPassword(e.target.value);
   };
 
-  const handleRegisterSubmit = (e) => {
-    e.preventDefault();
-    onRegisterSubmit(email, password, name, imageUrl);
+ const handleRegisterSubmit = (e) => {
+  e.preventDefault();
+   const finalAvatar = avatar.trim() !== "" 
+    ? avatar 
+    : `https://via.placeholder.com/150?text=${encodeURIComponent(name.charAt(0).toUpperCase())}`;
+
+  onRegisterSubmit({ name, email, password, avatar: finalAvatar});
   };
+
 
 
   return (
@@ -80,6 +87,7 @@ function RegisterModal({
           type="email"
           className="modal__input"
           id="signup-email"
+          name="email"
           placeholder="Email"
           required
           minLength="1"
@@ -94,6 +102,7 @@ function RegisterModal({
           type="password"
           className="modal__input"
           id="signup-password"
+          name="password"
           placeholder="Password"
           onChange={handlePasswordChange}
           value={password}
@@ -106,6 +115,7 @@ function RegisterModal({
           className="modal__input"
           id="signup-name"
           placeholder="Name"
+          name="name"
           required
           minLength="1"
           maxLength="30"
@@ -113,15 +123,16 @@ function RegisterModal({
           value={name}
         />
       </label>
-      <label htmlFor="signup-imageUrl" className="modal__label">
+      <label htmlFor="signup-avatar" className="modal__label">
         Avatar URL{" "}
         <input
           type="url"
           className="modal__input"
-          id="signup-imageUrl"
-          placeholder="Image Url"
+          id="signup-avatar"
+          name="avatar"
+          placeholder="Avatar URL"
           onChange={handleUrlChange}
-          value={imageUrl}
+          value={avatar}
         />
       </label>
       <div className="modal__signup_container"> 
