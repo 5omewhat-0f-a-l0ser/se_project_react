@@ -225,21 +225,21 @@ function App() {
               onSignInClick={onSignInClick}
               onSignUpClick={onSignUpClick}
               onLogoutClick={onLogoutClick}
+               isLoggedIn={isLoggedIn}
             />
 
             <Routes>
               <Route
                 path="/"
                 element={
-                  <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Main
                       weatherData={weatherData}
                       onItemCardClick={onItemCardClick}
                       clothingItems={clothingItems}
                       onCardLike={handleCardLike}
                       currentUser={currentUser} 
+                     
                     />
-                  </ProtectedRoute>
                 }
               />
               <Route

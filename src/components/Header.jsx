@@ -9,7 +9,7 @@ import ToggleSwitch from "./ToggleSwitch";
 import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.png";
 
-function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSignUpClick, onLogoutClick}) {
+function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSignUpClick, onLogoutClick, isLoggedIn}) {
   const today = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -17,7 +17,6 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
 
   const userContext = useContext(CurrentUserContext);
   
-  const isLoggedIn = !!currentUser;
 
   const [user, setUser] = useState(null);
 
