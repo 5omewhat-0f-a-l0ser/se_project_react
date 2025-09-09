@@ -59,6 +59,12 @@ const loginUser = async (email, password) => {
   return await res.json(); // contains { token }
 };
 
+const logoutUser = () => {
+  // Just remove the token from localStorage
+  localStorage.removeItem("token");
+  return Promise.resolve(); // keep API consistent (returns a promise)
+};
+
 
 //register calls
 const registerUser = async (name, email, password, avatar) => {
@@ -89,4 +95,4 @@ function updateUserProfile(name, avatar){
 }
 
 
-export { getItems, addItems, deleteItems, handleServerResponse, loginUser, registerUser, updateUserProfile };
+export { getItems, addItems, deleteItems, handleServerResponse, loginUser, registerUser, updateUserProfile, logoutUser };

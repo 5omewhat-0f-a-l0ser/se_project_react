@@ -24,8 +24,7 @@ import { defaultClothingItems } from "../utils/constants";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
 
 import {
-  CurrentUserContext,
-  logoutUser,
+  CurrentUserContext
 } from "../contexts/CurrentUserContext.js";
 
 import {
@@ -35,6 +34,7 @@ import {
   loginUser,
   registerUser,
   updateUserProfile,
+  logoutUser
 } from "../utils/api";
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -127,8 +127,13 @@ function App() {
   };
 
   const onLogoutClick = () => {
-    localStorage.removeItem("token");
-    logoutUser();
+    logoutUser(localStorage.getItem("token"))
+    .then(() => {
+      setCurrentUser({});
+      setIsLoggedIn(false);
+      navigate("/signin"); // redirect to login
+    })
+    .catch((err) => console.error("Logout failed:", err));
   };
 
   const onSignUpClick = () => {
