@@ -65,6 +65,10 @@
    border: none;
 }
 
+.header__logout-btn{
+  border-style: none;
+  background-color: transparent;
+}
 
 .header__link:hover {
   color:#00000099;
