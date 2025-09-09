@@ -15,7 +15,6 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
     day: "numeric",
   });
 
-  const userContext = useContext(CurrentUserContext);
   
 
   const [user, setUser] = useState(null);
@@ -48,11 +47,11 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
           <Link to="/profile" className="header__link">
             <div className="header__user-container">
               <p className="header__username">
-                <span>{currentUser.name}</span>
+                <span>{currentUser?.name}</span>
               </p>
               <img
-                src={currentUser.avatar || avatar}
-                alt={currentUser.name}
+                src={currentUser?.avatar || avatar}
+                alt={currentUser?.name}
                 className="header__avatar"
               />
             </div>
