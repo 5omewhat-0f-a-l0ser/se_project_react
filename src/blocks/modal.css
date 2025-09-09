@@ -161,11 +161,6 @@
   display: flex;
 }
 
-.modal__submit_type_login{
-  height: 36px;
-  width: 73px;
-}
-
 .modal__login-btn{
   border-style: none;
   color: #00000080;
@@ -183,10 +178,5 @@
 
 .modal__signup_container{
   color: #00000080;
-  display: flex;
-}
-.modal__submit_type_register{
-  height: 36px;
-  width: 73px;
   display: flex;
 }
