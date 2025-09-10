@@ -3,6 +3,10 @@ import { useContext } from "react";
 
 import EditModal from "../components/EditModal";
 
+import {
+  CurrentUserContext
+} from "../contexts/CurrentUserContext.js";
+
 import "../blocks/sidebar.css";
 
 function Sidebar({ onUpdateUser, closeModal, onLogoutClick}) {

@@ -1,6 +1,5 @@
 export const baseUrl = "http://localhost:3001";
 
-const token = localStorage.getItem("jwt");
 
 function handleServerResponse(res) {
   if (res.ok) {
@@ -22,7 +21,8 @@ function getItems() {
     // });
 }
 
-function addItems({ name = "", imageUrl = "", weather = "" }, token) {
+function addItems({ name = "", imageUrl = "", weather = "" }) {
+  const token = localStorage.getItem("token");
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -79,7 +79,7 @@ const registerUser = async (name, email, password, avatar) => {
 
 //edit profile
 function updateUserProfile(name, avatar){
-  return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

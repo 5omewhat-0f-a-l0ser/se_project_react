@@ -12,6 +12,7 @@ import ItemModal from "../components/ItemModal";
 import AddItemModal from "../components/AddItemModal";
 import RegisterModal from "../components/RegisterModal";
 import LoginModal from "../components/LoginModal";
+import EditModal from "../components/EditModal";
 
 import ProtectedRoute from "../components/ProtectedRoute";
 
@@ -36,6 +37,7 @@ import {
   updateUserProfile,
   logoutUser
 } from "../utils/api";
+import { existingToken } from "../utils/auth.js";
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "hot",
@@ -50,7 +52,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
-  const [user, setUser] = useState({});
+
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
@@ -69,7 +71,7 @@ function App() {
     const token = localStorage.getItem("token");
     if (token) {
       // fetch user info if backend supports it
-      setUser({ name: "Restored User" });
+      setCurrentUser({ name: "Restored User" });
     }
   }, []);
 
@@ -90,10 +92,18 @@ function App() {
 
   const handleLoginSubmit = (email, password) => {
     closeActiveModal();
-    loginUser(email, password);
-    setUser({ name: { user }, avatar: { avatar }});
-    setIsLoggedIn(true);
-    navigate("/");
+    loginUser(email, password)
+      .then((res) => {
+        localStorage.setItem("token", res.token)
+        existingToken(res.token)
+          .then((data) => {
+            setCurrentUser(data);
+           setIsLoggedIn(true);
+            navigate("/");
+          })
+        
+      })
+    
   };
 
   const handleRegisterSubmit = async ({ name, email, password, avatar }) => {
@@ -118,8 +128,7 @@ function App() {
 
 
   const handleUpdateUser = (userData) => {
-    api
-      .updateUserProfile(userData)
+    updateUserProfile(userData)
       .then((updatedUser) => {
         setCurrentUser(updatedUser); // update context/state
       })
@@ -135,6 +144,10 @@ function App() {
     })
     .catch((err) => console.error("Logout failed:", err));
   };
+
+  const onUpdateClick =() => {
+    setActiveModal("update");
+  }
 
   const onSignUpClick = () => {
     setActiveModal("signup");
@@ -227,6 +240,7 @@ function App() {
             <Header
               onAddBtnClick={onAddBtnClick}
               weatherData={weatherData}
+              currentUser={currentUser}
               onSignInClick={onSignInClick}
               onSignUpClick={onSignUpClick}
               onLogoutClick={onLogoutClick}
@@ -256,9 +270,10 @@ function App() {
                       onItemCardClick={onItemCardClick}
                       onAddBtnClick={onAddBtnClick}
                       onCardLike={handleCardLike}
-                      onUpdateUser={handleUpdateUser}
+                      onUpdateUser={onUpdateClick}
                       closeModal={closeActiveModal}
                       onLogoutClick={onLogoutClick}
+
                     />
                   </ProtectedRoute>
                 }
@@ -318,6 +333,14 @@ function App() {
             isOpen={activeModal === "preview"}
             deleteCard={deleteCard}
             onCardLike={handleCardLike}
+          />
+          <EditModal
+            activeModal={activeModal}
+            closeModal={closeActiveModal}
+            buttonText={"Edit Profile"}
+            title={"Edit Profile"}
+            isOpen={activeModal === "update"}
+            onUpdateSubmit={handleUpdateUser}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

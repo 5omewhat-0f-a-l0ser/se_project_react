@@ -15,10 +15,6 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
     day: "numeric",
   });
 
-  
-
-  const [user, setUser] = useState(null);
-
   return (
     <header className="header">
       <Link to="/">
@@ -56,15 +52,6 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
               />
             </div>
           </Link>
-
-          {/* Log Out */}
-          <button
-            onClick={onLogoutClick}
-            type="button"
-            className="header__logout-btn"
-          >
-            Log Out
-          </button>
         </>
       ) : (
         <>

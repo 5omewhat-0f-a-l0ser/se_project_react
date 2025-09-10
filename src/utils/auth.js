@@ -1,7 +1,7 @@
-import { handleServerResponse } from "./api";
+import { baseUrl, handleServerResponse } from "./api";
 
 export const signup = ({ email, password }) => {
-  return fetch(`${baseURL}/signup`, {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export const signup = ({ email, password }) => {
 // };
 
 export const signin = ({ email, password }) => {
-  return fetch(`${baseURL}/signin`, {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const signin = ({ email, password }) => {
 };
 
 export const existingToken = (token) => {
-  return fetch(`${baseURL}/users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export const existingToken = (token) => {
 };
 
 export const register = (name, password, email) => {
-  return fetch(`${BASE_URL}/users/register`, {
+  return fetch(`${baseUrl}/users/register`, {
     method: "POST",
     headers: {
       Accept: "application/json",

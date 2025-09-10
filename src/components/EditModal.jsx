@@ -3,10 +3,11 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 import ModalWithForm from "./ModalForm";
 
-function EditModal() {
-   const currentUser = useContext(CurrentUserContext);
+function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdateSubmit}) {
+  const currentUser = useContext(CurrentUserContext);
 
   const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
     if (currentUser) {
@@ -16,6 +17,7 @@ function EditModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onUpdateSubmit();
   };
   return (
     <ModalWithForm
