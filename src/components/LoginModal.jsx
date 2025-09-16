@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, } from "react";
+import { useNavigate } from "react-router-dom";
 
 import ModalWithForm from "./ModalForm";
 import { use } from "react";
@@ -14,6 +15,8 @@ function LoginModal({
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setEmail("");
@@ -78,7 +81,7 @@ function LoginModal({
         <p>or</p>
         <button className="modal__register-btn" 
         type="button"
-        onClick={onSignUpClick}>Register</button>
+        onClick={() => navigate("/signup")}>Register</button>
       </div>
 
      

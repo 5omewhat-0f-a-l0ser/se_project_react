@@ -97,16 +97,21 @@ function updateUserProfile(name, avatar){
 //likes
 function addCardLike(id, token){
   return fetch(`${baseUrl}/items`, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
   })
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
-            );
-          })
-          .catch((err) => console.log(err))
+  .then(handleServerResponse);
 }
 
-export { getItems, addItems, deleteItems, handleServerResponse, loginUser, registerUser, updateUserProfile, logoutUser };
+function removeCardLike(id, token) {
+  return fetch(`${baseUrl}/items`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then(handleServerResponse);
+}
+export { getItems, addItems, deleteItems, handleServerResponse, loginUser, registerUser, updateUserProfile, logoutUser, addCardLike, removeCardLike };

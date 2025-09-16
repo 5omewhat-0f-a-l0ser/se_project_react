@@ -286,10 +286,10 @@ function App() {
                     buttonText={"Register"}
                     title={"Register"}
                     activeModal={activeModal}
-                    closeModal={closeActiveModal}
+                    closeModal={() => navigate("/")} 
                     isOpen={activeModal === "signup"}
                     onRegisterSubmit={handleRegisterSubmit}
-                    onSignInClick={onSignInClick}
+                    onSignInClick={() => navigate("/signin")}
                   />
                 }
               />
@@ -300,10 +300,10 @@ function App() {
                     buttonText={"Login"}
                     title={"Login"}
                     activeModal={activeModal}
-                    closeModal={closeActiveModal}
+                    closeModal={() => navigate("/")} 
                     isOpen={activeModal === "signin"}
                     onLoginSubmit={handleLoginSubmit}
-                    onSignUpClick={onSignUpClick}
+                     onSignUpClick={() => navigate("/signup")}
                   />
                 }
               />
@@ -337,7 +337,7 @@ function App() {
           <EditModal
             activeModal={activeModal}
             closeModal={closeActiveModal}
-            buttonText={"Edit Profile"}
+            buttonText={"Save Changes"}
             title={"Edit Profile"}
             isOpen={activeModal === "update"}
             onUpdateSubmit={handleUpdateUser}

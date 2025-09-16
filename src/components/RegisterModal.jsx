@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import ModalWithForm from "./ModalForm";
 import { use } from "react";
 
@@ -20,6 +22,8 @@ function RegisterModal({
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+
+  const navigate = useNavigate();
 
 
   const validateForm = () => {
@@ -139,7 +143,7 @@ function RegisterModal({
         <p>or</p>
         <button className="modal__login-btn" 
         type="button"
-        onClick={onSignInClick}>Log In</button>
+        onClick={() => navigate("/signin")}>Log In</button>
       </div>
 
     </ModalWithForm>

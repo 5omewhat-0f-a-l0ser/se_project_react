@@ -34,7 +34,7 @@ function ModalWithForm({
           {children}
           <button
            type="submit" 
-           className="modal__submit modal__submit_type_login modal__submit_type_register">
+           className="modal__submit modal__submit_type_login modal__submit_type_register modal__submit_type_edit">
             {buttonText}
           </button>
         </form>
