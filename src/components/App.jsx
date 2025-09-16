@@ -35,7 +35,9 @@ import {
   loginUser,
   registerUser,
   updateUserProfile,
-  logoutUser
+  logoutUser,
+  addCardLike,
+  removeCardLike
 } from "../utils/api";
 import { existingToken } from "../utils/auth.js";
 function App() {
@@ -94,15 +96,15 @@ function App() {
     closeActiveModal();
     loginUser(email, password)
       .then((res) => {
-        localStorage.setItem("token", res.token)
+        localStorage.setItem("jwt", res.token)
         existingToken(res.token)
           .then((data) => {
             setCurrentUser(data);
            setIsLoggedIn(true);
             navigate("/");
           })
-        
       })
+      .catch(console.error);
     
   };
 
@@ -157,7 +159,7 @@ function App() {
     setActiveModal("signin");
   };
 
-  const onItemCardClick = (card) => {
+  const onItemCardClick = (card, _id, token) => {
     setActiveModal("preview");
     setSelectedCard(card);
   };
@@ -167,7 +169,7 @@ function App() {
   };
 
   const deleteCard = () => {
-    deleteItems(selectedCard._id)
+    deleteItems(selectedCard._id, token)
       .then(() => {
         console.log(selectedCard._id);
         setClothingItem(
@@ -185,30 +187,29 @@ function App() {
   };
 
   //Likes
-  const handleCardLike = ({ id, isLiked }) => {
+  const handleCardLike = ({ _id, isLiked }) => {
     const token = localStorage.getItem("jwt");
-    // Check if this card is not currently liked
+    
     !isLiked
-      ? // if so, send a request to add the user's id to the card's likes array
-        api
-          // the first argument is the card's id
-          .addCardLike(id, token)
+      ? 
+        addCardLike(_id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === _id ? updatedCard : item))
             );
           })
           .catch((err) => console.log(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-        api
-          // the first argument is the card's id
-          .removeCardLike(id, token)
+      :
+        removeCardLike(_id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === _id ? updatedCard : item))
             );
           })
           .catch((err) => console.log(err));
+
+        console.log('Token being sent:', token);
+        console.log('ID being sent:', _id);
   };
 
   //api//
