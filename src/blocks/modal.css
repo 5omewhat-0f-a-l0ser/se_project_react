@@ -159,12 +159,19 @@
 .modal__signin_container{
   color: #00000080;
   display: flex;
+  position: absolute;
+  top: 264px;
+  right: 301px;
 }
 
 .modal__login-btn{
   border-style: none;
   color: #00000080;
   background-color: transparent;
+}
+
+.modal__submit_type_login{
+  width: 128px;
 }
 
 
@@ -179,4 +186,11 @@
 .modal__signup_container{
   color: #00000080;
   display: flex;
+  position: absolute;
+  top: 380px;
+  right: 323px;
+}
+
+.modal__container_type_register{
+  width: 128px;
 }

@@ -41,6 +41,9 @@
 .header__username {
   margin: 0;
 }
+.header__avatar{
+  width: 40px;
+}
 
 .header__link {
   color:#000;

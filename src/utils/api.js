@@ -94,5 +94,19 @@ function updateUserProfile(name, avatar){
   });
 }
 
+//likes
+function addCardLike(id, token){
+  return fetch(`${baseUrl}/items`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+}
 
 export { getItems, addItems, deleteItems, handleServerResponse, loginUser, registerUser, updateUserProfile, logoutUser };
