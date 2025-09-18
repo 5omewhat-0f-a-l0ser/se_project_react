@@ -58,7 +58,7 @@ function App() {
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
-  const [clothingItems, setClothingItem] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 

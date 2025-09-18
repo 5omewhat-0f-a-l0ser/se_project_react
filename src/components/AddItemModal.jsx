@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import ModalWithForm from "../components/ModalForm";
-import { use } from "react";
 
 function AddItemModal({
   buttonText,
