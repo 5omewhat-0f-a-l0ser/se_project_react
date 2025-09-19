@@ -182,10 +182,6 @@ function App() {
       .catch(console.error);
   };
 
-  const submitFormBtn = () => {
-    closeActiveModal();
-  };
-
   //Likes
   const handleCardLike = ({ _id, isLiked }) => {
     const token = localStorage.getItem("jwt");
@@ -304,7 +300,7 @@ function App() {
                     closeModal={() => navigate("/")} 
                     isOpen={activeModal === "signin"}
                     onLoginSubmit={handleLoginSubmit}
-                     onSignUpClick={() => navigate("/signup")}
+                    onSignUpClick={() => navigate("/signup")}
                   />
                 }
               />
@@ -323,7 +319,6 @@ function App() {
             title={"New Garmnet"}
             activeModal={activeModal}
             closeModal={closeActiveModal}
-            submit={submitFormBtn}
             isOpen={activeModal === "add-garment"}
             onAddSubmit={handleAddSubmit}
           />
