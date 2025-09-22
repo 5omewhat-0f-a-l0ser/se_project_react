@@ -86,14 +86,14 @@ function App() {
   const handleAddSubmit = (name, imageUrl, weather) => {
     addItems({ name, imageUrl, weather }, token)
       .then((newItem) => {
-        setClothingItem([newItem, ...clothingItems]);
+        setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
       })
       .catch(console.error);
   };
 
   const handleLoginSubmit = (email, password) => {
-    closeActiveModal();
+    
     loginUser(email, password)
       .then((res) => {
         localStorage.setItem("jwt", res.token)
@@ -103,6 +103,7 @@ function App() {
            setIsLoggedIn(true);
             navigate("/");
           })
+          closeActiveModal();
       })
       .catch(console.error);
     
@@ -115,9 +116,12 @@ function App() {
       return;
     }
 
-    const userData = await registerUser(name, email, password, avatar);
+    await registerUser(name, email, password, avatar);
 
-    localStorage.setItem("token", userData.token);
+    const loginRes = await loginUser(email, password);
+    localStorage.setItem("jwt", loginRes.token);
+    
+    const userData = await existingToken(loginRes.token);
     setCurrentUser(userData);
     setIsLoggedIn(true);
 
@@ -129,13 +133,14 @@ function App() {
 };
 
 
-  const handleUpdateUser = (userData) => {
-    updateUserProfile(userData)
-      .then((updatedUser) => {
-        setCurrentUser(updatedUser); // update context/state
-      })
-      .catch((err) => console.error("Failed to update user:", err));
-  };
+ const handleUpdateUser = (userData) => {
+  updateUserProfile(userData.name, userData.avatar)
+    .then((updatedUser) => {
+      setCurrentUser(updatedUser);
+      closeActiveModal();
+    })
+    .catch((err) => console.error("Failed to update user:", err));
+};
 
   const onLogoutClick = () => {
     logoutUser(localStorage.getItem("token"))
@@ -172,7 +177,7 @@ function App() {
     deleteItems(selectedCard._id, token)
       .then(() => {
         console.log(selectedCard._id);
-        setClothingItem(
+        setClothingItems(
           clothingItems.filter((item) => {
             return item._id !== selectedCard._id;
           }),
@@ -204,8 +209,8 @@ function App() {
           })
           .catch((err) => console.log(err));
 
-        console.log('Token being sent:', token);
-        console.log('ID being sent:', _id);
+        // console.log('Token being sent:', token);
+        // console.log('ID being sent:', _id);
   };
 
   //api//
@@ -222,7 +227,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((items) => {
-        setClothingItem(items.reverse());
+        setClothingItems(items.reverse());
       })
       .catch(console.error);
   }, []);

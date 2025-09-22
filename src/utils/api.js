@@ -78,14 +78,14 @@ const registerUser = async (name, email, password, avatar) => {
 };
 
 //edit profile
-function updateUserProfile(name, avatar){
+function updateUserProfile(userData) {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
-    body: JSON.stringify({ name, avatar }),
+    body: JSON.stringify(userData), // userData should be {name, avatar}
   }).then((res) => {
     if (!res.ok) {
       return Promise.reject(`Error: ${res.status}`);

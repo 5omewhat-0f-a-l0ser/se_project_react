@@ -11,7 +11,7 @@ function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
   const isLiked = likes.some((_id) => _id === currentUser?._id);
 
   // Create a variable which you then set in `className` for the like button
-  const itemLikeButtonClassName = `...`;
+  const itemLikeButton = isLiked ? "card__like card__like_liked" : "card__like";
  
  
   return (
@@ -24,12 +24,14 @@ function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
           onClick={(e) =>{handleItemCLick(e)}}
         />
         <button
-        className="card__like"
+          className={itemLikeButton}
           onClick={(e) => {
-            e.stopPropagation(); // Prevent the click from bubbling up
-            onCardLike({ _id: item._id, isLiked }); // Only handle the like
-              }}>like</button>
-    </li>
+            e.stopPropagation();
+            onCardLike({ _id: item._id, isLiked });
+          }}
+        >
+        </button>
+  </li>
   );
 }
 

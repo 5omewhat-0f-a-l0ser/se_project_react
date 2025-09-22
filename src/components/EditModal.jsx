@@ -33,6 +33,7 @@ function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdate
         <input
           type="text"
           value={name || ""}
+          placeholder=""
           onChange={(e) => setName(e.target.value)}
         />
       </label>
@@ -41,6 +42,7 @@ function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdate
         <input
           type="url"
           value={avatar || ""}
+          placeholder=""
           onChange={(e) => setAvatar(e.target.value)}
         />
       </label>
