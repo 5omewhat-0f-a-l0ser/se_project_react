@@ -1,7 +1,8 @@
 import "../blocks/itemcard.css";
 
 function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
-  console.log("Image URL:", item.imageUrl);
+
+
   
   const handleItemCLick = () => {
     onCardClick(item);
@@ -12,7 +13,7 @@ function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
 
   // Create a variable which you then set in `className` for the like button
   const itemLikeButton = isLiked ? "card__like card__like_liked" : "card__like";
- 
+ const itemLikeButtonLoggedIn = isLiked ? "card__like card__like_logout" : "card__like";
  
   return (
     <li className="card">
@@ -24,7 +25,7 @@ function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
           onClick={(e) =>{handleItemCLick(e)}}
         />
         <button
-          className={itemLikeButton}
+          className={itemLikeButtonLoggedIn}
           onClick={(e) => {
             e.stopPropagation();
             onCardLike({ _id: item._id, isLiked });

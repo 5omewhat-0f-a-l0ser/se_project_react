@@ -7,7 +7,7 @@ import ItemCard from "../components/ItemCard";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext.js";
 
 
-function Main({ weatherData, onItemCardClick, clothingItems, onCardLike, currentUser }) {
+function Main({ weatherData, onItemCardClick, clothingItems, onCardLike, currentUser, isLoggedIn }) {
 
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -20,6 +20,7 @@ function Main({ weatherData, onItemCardClick, clothingItems, onCardLike, current
           weatherData.temp.C} &deg;  {currentTemperatureUnit} / You may want to wear:
         </p>
       </section>
+      {isLoggedIn ? (
       <ul className="cards__list">
         {clothingItems
           .filter((item) => {
@@ -36,7 +37,24 @@ function Main({ weatherData, onItemCardClick, clothingItems, onCardLike, current
               />
             );
           })}
+      </ul>) :(
+        <ul className="cards__list">
+        {clothingItems
+          .filter((item) => {
+            return item.weather === weatherData?.type;
+          })
+          .map((item) => {
+            return (
+              <ItemCard
+                key={item._id}
+                item={item}
+                onCardClick={onItemCardClick}
+                currentUser={currentUser} 
+              />
+            );
+          })}
       </ul>
+    )}
     </main>
   );
 }

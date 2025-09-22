@@ -45,4 +45,10 @@
 .card__like_liked{
   background: transparent;
   background-image: url("../images/Like_checked.svg");
+  width: 20px;
+  height: 17px;
+}
+
+.card__like_logout{
+  visibility: hidden;
 }

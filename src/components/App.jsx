@@ -259,7 +259,7 @@ function App() {
                       clothingItems={clothingItems}
                       onCardLike={handleCardLike}
                       currentUser={currentUser} 
-                     
+                      isLoggedIn={isLoggedIn}
                     />
                 }
               />
