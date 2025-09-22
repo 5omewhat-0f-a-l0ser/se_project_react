@@ -34,6 +34,7 @@ function Main({ weatherData, onItemCardClick, clothingItems, onCardLike, current
                 onCardClick={onItemCardClick}
                 onCardLike={onCardLike}
                 currentUser={currentUser} 
+                isLoggedIn={isLoggedIn}
               />
             );
           })}

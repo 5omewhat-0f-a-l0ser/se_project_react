@@ -1,6 +1,6 @@
 import "../blocks/itemcard.css";
 
-function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
+function ItemCard({ item, onCardClick, onCardLike, currentUser, isLoggedIn }) {
 
 
   
@@ -24,14 +24,15 @@ function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
           alt={item.name}
           onClick={(e) =>{handleItemCLick(e)}}
         />
+      {isLoggedIn &&
         <button
-          className={itemLikeButtonLoggedIn}
+          className={itemLikeButton}
           onClick={(e) => {
             e.stopPropagation();
             onCardLike({ _id: item._id, isLiked });
           }}
         >
-        </button>
+        </button>}
   </li>
   );
 }
