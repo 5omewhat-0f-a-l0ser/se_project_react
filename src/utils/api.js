@@ -45,36 +45,29 @@ function deleteItems(_id, token) {
 
 //Login and Logout calls
 const loginUser = async (email, password) => {
-  const res = await fetch("http://localhost:3001/signin", {
+  return await fetch("http://localhost:3001/signin", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }), // MUST match backend
-  });
-
-  if (!res.ok) {
-    const errorData = await res.json();
-    throw new Error(errorData.message || "Login failed");
-  }
-
-  return await res.json(); // contains { token }
+  })
+ .then(handleServerResponse);
 };
 
-const logoutUser = () => {
+const logoutUser = (token) => {
   // Just remove the token from localStorage
-  localStorage.removeItem("token");
+  localStorage.removeItem(token);
   return Promise.resolve(); // keep API consistent (returns a promise)
 };
 
 
 //register calls
 const registerUser = async (name, email, password, avatar) => {
-  const res = await fetch(`${baseUrl}/signup`, {
+  return await fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email, password, avatar}),
-  });
-  if (!res.ok) throw new Error("Registration failed");
-  return res.json();
+  })
+  .then(handleServerResponse);
 };
 
 //edit profile
@@ -86,12 +79,8 @@ function updateUserProfile(userData) {
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     body: JSON.stringify(userData), // userData should be {name, avatar}
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-    return res.json();
-  });
+  }).
+  then(handleServerResponse);
 }
 
 //likes

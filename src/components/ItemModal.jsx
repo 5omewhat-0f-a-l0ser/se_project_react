@@ -1,12 +1,17 @@
 import "../blocks/modal.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 function ItemModal({ activeModal, card, closeModal, isOpen, deleteCard }) {
-  const [selectedCard, setSelectedCard] = useState();
-  const [currentUser, setCurrentUser] = useState({});
+   const { currentUser } = useContext(CurrentUserContext);
+  const isOwn = card?.owner === currentUser?._id;
 
-  const isOwn = selectedCard?.owner === currentUser?._id
+  console.log("card:", card);
+  console.log("card.owner:", card?.owner);
+  console.log("currentUser:", currentUser);
+  console.log("currentUser._id:", currentUser?._id);
+  console.log("isOwn result:", card?.owner === currentUser?._id);
+
   return (
     <div className={`modal  ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__container modal__container_type_img">
@@ -20,10 +25,10 @@ function ItemModal({ activeModal, card, closeModal, isOpen, deleteCard }) {
           <h2 className="modal__caption">{card?.name}</h2>
           <p className="modal__weather">Weather: {card?.weather}</p>
         </div>
-        {isOwn && (
-        <button onClick={deleteCard} className="modal__delete">
-          Delete Item
-        </button>
+        {currentUser && isOwn && (
+          <button onClick={deleteCard} className="modal__delete">
+            Delete Item
+          </button>
         )}
       </div>
     </div>

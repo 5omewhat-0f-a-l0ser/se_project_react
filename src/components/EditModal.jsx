@@ -12,6 +12,7 @@ function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdate
   useEffect(() => {
     if (currentUser) {
       setName(currentUser.name);
+      setAvatar(currentUser.avatar);
     }
   }, [currentUser]);
 
@@ -29,20 +30,20 @@ function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdate
       isOpen={isOpen}
     >
       <label htmlFor="update-user" className="modal__label">
-        Name{" "}
+        Name*{" "}
         <input
+          className="modal__input"
           type="text"
           value={name || ""}
-          placeholder=""
           onChange={(e) => setName(e.target.value)}
         />
       </label>
       <label htmlFor="update-imageUrl" className="modal__label">
         Avatar URL{" "}
         <input
+          className="modal__input"
           type="url"
           value={avatar || ""}
-          placeholder=""
           onChange={(e) => setAvatar(e.target.value)}
         />
       </label>

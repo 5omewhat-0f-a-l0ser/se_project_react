@@ -321,7 +321,7 @@ function App() {
           </div>
           <AddItemModal
             buttonText={"Add Garment"}
-            title={"New Garmnet"}
+            title={"New Garment"}
             activeModal={activeModal}
             closeModal={closeActiveModal}
             isOpen={activeModal === "add-garment"}

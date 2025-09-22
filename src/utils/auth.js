@@ -48,9 +48,7 @@ export const register = (name, password, email) => {
     },
     body: JSON.stringify({ name, password, email }),
   })
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-    })
+    .then(handleServerResponse);
 };
 
 // Add logic for editProfile
