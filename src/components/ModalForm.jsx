@@ -11,8 +11,11 @@ function ModalWithForm({
   escClose,
   onSubmit,
   isOpen,
+  isFormValid
 }) {
-
+  
+  const validSubmitButtonClass = `modal__submit ${!isFormValid ? 'modal__submit_disabled' : ''}`;
+  console.log("isFormValid in button:", isFormValid);
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__container">
@@ -28,13 +31,9 @@ function ModalWithForm({
           {children}
           <button
            type="submit" 
-           // disabled={isDisabled}
-           className="modal__submit 
-              modal__submit_type_login 
-              modal__submit_type_register 
-              modal__submit_type_edit 
-              "
-              >
+           disabled={!isFormValid}
+           className={validSubmitButtonClass}
+            >
             {buttonText}
           </button>
         </form>

@@ -11,7 +11,7 @@ function LoginModal({
   isOpen,
   onLoginSubmit,
   onSignUpClick,
-  isSubmitting
+  isSubmitting,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,19 +19,19 @@ function LoginModal({
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setEmail("");
-    setPassword("");
-  }, [isOpen]);
-
-   const validateForm = () => {
-    const isEmailValid = email.length >= 2 && email.includes("@");
-    const isPasswordValid = password.length >= 2 && password.length <= 30;
-    setIsFormValid(
-      isEmailValid && isPasswordValid
-    );
+  const validateLogInForm = () => {
+    const emailTrimmed = email.trim();
+    const passwordTrimmed = password.trim();
+    const isValid = emailTrimmed.length > 0 && passwordTrimmed.length > 0 && emailTrimmed.includes("@");
+    setIsFormValid(isValid);
+    console.log("Email:", emailTrimmed);
+    console.log("Password:", passwordTrimmed);
+    console.log("Is form valid:", isValid);
   };
-
+  
+  useEffect(() => {
+    validateLogInForm();
+  }, [email, password]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -56,6 +56,7 @@ function LoginModal({
       onSubmit={handleLoginSubmit}
       isOpen={isOpen}
       isSubmitting={isSubmitting}
+      isFormValid={isFormValid}
     >
       <div className="modal__container modal__container_type_login">
       <label htmlFor="signin-email" className="modal__label">

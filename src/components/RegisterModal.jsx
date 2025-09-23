@@ -27,25 +27,22 @@ function RegisterModal({
   const navigate = useNavigate();
 
 
-  const validateForm = () => {
-    const isEmailValid = email.length >= 2 && email.includes("@");
-    const isPasswordValid = password.length >= 2 && password.length <= 30;
-    const isNameValid = name.length >= 2 && name.length <= 30;
-    const isImageValid = avatar.length > 0;
-    setIsFormValid(
-      isEmailValid && isPasswordValid && isNameValid && isImageValid
-    );
-  };
+ const validateRegisterForm = () => {
+  const isEmailValid = email.trim().length >= 2 && email.includes("@");
+  const isPasswordValid = password.length >= 2 && password.length <= 30;
+  const isNameValid = name.trim().length >= 2 && name.trim().length <= 30;
+  const isAvatarValid = avatar.trim().length > 0;
+  setIsFormValid(
+    isEmailValid && isPasswordValid && isNameValid && isAvatarValid
+  );
+};
 
   useEffect(() => {
-    setEmail("");
-    setPassword("");
-    setName("");
-    setAvatar("");
-  }, [isOpen]);
+    validateRegisterForm();
+  }, [email, password, name, avatar]);
 
    useEffect(() => {
-    validateForm();
+    validateRegisterForm();
   }, [email, password, name, avatar]);
 
 
@@ -85,6 +82,7 @@ function RegisterModal({
       handleRegistration={handleRegistration}
       isOpen={isOpen}
       isSubmitting={isSubmitting}
+      isFormValid={isFormValid}
     >
       <label htmlFor="signup-email" className="modal__label">
         Email{" "}

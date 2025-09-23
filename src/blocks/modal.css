@@ -113,10 +113,12 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
+  white-space: nowrap;
 }
 
-modal__submit_type_disabled {
+.modal__submit_disabled {
   background-color: #0000004D;
+  color: #FFF;
 }
 
 .modal__submit:hover {
@@ -148,7 +150,7 @@ modal__submit_type_disabled {
   color: #FF4D00;
   width: 101px;
   height: 24px;
-  top: 541px;
+  top: 513px;
   left: 353px;
   background-color: transparent;
   border: none;

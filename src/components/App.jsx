@@ -62,6 +62,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const navigate = useNavigate();
 
@@ -303,6 +304,7 @@ function App() {
             isOpen={activeModal === "add-garment"}
             onAddSubmit={handleAddSubmit}
             isSubmitting={isSubmitting}
+           
           />
           <ItemModal
             activeModal={activeModal}
@@ -330,6 +332,7 @@ function App() {
               onLoginSubmit={handleLoginSubmit}
               onSignUpClick={onSignUpClick}
               isSubmitting={isSubmitting}
+             
           />
             <RegisterModal
               onSignUpClick={onSignUpClick}
@@ -341,6 +344,7 @@ function App() {
               onRegisterSubmit={handleRegisterSubmit}
               onSignInClick={onSignInClick}
               isSubmitting={isSubmitting}
+              
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
