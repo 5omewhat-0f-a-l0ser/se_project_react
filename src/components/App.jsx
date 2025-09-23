@@ -342,6 +342,7 @@ function App() {
             title={"Edit Profile"}
             isOpen={activeModal === "update"}
             onUpdateSubmit={handleUpdateUser}
+            currentUser={currentUser} 
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

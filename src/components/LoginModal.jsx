@@ -37,6 +37,8 @@ function LoginModal({
   };
 
   // Validation bits
+
+   const isFormValid = email.trim() !== "" && password.trim() !== "";
   
 
   return (
@@ -47,7 +49,7 @@ function LoginModal({
       closeModal={closeModal}
       onSubmit={handleLoginSubmit}
       isOpen={isOpen}
-      
+      isDisabled={!isFormValid}
     >
       <div className="modal__container modal__container_type_login">
       <label htmlFor="signin-email" className="modal__label">

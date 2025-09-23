@@ -103,12 +103,16 @@
   border: none;
   border-radius: 4px;
   padding: 8px 16px;
-  width: 100%; /* Adjust as needed */
+  width: 124px; /* Adjust as needed */
   box-sizing: border-box; /* Ensures padding is included in total width */
   text-align: center; /* Centers the text */
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
+}
+
+modal__submit_type_disabled {
+  background-color: #0000004D;
 }
 
 .modal__submit:hover {

@@ -3,8 +3,8 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 import ModalWithForm from "./ModalForm";
 
-function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdateSubmit}) {
-  const currentUser = useContext(CurrentUserContext);
+function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdateSubmit, currentUser}) {
+  // const currentUser = useContext(CurrentUserContext);
 
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -14,12 +14,13 @@ function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdate
       setName(currentUser.name);
       setAvatar(currentUser.avatar);
     }
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    onUpdateSubmit();
+  e.preventDefault();
+  onUpdateSubmit({ name, avatar });
   };
+
   return (
     <ModalWithForm
       activeModal={activeModal}

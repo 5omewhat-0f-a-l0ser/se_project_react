@@ -10,7 +10,8 @@ function ModalWithForm({
   closeModal,
   escClose,
   onSubmit,
-  isOpen
+  isOpen,
+  isDisabled = false
 }) {
 
   
@@ -34,7 +35,13 @@ function ModalWithForm({
           {children}
           <button
            type="submit" 
-           className="modal__submit modal__submit_type_login modal__submit_type_register modal__submit_type_edit">
+           disabled={isDisabled}
+           className={`modal__submit 
+              modal__submit_type_login 
+              modal__submit_type_register 
+              modal__submit_type_edit 
+              ${isDisabled ? "modal__submit_type_disabled" : ""}`}
+              >
             {buttonText}
           </button>
         </form>
