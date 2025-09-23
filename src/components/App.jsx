@@ -291,7 +291,7 @@ function App() {
                     closeModal={() => navigate("/")} 
                     isOpen={activeModal === "signup"}
                     onRegisterSubmit={handleRegisterSubmit}
-                    onSignInClick={() => navigate("/signin")}
+                    onSignInClick={onSignInClick}
                   />
                 }
               />
@@ -305,7 +305,7 @@ function App() {
                     closeModal={() => navigate("/")} 
                     isOpen={activeModal === "signin"}
                     onLoginSubmit={handleLoginSubmit}
-                    onSignUpClick={() => navigate("/signup")}
+                    onSignUpClick={onSignUpClick}
                   />
                 }
               />

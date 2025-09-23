@@ -33,7 +33,8 @@
 
 .card__like{
   position: absolute;
-  right: 20px;
+  right: 86px;
+  top: 38px;
   background: transparent;
   background-image: url("../images/Like_unchecked.svg");
   background-size: cover;

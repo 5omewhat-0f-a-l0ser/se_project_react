@@ -68,8 +68,7 @@ function RegisterModal({
   e.preventDefault();
    const finalAvatar = avatar.trim() !== "" 
     ? avatar 
-    : `https://via.placeholder.com/150?text=${encodeURIComponent(name.charAt(0).toUpperCase())}`;
-
+    : `https://i.pinimg.com/736x/85/83/05/8583056ec38aff65961650a9673f1fa0.jpg`
   onRegisterSubmit({ name, email, password, avatar: finalAvatar});
   };
 
@@ -143,7 +142,7 @@ function RegisterModal({
         <p>or</p>
         <button className="modal__login-btn" 
         type="button"
-        onClick={() => navigate("/signin")}>Log In</button>
+        onClick={onSignInClick}>Log In</button>
       </div>
 
     </ModalWithForm>

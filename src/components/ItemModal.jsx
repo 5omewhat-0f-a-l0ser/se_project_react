@@ -6,12 +6,6 @@ function ItemModal({ activeModal, card, closeModal, isOpen, deleteCard }) {
    const { currentUser } = useContext(CurrentUserContext);
   const isOwn = card?.owner === currentUser?._id;
 
-  console.log("card:", card);
-  console.log("card.owner:", card?.owner);
-  console.log("currentUser:", currentUser);
-  console.log("currentUser._id:", currentUser?._id);
-  console.log("isOwn result:", card?.owner === currentUser?._id);
-
   return (
     <div className={`modal  ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__container modal__container_type_img">

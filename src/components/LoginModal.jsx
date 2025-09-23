@@ -2,7 +2,6 @@ import { useEffect, useState, } from "react";
 import { useNavigate } from "react-router-dom";
 
 import ModalWithForm from "./ModalForm";
-import { use } from "react";
 
 function LoginModal({
   buttonText,
@@ -81,7 +80,7 @@ function LoginModal({
         <p>or</p>
         <button className="modal__register-btn" 
         type="button"
-        onClick={() => navigate("/signup")}>Register</button>
+        onClick={onSignUpClick}>Register</button>
       </div>
 
      

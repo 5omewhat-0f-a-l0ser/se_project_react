@@ -3,22 +3,26 @@ import { useContext } from "react";
 
 import EditModal from "../components/EditModal";
 
-import {
-  CurrentUserContext
-} from "../contexts/CurrentUserContext.js";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 import "../blocks/sidebar.css";
 
 function Sidebar({ onUpdateUser, closeModal, onLogoutClick}) {
-    const currentUser = useContext(CurrentUserContext);
+    const {currentUser} = useContext(CurrentUserContext);
+    console.log("Sidebar currentUser.name:", currentUser?.name); 
+    console.log("Sidebar currentUser.avatar:", currentUser?.avatar);
     return (
         <div className="sidebar">
-            <img 
-              src={currentUser?.avatar || avatar}
-              alt={currentUser?.name || "Default User"}
+          <span className="sidebar__user">
+            <img
+              src={currentUser?.avatar || `https://i.pinimg.com/736x/85/83/05/8583056ec38aff65961650a9673f1fa0.jpg`}
+              alt={currentUser?.name || "User avatar"}
               className="sidebar__img"
             />
-            <p className="sidebar__username">{currentUser?.name || "Default User"}</p>
+            <p className="sidebar__username">
+              {currentUser?.name || "Default User"}
+            </p>
+          </span>
         <span className="sidebar__btns">
         <button
           className="sidebar__edit-btn"
