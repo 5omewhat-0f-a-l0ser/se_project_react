@@ -107,6 +107,7 @@ function RegisterModal({
           id="signup-password"
           name="password"
           placeholder="Password"
+          required
           onChange={handlePasswordChange}
           value={password}
         />

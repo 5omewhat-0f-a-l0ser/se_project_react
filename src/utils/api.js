@@ -21,13 +21,12 @@ function getItems() {
     // });
 }
 
-function addItems({ name = "", imageUrl = "", weather = "" }) {
-  const token = localStorage.getItem("jwt");
+function addItems({ name = "", imageUrl = "", weather = "" }, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,  // Also capitalized the "A"
     },
     body: JSON.stringify({ name, imageUrl, weather }),
   }).then(handleServerResponse);
@@ -38,7 +37,7 @@ function deleteItems(_id, token) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
 }
@@ -89,7 +88,7 @@ function addCardLike(_id, token){
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     },
   })
   .then(handleServerResponse);
@@ -101,7 +100,7 @@ function removeCardLike(_id, token) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     },
   })
   .then(handleServerResponse);

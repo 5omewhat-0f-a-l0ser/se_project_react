@@ -22,6 +22,14 @@ function LoginModal({
     setPassword("");
   }, [isOpen]);
 
+   const validateForm = () => {
+    const isEmailValid = email.length >= 2 && email.includes("@");
+    const isPasswordValid = password.length >= 2 && password.length <= 30;
+    setIsFormValid(
+      isEmailValid && isPasswordValid && isNameValid && isImageValid
+    );
+  };
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -73,6 +81,7 @@ function LoginModal({
           className="modal__input"
           id="signin-password"
           placeholder="Password"
+          required
           onChange={handlePasswordChange}
           value={password}
         />

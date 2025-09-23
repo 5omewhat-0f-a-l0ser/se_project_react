@@ -56,7 +56,6 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
       ) : (
         <>
           {/* Sign Up */}
-          <Link to="/signup">
             <div className="header__link_signup">
               <button
                 onClick={onSignUpClick}
@@ -66,10 +65,8 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
                 Sign Up
               </button>
             </div>
-          </Link>
 
           {/* Log In */}
-          <Link to="/signin">
             <div className="header__link_signin">
               <button
                 onClick={onSignInClick}
@@ -79,7 +76,6 @@ function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSign
                 Log In
               </button>
             </div>
-          </Link>
         </>
       )}
     </header>

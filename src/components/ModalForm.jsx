@@ -40,7 +40,7 @@ function ModalWithForm({
               modal__submit_type_login 
               modal__submit_type_register 
               modal__submit_type_edit 
-              ${isDisabled ? "modal__submit_type_disabled" : ""}`}
+              ${isDisabled ? "modal__submit_type_disabled" : "modal__submit"}`}
               >
             {buttonText}
           </button>

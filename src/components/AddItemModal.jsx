@@ -14,6 +14,8 @@ function AddItemModal({
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
 
+  const isFormValid = name.trim() !== "" && imageUrl.trim() !== "" && weather !== "";
+
   useEffect(() => {
     setName("");
     setImageUrl("");
@@ -47,6 +49,7 @@ function AddItemModal({
       closeModal={closeModal}
       onSubmit={handleSubmit}
       isOpen={isOpen}
+      isDisabled={isFormValid}
     >
       <label htmlFor="name" className="modal__label">
         Name{" "}
@@ -69,6 +72,7 @@ function AddItemModal({
           className="modal__input"
           id="imageUrl"
           placeholder="Image Url"
+          required
           onChange={handleUrlChange}
           value={imageUrl}
         />

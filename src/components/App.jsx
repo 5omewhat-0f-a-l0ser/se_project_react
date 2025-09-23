@@ -84,6 +84,8 @@ function App() {
   const token = localStorage.getItem("jwt");
 
   const handleAddSubmit = (name, imageUrl, weather) => {
+     console.log("Token being sent:", token);
+     console.log("Is logged in:", isLoggedIn);
     addItems({ name, imageUrl, weather }, token)
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
@@ -134,7 +136,8 @@ function App() {
 
 
  const handleUpdateUser = (userData) => {
-  updateUserProfile(userData.name, userData.avatar)
+   console.log("Sending this data:", userData);
+  updateUserProfile(userData)
     .then((updatedUser) => {
       setCurrentUser(updatedUser);
       closeActiveModal();
@@ -281,35 +284,6 @@ function App() {
                 }
               />
               <Route
-                path="/signup"
-                element={
-                  <RegisterModal
-                    onSignUpClick={onSignUpClick}
-                    buttonText={"Register"}
-                    title={"Register"}
-                    activeModal={activeModal}
-                    closeModal={() => navigate("/")} 
-                    isOpen={activeModal === "signup"}
-                    onRegisterSubmit={handleRegisterSubmit}
-                    onSignInClick={onSignInClick}
-                  />
-                }
-              />
-              <Route
-                path="/signin"
-                element={
-                  <LoginModal
-                    buttonText={"Login"}
-                    title={"Login"}
-                    activeModal={activeModal}
-                    closeModal={() => navigate("/")} 
-                    isOpen={activeModal === "signin"}
-                    onLoginSubmit={handleLoginSubmit}
-                    onSignUpClick={onSignUpClick}
-                  />
-                }
-              />
-              <Route
                 path="*"
                 element={
                   isLoggedIn ? <Navigate to="/profile" /> : <Navigate to="/" />
@@ -343,6 +317,25 @@ function App() {
             isOpen={activeModal === "update"}
             onUpdateSubmit={handleUpdateUser}
             currentUser={currentUser} 
+          />
+          <LoginModal
+              buttonText={"Login"}
+              title={"Login"}
+              activeModal={activeModal}
+              closeModal={() => navigate("/")} 
+              isOpen={activeModal === "signin"}
+              onLoginSubmit={handleLoginSubmit}
+              onSignUpClick={onSignUpClick}
+          />
+            <RegisterModal
+              onSignUpClick={onSignUpClick}
+              buttonText={"Register"}
+              title={"Register"}
+              activeModal={activeModal}
+              closeModal={() => navigate("/")} 
+              isOpen={activeModal === "signup"}
+              onRegisterSubmit={handleRegisterSubmit}
+              onSignInClick={onSignInClick}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
