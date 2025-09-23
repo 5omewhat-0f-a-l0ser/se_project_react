@@ -9,12 +9,11 @@ function AddItemModal({
   closeModal,
   isOpen,
   onAddSubmit,
+  isSubmitting
 }) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
-
-  const isFormValid = name.trim() !== "" && imageUrl.trim() !== "" && weather !== "";
 
   useEffect(() => {
     setName("");
@@ -49,7 +48,7 @@ function AddItemModal({
       closeModal={closeModal}
       onSubmit={handleSubmit}
       isOpen={isOpen}
-      isDisabled={isFormValid}
+      isSubmitting={isSubmitting}
     >
       <label htmlFor="name" className="modal__label">
         Name{" "}

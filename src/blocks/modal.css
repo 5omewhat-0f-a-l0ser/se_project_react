@@ -26,13 +26,17 @@
 }
 
 .modal__footer {
-  padding: 20px 32px 32px;
+  padding: 0 32px;
 }
 
 .modal__form {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.modal__footer_container {
+  display: flex;
 }
 
 .modal__title {
@@ -135,7 +139,8 @@ modal__submit_type_disabled {
 }
 
 .modal__img {
-  max-width: 498px;
+  width: 498px;
+  height: 498px ;
 }
 
 .modal__delete {

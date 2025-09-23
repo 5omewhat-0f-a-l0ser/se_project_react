@@ -11,14 +11,7 @@ function ModalWithForm({
   escClose,
   onSubmit,
   isOpen,
-  isDisabled = false
 }) {
-
-  
-  const handleSubmit = (evt) => {
-    preventDefault(evt);
-    console.log("image added:", imageSrc);
-  };
 
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
@@ -35,12 +28,12 @@ function ModalWithForm({
           {children}
           <button
            type="submit" 
-           disabled={isDisabled}
-           className={`modal__submit 
+           // disabled={isDisabled}
+           className="modal__submit 
               modal__submit_type_login 
               modal__submit_type_register 
               modal__submit_type_edit 
-              ${isDisabled ? "modal__submit_type_disabled" : "modal__submit"}`}
+              "
               >
             {buttonText}
           </button>

@@ -61,6 +61,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
 
@@ -84,11 +85,10 @@ function App() {
   const token = localStorage.getItem("jwt");
 
   const handleAddSubmit = (name, imageUrl, weather) => {
-     console.log("Token being sent:", token);
-     console.log("Is logged in:", isLoggedIn);
     addItems({ name, imageUrl, weather }, token)
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
+        setIsSubmitting(true);
         closeActiveModal();
       })
       .catch(console.error);
@@ -104,6 +104,7 @@ function App() {
             setCurrentUser(data);
            setIsLoggedIn(true);
             navigate("/");
+            setIsSubmitting(true);
           })
           closeActiveModal();
       })
@@ -126,6 +127,7 @@ function App() {
     const userData = await existingToken(loginRes.token);
     setCurrentUser(userData);
     setIsLoggedIn(true);
+    setIsSubmitting(true);
 
     closeActiveModal();
     navigate("/");
@@ -300,6 +302,7 @@ function App() {
             closeModal={closeActiveModal}
             isOpen={activeModal === "add-garment"}
             onAddSubmit={handleAddSubmit}
+            isSubmitting={isSubmitting}
           />
           <ItemModal
             activeModal={activeModal}
@@ -326,6 +329,7 @@ function App() {
               isOpen={activeModal === "signin"}
               onLoginSubmit={handleLoginSubmit}
               onSignUpClick={onSignUpClick}
+              isSubmitting={isSubmitting}
           />
             <RegisterModal
               onSignUpClick={onSignUpClick}
@@ -336,6 +340,7 @@ function App() {
               isOpen={activeModal === "signup"}
               onRegisterSubmit={handleRegisterSubmit}
               onSignInClick={onSignInClick}
+              isSubmitting={isSubmitting}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

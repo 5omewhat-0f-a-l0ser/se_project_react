@@ -15,7 +15,8 @@ function RegisterModal({
   isOpen,
   onRegisterSubmit,
   handleRegistration,
-  onSignInClick
+  onSignInClick,
+  isSubmitting
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -83,6 +84,7 @@ function RegisterModal({
       onSubmit={handleRegisterSubmit}
       handleRegistration={handleRegistration}
       isOpen={isOpen}
+      isSubmitting={isSubmitting}
     >
       <label htmlFor="signup-email" className="modal__label">
         Email{" "}

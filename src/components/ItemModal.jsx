@@ -15,6 +15,7 @@ function ItemModal({ activeModal, card, closeModal, isOpen, deleteCard }) {
           className="modal__close"
         ></button>
         <img src={card?.imageUrl} alt={card?.name} className="modal__img" />
+        <span className="modal__footer_container">
         <div className="modal__footer">
           <h2 className="modal__caption">{card?.name}</h2>
           <p className="modal__weather">Weather: {card?.weather}</p>
@@ -24,6 +25,7 @@ function ItemModal({ activeModal, card, closeModal, isOpen, deleteCard }) {
             Delete Item
           </button>
         )}
+        </span>
       </div>
     </div>
   );

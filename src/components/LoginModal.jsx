@@ -10,10 +10,12 @@ function LoginModal({
   closeModal,
   isOpen,
   onLoginSubmit,
-  onSignUpClick
+  onSignUpClick,
+  isSubmitting
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ function LoginModal({
     const isEmailValid = email.length >= 2 && email.includes("@");
     const isPasswordValid = password.length >= 2 && password.length <= 30;
     setIsFormValid(
-      isEmailValid && isPasswordValid && isNameValid && isImageValid
+      isEmailValid && isPasswordValid
     );
   };
 
@@ -43,10 +45,6 @@ function LoginModal({
     e.preventDefault();
     onLoginSubmit(email, password);
   };
-
-  // Validation bits
-
-   const isFormValid = email.trim() !== "" && password.trim() !== "";
   
 
   return (
@@ -57,7 +55,7 @@ function LoginModal({
       closeModal={closeModal}
       onSubmit={handleLoginSubmit}
       isOpen={isOpen}
-      isDisabled={!isFormValid}
+      isSubmitting={isSubmitting}
     >
       <div className="modal__container modal__container_type_login">
       <label htmlFor="signin-email" className="modal__label">
