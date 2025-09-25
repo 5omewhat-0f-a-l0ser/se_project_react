@@ -17,14 +17,9 @@ function ItemCard({ item, onCardClick, onCardLike, currentUser, isLoggedIn }) {
  
   return (
     <li className="card">
+      <span className="card__name_container">
         <h2 className="card__name">{item.name}</h2>
-        <img
-          className="card__img"
-          src={item.imageUrl}
-          alt={item.name}
-          onClick={(e) =>{handleItemCLick(e)}}
-        />
-      {isLoggedIn &&
+        {isLoggedIn &&
         <button
           className={itemLikeButton}
           onClick={(e) => {
@@ -33,6 +28,14 @@ function ItemCard({ item, onCardClick, onCardLike, currentUser, isLoggedIn }) {
           }}
         >
         </button>}
+        </span>
+        <img
+          className="card__img"
+          src={item.imageUrl}
+          alt={item.name}
+          onClick={(e) =>{handleItemCLick(e)}}
+        />
+      
   </li>
   );
 }

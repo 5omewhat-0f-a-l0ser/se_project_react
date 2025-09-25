@@ -10,11 +10,29 @@ function AddItemModal({
   isOpen,
   onAddSubmit,
   isSubmitting,
+  isSubmissionComplete
 }) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+
+  const resetForm = () => {
+    setName("");
+    setImageUrl("");
+    setWeather("");
+  };
+
+  useEffect(() => {
+    if (!isOpen) {
+      resetForm();
+    }
+  }, [isOpen])
+  useEffect(() => {
+  if (isSubmissionComplete) {
+    resetForm();
+  }
+}, [isSubmissionComplete])
 
   const validateAdditionForm = () => {
     const isNameValid = name.trim().length >= 2;
@@ -31,7 +49,6 @@ function AddItemModal({
 
   const handleNameChange = (e) => {
     setName(e.target.value);
-    //console.log(name);
   };
 
   const handleUrlChange = (e) => {

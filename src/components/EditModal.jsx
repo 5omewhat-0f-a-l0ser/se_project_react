@@ -3,18 +3,29 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 import ModalWithForm from "./ModalForm";
 
-function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdateSubmit, currentUser}) {
+function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdateSubmit, currentUser, isSubmitting}) {
   // const currentUser = useContext(CurrentUserContext);
 
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
 
-  useEffect(() => {
-    if (currentUser) {
-      setName(currentUser.name);
-      setAvatar(currentUser.avatar);
-    }
-  }, [currentUser, isOpen]);
+ const validateEditForm = () => {
+  const isNameValid = name && name.trim().length >= 2 && name.trim().length <= 30;
+  const isAvatarValid = avatar && avatar.trim().length > 0;
+  setIsFormValid(isNameValid && isAvatarValid);
+};
+
+ useEffect(() => {
+  if (currentUser && isOpen) {
+    setName(currentUser.name || "");
+    setAvatar(currentUser.avatar || "");
+  }
+}, [currentUser, isOpen]);
+
+useEffect(() => {
+  validateEditForm();
+}, [name, avatar]);
 
   const handleSubmit = (e) => {
   e.preventDefault();
@@ -29,6 +40,8 @@ function EditModal({activeModal, closeModal, isOpen, buttonText, title, onUpdate
       closeModal={closeModal}
       onSubmit={handleSubmit}
       isOpen={isOpen}
+      isSubmitting={isSubmitting}
+      isFormValid={isFormValid}
     >
       <label htmlFor="update-user" className="modal__label">
         Name*{" "}

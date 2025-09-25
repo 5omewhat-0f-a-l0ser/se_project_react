@@ -3,7 +3,9 @@ import Sidebar from "./Sidebar";
 
 import "../blocks/profile.css";
 
-function Profile({ onItemCardClick, clothingItems, onAddBtnClick, onCardLike, onUpdateUser, closeModal, onLogoutClick }) {
+function Profile({ onItemCardClick, clothingItems, onAddBtnClick, onCardLike, onUpdateUser, closeModal, onLogoutClick, currentUser, isLoggedIn }) {
+  const userItems = clothingItems.filter(item => item.owner === currentUser._id);
+  
   return (
     <div className="profile">
       <section className="profile__sidebar">
@@ -17,9 +19,10 @@ function Profile({ onItemCardClick, clothingItems, onAddBtnClick, onCardLike, on
       <section className="profile__closet">
         <ClothesSection
           onItemCardClick={onItemCardClick}
-          clothingItems={clothingItems}
+          clothingItems={userItems}
           onAddBtnClick={onAddBtnClick}
           onCardLike={onCardLike}
+          isLoggedIn={isLoggedIn}
         />
       </section>
     </div>

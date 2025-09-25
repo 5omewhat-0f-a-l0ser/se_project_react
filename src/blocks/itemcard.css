@@ -4,7 +4,7 @@
   width: 323px;
   height: 326px;
   position: relative;
-  gap: 20px;
+  /*gap: 20px; had to comment this out due to my display adding 20 extra pixels, which caused my cards to pop out of their borders... Yeah, weird*/
 
   display: flex; /* Enables flexbox */
   flex-direction: column; /* Stacks children (image + title) */
@@ -13,6 +13,11 @@
 
 .card:hover {
   cursor: pointer;
+}
+
+.card__name_container {
+  display: flex;
+  justify-content: center;
 }
 
 .card__name {
@@ -33,8 +38,8 @@
 
 .card__like{
   position: absolute;
-  right: 86px;
   top: 38px;
+  margin-left: 130px;
   background: transparent;
   background-image: url("../images/Like_unchecked.svg");
   background-size: cover;

@@ -62,7 +62,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [isSubmissionComplete, setIsSubmissionComplete] = useState(false);
 
   const navigate = useNavigate();
 
@@ -90,6 +90,7 @@ function App() {
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
         setIsSubmitting(true);
+        setIsSubmissionComplete(true);
         closeActiveModal();
       })
       .catch(console.error);
@@ -193,6 +194,10 @@ function App() {
       .catch(console.error);
   };
 
+  //other BS
+  
+
+
   //Likes
   const handleCardLike = ({ _id, isLiked }) => {
     const token = localStorage.getItem("jwt");
@@ -281,7 +286,8 @@ function App() {
                       onUpdateUser={onUpdateClick}
                       closeModal={closeActiveModal}
                       onLogoutClick={onLogoutClick}
-
+                      currentUser={currentUser}
+                      isLoggedIn={isLoggedIn}
                     />
                   </ProtectedRoute>
                 }
@@ -304,6 +310,7 @@ function App() {
             isOpen={activeModal === "add-garment"}
             onAddSubmit={handleAddSubmit}
             isSubmitting={isSubmitting}
+            isSubmissionComplete={isSubmissionComplete}
            
           />
           <ItemModal
@@ -322,12 +329,13 @@ function App() {
             isOpen={activeModal === "update"}
             onUpdateSubmit={handleUpdateUser}
             currentUser={currentUser} 
+            isSubmitting={isSubmitting}
           />
           <LoginModal
               buttonText={"Login"}
               title={"Login"}
               activeModal={activeModal}
-              closeModal={() => navigate("/")} 
+              closeModal={closeActiveModal} 
               isOpen={activeModal === "signin"}
               onLoginSubmit={handleLoginSubmit}
               onSignUpClick={onSignUpClick}
@@ -339,7 +347,7 @@ function App() {
               buttonText={"Register"}
               title={"Register"}
               activeModal={activeModal}
-              closeModal={() => navigate("/")} 
+              closeModal={closeActiveModal} 
               isOpen={activeModal === "signup"}
               onRegisterSubmit={handleRegisterSubmit}
               onSignInClick={onSignInClick}

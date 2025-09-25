@@ -4,7 +4,7 @@ import ItemCard from "../components/ItemCard";
 
 import "../blocks/clothesselection.css";
 
-function ClothesSection({ onItemCardClick, clothingItems, onAddBtnClick, onCardLike }) {
+function ClothesSection({ onItemCardClick, clothingItems, onAddBtnClick, onCardLike, isLoggedIn }) {
 
 
 
@@ -24,6 +24,7 @@ function ClothesSection({ onItemCardClick, clothingItems, onAddBtnClick, onCardL
                         item={item}
                         onCardClick={onItemCardClick}
                         onCardLike={onCardLike}
+                        isLoggedIn={isLoggedIn}
                       />
                     );
                 })}
