@@ -1,9 +1,12 @@
 import "../blocks/itemcard.css";
 
-function ItemCard({ item, onCardClick, onCardLike, currentUser, isLoggedIn }) {
-
-
-  
+function ItemCard({ 
+  item, 
+  onCardClick, 
+  onCardLike, 
+  currentUser, 
+  isLoggedIn 
+}) {
   const handleItemCLick = () => {
     onCardClick(item);
   };
@@ -13,30 +16,30 @@ function ItemCard({ item, onCardClick, onCardLike, currentUser, isLoggedIn }) {
 
   // Create a variable which you then set in `className` for the like button
   const itemLikeButton = isLiked ? "card__like card__like_liked" : "card__like";
- const itemLikeButtonLoggedIn = isLiked ? "card__like card__like_logout" : "card__like";
- 
+  console.log("isLiked:", isLiked, "itemLikeButton:", itemLikeButton);
   return (
     <li className="card">
       <span className="card__name_container">
         <h2 className="card__name">{item.name}</h2>
-        {isLoggedIn &&
-        <button
-          className={itemLikeButton}
-          onClick={(e) => {
-            e.stopPropagation();
-            onCardLike({ _id: item._id, isLiked });
-          }}
-        >
-        </button>}
-        </span>
-        <img
-          className="card__img"
-          src={item.imageUrl}
-          alt={item.name}
-          onClick={(e) =>{handleItemCLick(e)}}
-        />
-      
-  </li>
+        {isLoggedIn && (
+          <button
+            className={itemLikeButton}
+            onClick={(e) => {
+              e.stopPropagation();
+              onCardLike({ _id: item._id, isLiked });
+            }}
+          ></button>
+        )}
+      </span>
+      <img
+        className="card__img"
+        src={item.imageUrl}
+        alt={item.name}
+        onClick={(e) => {
+          handleItemCLick(e);
+        }}
+      />
+    </li>
   );
 }
 

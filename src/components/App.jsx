@@ -71,13 +71,22 @@ function App() {
   };
 
   useEffect(() => {
-    // optional: auto-login from saved token
-    const token = localStorage.getItem("token");
-    if (token) {
-      // fetch user info if backend supports it
-      setCurrentUser({ name: "Restored User" });
-    }
-  }, []);
+  const token = localStorage.getItem("jwt");  // ✅ Correct key
+  
+  if (token) {
+    // ✅ Validate token with backend and get real user data
+    existingToken(token)
+      .then((userData) => {
+        setCurrentUser(userData);    
+        setIsLoggedIn(true);        
+      })
+      .catch((error) => {
+        localStorage.removeItem("jwt");
+        setCurrentUser({});
+        setIsLoggedIn(false);
+      });
+  }
+}, []);
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -200,6 +209,7 @@ function App() {
 
   //Likes
   const handleCardLike = ({ _id, isLiked }) => {
+    console.log("Like has been clicked!");
     const token = localStorage.getItem("jwt");
     
     !isLiked
@@ -257,7 +267,7 @@ function App() {
               onSignInClick={onSignInClick}
               onSignUpClick={onSignUpClick}
               onLogoutClick={onLogoutClick}
-               isLoggedIn={isLoggedIn}
+              isLoggedIn={isLoggedIn}
             />
 
             <Routes>
@@ -292,12 +302,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route
-                path="*"
-                element={
-                  isLoggedIn ? <Navigate to="/profile" /> : <Navigate to="/" />
-                }
-              />
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
 
             <Footer />

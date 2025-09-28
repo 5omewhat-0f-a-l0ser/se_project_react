@@ -22,6 +22,7 @@ function Profile({ onItemCardClick, clothingItems, onAddBtnClick, onCardLike, on
           clothingItems={userItems}
           onAddBtnClick={onAddBtnClick}
           onCardLike={onCardLike}
+          currentUser={currentUser}
           isLoggedIn={isLoggedIn}
         />
       </section>

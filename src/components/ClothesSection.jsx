@@ -10,8 +10,8 @@ function ClothesSection({
   onAddBtnClick,
   onCardLike,
   isLoggedIn,
+  currentUser
 }) {
-  console.log(clothingItems);
   return (
     <div className="clothes-selection">
       <div className="clothes-selection__description">
@@ -29,6 +29,7 @@ function ClothesSection({
               onCardClick={onItemCardClick}
               onCardLike={onCardLike}
               isLoggedIn={isLoggedIn}
+              currentUser={currentUser}
             />
           );
         })}

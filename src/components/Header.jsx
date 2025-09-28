@@ -1,7 +1,5 @@
-import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "../blocks/header.css";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 //import DateDisplay from "../components/DateDisplay";
 import ToggleSwitch from "./ToggleSwitch";
@@ -9,7 +7,14 @@ import ToggleSwitch from "./ToggleSwitch";
 import logo from "../images/Logo.svg";
 import avatar from "../images/avatar.png";
 
-function Header({ onAddBtnClick, weatherData, currentUser, onSignInClick, onSignUpClick, onLogoutClick, isLoggedIn}) {
+function Header({ 
+  onAddBtnClick, 
+  weatherData, 
+  currentUser, 
+  onSignInClick, 
+  onSignUpClick,  
+  isLoggedIn
+}) {
   const today = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
