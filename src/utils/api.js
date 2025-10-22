@@ -1,4 +1,6 @@
-export const baseUrl = "http://localhost:3001";
+export const baseUrl = process.env.NODE_ENV === "production" 
+  ? "http://api.domainname.crabdance.com"  // Note: using http instead of https
+  : "http://localhost:3001";
 
 
 function handleServerResponse(res) {
