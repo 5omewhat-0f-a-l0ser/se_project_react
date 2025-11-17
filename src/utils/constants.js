@@ -1,3 +1,8 @@
+export const baseUrl = process.env.NODE_ENV === "production" 
+  ? "https://api.weatherapp.rainbowcup.com"  // Note: using http instead of https
+  : "http://localhost:3001";
+
+
 export const weatherOpts = {
   day: {
     clear: new URL("../images/day/sunny.png", import.meta.url).href,
