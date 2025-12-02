@@ -18,3 +18,5 @@ Deployment Link: https://5omewhat-0f-a-l0ser.github.io/se_project_react/
 
 
 This project is a full-stack application, and I worked extremely hard to make this project the best I could. Thank you for checking this little project out!
+
+Here are the subdomain links: https://weatherapp.rainbowcup.com/, www.https://weatherapp.rainbowcup.com/
